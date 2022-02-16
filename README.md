@@ -6,4 +6,8 @@ This project was created using RStudio and connecting RStudio to Git and GitHub
 
 # Phenotypic data
 
+A half-sib population with 436 alfalfa half-sib families each one contains at least 18 individuals were developed by nested associated mapping (NAM) with 30 drought resistant parent population from UT and WA (1608 population).
+
 A multi-parental population was constructed using a drought resistant parent population from WA and UT (1608) and a drought sensitive parent population from Guardsman II synthetic cultivar (1613). Guardsman II was planted in the greenhouse and after an evaluation protocol and selected 30 genotypes that were most susceptible to drought stress. Seed of F1 population (1622) were collected of 1613 parent and labeled A-F while seeds collected of 1608 parent were labeled G-L.
+
+
