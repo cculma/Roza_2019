@@ -23,7 +23,7 @@ library(reticulate)
 load("~/OneDrive - Washington State University (email.wsu.edu)/Roza_2019/GWASpoly_results/data_3_80177_year.RData")
 
 ####################
-# using all mr.bean data (pheno_nph.csv) and MPP_Ms2_GWASPoly.txt
+# GWASpoly using all mr.bean data (pheno_nph.csv) and genotypic matrix (MPP_Ms2_GWASPoly.txt)
 
 setwd("~/Documents/Cesar/blup_data/Roza2019/Analysis_2021/GWAS/")
 pheno <- read.csv("~/Documents/Cesar/blup_data/Roza2019/Analysis_2021/GWAS/pheno_nph.csv", row.names = 1)
@@ -44,3 +44,6 @@ data_3 <- GWASpoly(data = data_2, models = models_1, traits = trait1, params = p
 data_5 <- set.threshold(data_3, method= "Bonferroni", level=0.05)
 QTL_01 <- get.QTL(data_5)
 QTL_02 <- QTL_01 %>% distinct(Marker, .keep_all = T) 
+
+# save.image("~/Documents/Cesar/blup_data/Roza2019/Analysis_2021/GWAS/data_3_80177_year.RData")
+# load("~/Documents/Cesar/blup_data/Roza2019/Analysis_2021/GWAS/data_3_80177_year.RData")
