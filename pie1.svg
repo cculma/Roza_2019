@@ -1,0 +1,723 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   class="main-svg"
+   width="700"
+   height="500"
+   style=""
+   viewBox="0 0 700 500"
+   version="1.1"
+   id="svg1101"
+   sodipodi:docname="pie1.svg"
+   inkscape:version="1.0.2 (e86c8708, 2021-01-15)">
+  <metadata
+     id="metadata1105">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1440"
+     inkscape:window-height="847"
+     id="namedview1103"
+     showgrid="false"
+     inkscape:zoom="0.46821317"
+     inkscape:cx="298.78368"
+     inkscape:cy="315.80114"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg1101" />
+  <rect
+     x="0"
+     y="0"
+     width="700"
+     height="500"
+     style="fill: rgb(255, 255, 255); fill-opacity: 1;"
+     id="rect833" />
+  <defs
+     id="defs-2e8cc2">
+    <g
+       class="clips"
+       id="g835" />
+    <g
+       class="gradients"
+       id="g837" />
+    <g
+       class="patterns"
+       id="g839" />
+  </defs>
+  <g
+     class="bglayer"
+     id="g842" />
+  <g
+     class="layer-below"
+     id="g848">
+    <g
+       class="imagelayer"
+       id="g844" />
+    <g
+       class="shapelayer"
+       id="g846" />
+  </g>
+  <g
+     class="cartesianlayer"
+     id="g850" />
+  <g
+     class="polarlayer"
+     id="g852" />
+  <g
+     class="ternarylayer"
+     id="g854" />
+  <g
+     class="geolayer"
+     id="g856" />
+  <g
+     class="funnelarealayer"
+     id="g858" />
+  <g
+     class="trace"
+     stroke-linejoin="round"
+     id="g964"
+     transform="translate(74,-16)">
+    <g
+       class="slice"
+       id="g870">
+      <path
+         class="surface"
+         d="m 154.5,307.75 v -94.5 a 94.5,94.5 0 0 1 7.76892,188.68011 z"
+         style="fill:#1f77b4;fill-opacity:1;stroke:#444444;stroke-width:0;stroke-opacity:1"
+         id="path860" />
+      <g
+         class="slicetext"
+         id="g868">
+        <text
+           data-notex="1"
+           class="slicetext"
+           transform="translate(278.94734,300.78208)"
+           text-anchor="middle"
+           x="0"
+           y="0"
+           style="font-size:12px;font-family:'Open Sans', verdana, arial, sans-serif;white-space:pre;fill:#444444;fill-opacity:1"
+           id="text866"><tspan
+             class="line"
+             dy="0em"
+             x="0"
+             y="0"
+             id="tspan862">general</tspan><tspan
+             class="line"
+             dy="1.3em"
+             x="0"
+             y="0"
+             id="tspan864">762</tspan></text>
+      </g>
+    </g>
+    <g
+       class="slice"
+       id="g882">
+      <path
+         class="surface"
+         d="m 154.5,307.75 -48.91028,80.85812 A 94.5,94.5 0 0 1 154.5,213.25 Z"
+         style="fill:#ff7f0e;fill-opacity:1;stroke:#444444;stroke-width:0;stroke-opacity:1"
+         id="path872" />
+      <g
+         class="slicetext"
+         id="g880">
+        <text
+           data-notex="1"
+           class="slicetext"
+           transform="translate(16.30637,278.22012)"
+           text-anchor="middle"
+           x="0"
+           y="0"
+           style="font-size:12px;font-family:'Open Sans', verdana, arial, sans-serif;white-space:pre;fill:#444444;fill-opacity:1"
+           id="text878"><tspan
+             class="line"
+             dy="0em"
+             x="0"
+             y="0"
+             id="tspan874">diplo-general</tspan><tspan
+             class="line"
+             dy="1.3em"
+             x="0"
+             y="0"
+             id="tspan876">647</tspan></text>
+      </g>
+    </g>
+    <g
+       class="slice"
+       id="g894">
+      <path
+         class="surface"
+         d="m 154.5,307.75 -28.93135,89.96236 a 94.5,94.5 0 0 1 -19.97893,-9.10424 z"
+         style="fill:#2ca02c;fill-opacity:1;stroke:#444444;stroke-width:0;stroke-opacity:1"
+         id="path884" />
+      <g
+         class="slicetext"
+         id="g892">
+        <text
+           data-notex="1"
+           class="slicetext"
+           transform="translate(77.692792,403.15379)"
+           text-anchor="middle"
+           x="0"
+           y="0"
+           style="font-size:12px;font-family:'Open Sans', verdana, arial, sans-serif;white-space:pre;fill:#444444;fill-opacity:1"
+           id="text890"><tspan
+             class="line"
+             dy="0em"
+             x="0"
+             y="0"
+             id="tspan886">2-dom-alt</tspan><tspan
+             class="line"
+             dy="1.3em"
+             x="0"
+             y="0"
+             id="tspan888">58</tspan></text>
+      </g>
+    </g>
+    <g
+       class="slice"
+       id="g908">
+      <path
+         class="surface"
+         d="m 154.5,307.75 -14.17381,93.43101 a 94.5,94.5 0 0 1 -14.75754,-3.46865 z"
+         style="fill:#d62728;fill-opacity:1;stroke:#444444;stroke-width:0;stroke-opacity:1"
+         id="path896" />
+      <g
+         class="slicetext"
+         id="g904">
+        <text
+           data-notex="1"
+           class="slicetext"
+           transform="translate(94.225408,433.26316)"
+           text-anchor="middle"
+           x="0"
+           y="0"
+           style="font-size:12px;font-family:'Open Sans', verdana, arial, sans-serif;white-space:pre;fill:#444444;fill-opacity:1"
+           id="text902"><tspan
+             class="line"
+             dy="0em"
+             x="0"
+             y="0"
+             id="tspan898">2-dom-ref</tspan><tspan
+             class="line"
+             dy="1.3em"
+             x="0"
+             y="0"
+             id="tspan900">40</tspan></text>
+      </g>
+      <path
+         class="textline"
+         stroke-width="1.5"
+         d="m 132.87775,399.74309 v 36.57476 h -7.52734"
+         fill="none"
+         style="stroke:#444444;stroke-opacity:1"
+         id="path906" />
+    </g>
+    <g
+       class="slice"
+       id="g922">
+      <path
+         class="surface"
+         d="m 154.5,307.75 -5.11939,94.36123 a 94.5,94.5 0 0 1 -9.05442,-0.93022 z"
+         style="fill:#9467bd;fill-opacity:1;stroke:#444444;stroke-width:0;stroke-opacity:1"
+         id="path910" />
+      <g
+         class="slicetext"
+         id="g918">
+        <text
+           data-notex="1"
+           class="slicetext"
+           transform="translate(107.2211,463.37254)"
+           text-anchor="middle"
+           x="0"
+           y="0"
+           style="font-size:12px;font-family:'Open Sans', verdana, arial, sans-serif;white-space:pre;fill:#444444;fill-opacity:1"
+           id="text916"><tspan
+             class="line"
+             dy="0em"
+             x="0"
+             y="0"
+             id="tspan912">1-dom-alt</tspan><tspan
+             class="line"
+             dy="1.3em"
+             x="0"
+             y="0"
+             id="tspan914">24</tspan></text>
+      </g>
+      <path
+         class="textline"
+         stroke-width="1.5"
+         d="m 144.84219,401.7552 v 64.67203 h -7.52734"
+         fill="none"
+         style="stroke:#444444;stroke-opacity:1"
+         id="path920" />
+    </g>
+    <g
+       class="slice"
+       id="g936">
+      <path
+         class="surface"
+         d="m 154.5,307.75 2.08653,94.47696 a 94.5,94.5 0 0 1 -7.20592,-0.11573 z"
+         style="fill:#8c564b;fill-opacity:1;stroke:#444444;stroke-width:0;stroke-opacity:1"
+         id="path924" />
+      <g
+         class="slicetext"
+         id="g932">
+        <text
+           data-notex="1"
+           class="slicetext"
+           transform="translate(114.33012,493.48191)"
+           text-anchor="middle"
+           x="0"
+           y="0"
+           style="font-size:12px;font-family:'Open Sans', verdana, arial, sans-serif;white-space:pre;fill:#444444;fill-opacity:1"
+           id="text930"><tspan
+             class="line"
+             dy="0em"
+             x="0"
+             y="0"
+             id="tspan926">1-dom-ref</tspan><tspan
+             class="line"
+             dy="1.3em"
+             x="0"
+             y="0"
+             id="tspan928">19</tspan></text>
+      </g>
+      <path
+         class="textline"
+         stroke-width="1.5"
+         d="m 152.98247,402.23781 v 94.29879 h -7.52735"
+         fill="none"
+         style="stroke:#444444;stroke-opacity:1"
+         id="path934" />
+    </g>
+    <g
+       class="slice"
+       id="g950">
+      <path
+         class="surface"
+         d="m 154.5,307.75 7.01245,94.23946 a 94.5,94.5 0 0 1 -4.92592,0.2375 z"
+         style="fill:#e377c2;fill-opacity:1;stroke:#444444;stroke-width:0;stroke-opacity:1"
+         id="path938" />
+      <g
+         class="slicetext"
+         id="g946">
+        <text
+           data-notex="1"
+           class="slicetext"
+           transform="translate(207.57838,443.97784)"
+           text-anchor="middle"
+           x="0"
+           y="0"
+           style="font-size:12px;font-family:'Open Sans', verdana, arial, sans-serif;white-space:pre;fill:#444444;fill-opacity:1"
+           id="text944"><tspan
+             class="line"
+             dy="0em"
+             x="0"
+             y="0"
+             id="tspan940">diplo-additive</tspan><tspan
+             class="line"
+             dy="1.3em"
+             x="0"
+             y="0"
+             id="tspan942">13</tspan></text>
+      </g>
+      <path
+         class="textline"
+         stroke-width="1.5"
+         d="m 159.05104,402.14035 v 44.89217 h 7.52734"
+         fill="none"
+         style="stroke:#444444;stroke-opacity:1"
+         id="path948" />
+    </g>
+    <g
+       class="slice"
+       id="g962">
+      <path
+         class="surface"
+         d="m 154.5,307.75 7.76892,94.18011 a 94.5,94.5 0 0 1 -0.75647,0.0593 z"
+         style="fill:#7f7f7f;fill-opacity:1;stroke:#444444;stroke-width:0;stroke-opacity:1"
+         id="path952" />
+      <g
+         class="slicetext"
+         id="g960">
+        <text
+           data-notex="1"
+           class="slicetext"
+           transform="translate(193.29309,413.86846)"
+           text-anchor="middle"
+           x="0"
+           y="0"
+           style="font-size:12px;font-family:'Open Sans', verdana, arial, sans-serif;white-space:pre;fill:#444444;fill-opacity:1"
+           id="text958"><tspan
+             class="line"
+             dy="0em"
+             x="0"
+             y="0"
+             id="tspan954">additive</tspan><tspan
+             class="line"
+             dy="1.3em"
+             x="0"
+             y="0"
+             id="tspan956">2</tspan></text>
+      </g>
+    </g>
+  </g>
+  <g
+     class="trace"
+     stroke-linejoin="round"
+     id="g1076"
+     transform="translate(-58,-14)">
+    <g
+       class="slice"
+       id="g976">
+      <path
+         class="surface"
+         d="m 595.5,307.75 v -94.5 a 94.5,94.5 0 0 1 86.64851,56.7868 z"
+         style="fill:#bcbd22;fill-opacity:1;stroke:#444444;stroke-width:0;stroke-opacity:1"
+         id="path966" />
+      <g
+         class="slicetext"
+         id="g974">
+        <text
+           data-notex="1"
+           class="slicetext"
+           transform="translate(669.20173,215.12552)"
+           text-anchor="middle"
+           x="0"
+           y="0"
+           style="font-size:12px;font-family:'Open Sans', verdana, arial, sans-serif;white-space:pre;fill:#444444;fill-opacity:1"
+           id="text972"><tspan
+             class="line"
+             dy="0em"
+             x="0"
+             y="0"
+             id="tspan968">Chr4</tspan><tspan
+             class="line"
+             dy="1.3em"
+             x="0"
+             y="0"
+             id="tspan970">289</tspan></text>
+      </g>
+    </g>
+    <g
+       class="slice"
+       id="g988">
+      <path
+         class="surface"
+         d="M 595.5,307.75 514.59283,258.92091 A 94.5,94.5 0 0 1 595.5,213.25 Z"
+         style="fill:#17becf;fill-opacity:1;stroke:#444444;stroke-width:0;stroke-opacity:1"
+         id="path978" />
+      <g
+         class="slicetext"
+         id="g986">
+        <text
+           data-notex="1"
+           class="slicetext"
+           transform="translate(527.14391,210.98453)"
+           text-anchor="middle"
+           x="0"
+           y="0"
+           style="font-size:12px;font-family:'Open Sans', verdana, arial, sans-serif;white-space:pre;fill:#444444;fill-opacity:1"
+           id="text984"><tspan
+             class="line"
+             dy="0em"
+             x="0"
+             y="0"
+             id="tspan980">Chr3</tspan><tspan
+             class="line"
+             dy="1.3em"
+             x="0"
+             y="0"
+             id="tspan982">256</tspan></text>
+      </g>
+    </g>
+    <g
+       class="slice"
+       id="g1000">
+      <path
+         class="surface"
+         d="m 595.5,307.75 -87.16988,36.49194 a 94.5,94.5 0 0 1 6.26271,-85.32103 z"
+         style="fill:#57a9e2;fill-opacity:1;stroke:#444444;stroke-width:0;stroke-opacity:1"
+         id="path990" />
+      <g
+         class="slicetext"
+         id="g998">
+        <text
+           data-notex="1"
+           class="slicetext"
+           transform="translate(479.35121,297.69678)"
+           text-anchor="middle"
+           x="0"
+           y="0"
+           style="font-size:12px;font-family:'Open Sans', verdana, arial, sans-serif;white-space:pre;fill:#444444;fill-opacity:1"
+           id="text996"><tspan
+             class="line"
+             dy="0em"
+             x="0"
+             y="0"
+             id="tspan992">Chr7</tspan><tspan
+             class="line"
+             dy="1.3em"
+             x="0"
+             y="0"
+             id="tspan994">234</tspan></text>
+      </g>
+    </g>
+    <g
+       class="slice"
+       id="g1012">
+      <path
+         class="surface"
+         d="m 595.5,307.75 -39.18611,85.99243 a 94.5,94.5 0 0 1 -47.98377,-49.50049 z"
+         style="fill:#ffb574;fill-opacity:1;stroke:#444444;stroke-width:0;stroke-opacity:1"
+         id="path1002" />
+      <g
+         class="slicetext"
+         id="g1010">
+        <text
+           data-notex="1"
+           class="slicetext"
+           transform="translate(505.74462,377.76246)"
+           text-anchor="middle"
+           x="0"
+           y="0"
+           style="font-size:12px;font-family:'Open Sans', verdana, arial, sans-serif;white-space:pre;fill:#444444;fill-opacity:1"
+           id="text1008"><tspan
+             class="line"
+             dy="0em"
+             x="0"
+             y="0"
+             id="tspan1004">Chr1</tspan><tspan
+             class="line"
+             dy="1.3em"
+             x="0"
+             y="0"
+             id="tspan1006">186</tspan></text>
+      </g>
+    </g>
+    <g
+       class="slice"
+       id="g1024">
+      <path
+         class="surface"
+         d="m 595.5,307.75 22.36021,91.81651 a 94.5,94.5 0 0 1 -61.54632,-5.82408 z"
+         style="fill:#5fd35f;fill-opacity:1;stroke:#444444;stroke-width:0;stroke-opacity:1"
+         id="path1014" />
+      <g
+         class="slicetext"
+         id="g1022">
+        <text
+           data-notex="1"
+           class="slicetext"
+           transform="translate(564.69498,413.6961)"
+           text-anchor="middle"
+           x="0"
+           y="0"
+           style="font-size:12px;font-family:'Open Sans', verdana, arial, sans-serif;white-space:pre;fill:#444444;fill-opacity:1"
+           id="text1020"><tspan
+             class="line"
+             dy="0em"
+             x="0"
+             y="0"
+             id="tspan1016">Chr2</tspan><tspan
+             class="line"
+             dy="1.3em"
+             x="0"
+             y="0"
+             id="tspan1018">166</tspan></text>
+      </g>
+    </g>
+    <g
+       class="slice"
+       id="g1036">
+      <path
+         class="surface"
+         d="m 595.5,307.75 74.10222,58.64394 a 94.5,94.5 0 0 1 -51.74201,33.17257 z"
+         style="fill:#e77c7c;fill-opacity:1;stroke:#444444;stroke-width:0;stroke-opacity:1"
+         id="path1026" />
+      <g
+         class="slicetext"
+         id="g1034">
+        <text
+           data-notex="1"
+           class="slicetext"
+           transform="translate(668.40582,394.91897)"
+           text-anchor="middle"
+           x="0"
+           y="0"
+           style="font-size:12px;font-family:'Open Sans', verdana, arial, sans-serif;white-space:pre;fill:#444444;fill-opacity:1"
+           id="text1032"><tspan
+             class="line"
+             dy="0em"
+             x="0"
+             y="0"
+             id="tspan1028">Chr8</tspan><tspan
+             class="line"
+             dy="1.3em"
+             x="0"
+             y="0"
+             id="tspan1030">165</tspan></text>
+      </g>
+    </g>
+    <g
+       class="slice"
+       id="g1048">
+      <path
+         class="surface"
+         d="m 595.5,307.75 94.17227,7.86345 a 94.5,94.5 0 0 1 -20.07005,50.78049 z"
+         style="fill:#c6aedc;fill-opacity:1;stroke:#444444;stroke-width:0;stroke-opacity:1"
+         id="path1038" />
+      <g
+         class="slicetext"
+         id="g1046">
+        <text
+           data-notex="1"
+           class="slicetext"
+           transform="translate(705.28716,341.46411)"
+           text-anchor="middle"
+           x="0"
+           y="0"
+           style="font-size:12px;font-family:'Open Sans', verdana, arial, sans-serif;white-space:pre;fill:#444444;fill-opacity:1"
+           id="text1044"><tspan
+             class="line"
+             dy="0em"
+             x="0"
+             y="0"
+             id="tspan1040">Chr5</tspan><tspan
+             class="line"
+             dy="1.3em"
+             x="0"
+             y="0"
+             id="tspan1042">146</tspan></text>
+      </g>
+    </g>
+    <g
+       class="slice"
+       id="g1060">
+      <path
+         class="surface"
+         d="m 595.5,307.75 88.36421,-33.49652 a 94.5,94.5 0 0 1 5.80806,41.35997 z"
+         style="fill:#bc8b81;fill-opacity:1;stroke:#444444;stroke-width:0;stroke-opacity:1"
+         id="path1050" />
+      <g
+         class="slicetext"
+         id="g1058">
+        <text
+           data-notex="1"
+           class="slicetext"
+           transform="translate(710.98414,291.26276)"
+           text-anchor="middle"
+           x="0"
+           y="0"
+           style="font-size:12px;font-family:'Open Sans', verdana, arial, sans-serif;white-space:pre;fill:#444444;fill-opacity:1"
+           id="text1056"><tspan
+             class="line"
+             dy="0em"
+             x="0"
+             y="0"
+             id="tspan1052">Chr6</tspan><tspan
+             class="line"
+             dy="1.3em"
+             x="0"
+             y="0"
+             id="tspan1054">111</tspan></text>
+      </g>
+    </g>
+    <g
+       class="slice"
+       id="g1074">
+      <path
+         class="surface"
+         d="m 595.5,307.75 86.64851,-37.7132 a 94.5,94.5 0 0 1 1.7157,4.21668 z"
+         style="fill:#f4cce8;fill-opacity:1;stroke:#444444;stroke-width:0;stroke-opacity:1"
+         id="path1062" />
+      <g
+         class="slicetext"
+         id="g1070">
+        <text
+           data-notex="1"
+           class="slicetext"
+           transform="translate(709.94972,261.15338)"
+           text-anchor="middle"
+           x="0"
+           y="0"
+           style="font-size:12px;font-family:'Open Sans', verdana, arial, sans-serif;white-space:pre;fill:#444444;fill-opacity:1"
+           id="text1068"><tspan
+             class="line"
+             dy="0em"
+             x="0"
+             y="0"
+             id="tspan1064">Contig</tspan><tspan
+             class="line"
+             dy="1.3em"
+             x="0"
+             y="0"
+             id="tspan1066">12</tspan></text>
+      </g>
+      <path
+         class="textline"
+         stroke-width="1.5"
+         d="m 683.03176,272.13481 v -7.92674 h 7.52734"
+         fill="none"
+         style="stroke:#444444;stroke-opacity:1"
+         id="path1072" />
+    </g>
+  </g>
+  <g
+     class="iciclelayer"
+     id="g1080" />
+  <g
+     class="treemaplayer"
+     id="g1082" />
+  <g
+     class="sunburstlayer"
+     id="g1084" />
+  <g
+     class="glimages"
+     id="g1086" />
+  <defs
+     id="topdefs-2e8cc2">
+    <g
+       class="clips"
+       id="g1088" />
+  </defs>
+  <g
+     class="layer-above"
+     id="g1095">
+    <g
+       class="imagelayer"
+       id="g1091" />
+    <g
+       class="shapelayer"
+       id="g1093" />
+  </g>
+  <g
+     class="infolayer"
+     id="g1099">
+    <g
+       class="g-gtitle"
+       id="g1097" />
+  </g>
+</svg>
