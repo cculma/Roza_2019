@@ -1,3 +1,5 @@
+# generate manhattan plot by trait
+
 rm(list = ls())
 library(plotly)
 library(dplyr)
@@ -5,8 +7,6 @@ library(ggpubr)
 
 load("~/OneDrive - Washington State University (email.wsu.edu)/Roza_2019/GWASpoly_results/data_3_80177_year.RData")
 trait1
-
-# manhattan
 
 p <- LD.plot(data_5)
 p + xlim(0,30)
