@@ -22,3 +22,5 @@ i_6 <- plot_ly(labels = ~Model, values = ~n, legendgroup = ~Model,
 
 
 orca(i_6, "pie1.svg")
+
+
