@@ -1,0 +1,317 @@
+gene_id	Marker1	uniprot	protein_name	GO.ID
+G10103	Chr2_45924811;Chr2_45924812;Chr2_45924813;Chr2_45924814;Chr2_45924815	UPI000719417F	uncharacterized protein LOC100789568 isoform X5	NA
+G10106	Chr2_45491573	UPI000C049C6F	3-ketoacyl-CoA synthase;3-ketoacyl-CoA synthase 11-like	NA
+G1014	Chr1_11673903;Chr1_11673928	UPI0009D7428A	putative pentatricopeptide repeat-containing protein At1g12700, mitochondrial	NA
+G10221	Chr2_48372289	A0A0B2PRQ2	RNA helicase (EC 3.6.4.13)	NA
+G10242	Chr2_48783066	G7IQL8	PPR containing plant-like protein (Putative tetratricopeptide-like helical domain, pentacotripeptide-repeat region of PROPR)	NA
+G10329	Chr2_50666524	A0A445HUP7	Protein EMSY-LIKE 3 isoform B	NA
+G10537	Chr2_54051368;Chr2_54051380;Chr2_54051383	UPI000B7704AB	DEAD-box ATP-dependent RNA helicase 36	NA
+G10751	Chr2_57787592	UPI000B8AE8E0	probable sugar phosphate/phosphate translocator At3g14410	NA
+G10755	Chr2_57805903	A0A2P5EQT7	(S)-2-hydroxy-acid oxidase (EC 1.1.3.15)	NA
+G10777	Chr2_58183930	UPI0010A377C1	splicing factor YJU2-like	NA
+G1092	Chr1_12647709	UPI000F7CC6F0	TOM1-like protein 9	NA
+G10929	Chr2_61413731	A0A1S3T9U6	protein trichome birefringence-like 42 isoform X2	NA
+G11213	Chr2_67172846	A0A392MMK4	Replication factor A protein (Fragment)	NA
+G11692	Chr2_72377872;Chr2_72377874;Chr2_72377878;Chr2_72377879	UPI00080A6A6C	peroxisome biogenesis protein 22 isoform X2	NA
+G11842	Chr2_73988814	A0A444Y6H6	tRNA-uridine aminocarboxypropyltransferase (EC 2.5.1.25)	NA
+G11944	Chr2_75592552	A0A072VMB5	FRIGIDA-like protein	NA
+G121	Chr1_1497528	A0A445H994	Protein ACCUMULATION AND REPLICATION OF CHLOROPLASTS 6, chloroplastic isoform D	NA
+G12486	Chr2_81386874;Chr2_81386905	A0A2I4DNT7	IAA-amino acid hydrolase ILR1-like 4	NA
+G12542	Chr2_81907214	UPI001247376B	Auxin-responsive protein;auxin-responsive protein IAA27-like	NA
+G12710	Chr2_83716456	UPI00046DBCFC	Uncharacterized protein;NADH dehydrogenase [ubiquinone] flavoprotein 2, mitochondrial;(apricot) hypothetical protein	NA
+G12746	Chr2_84210016	A0A067KXL0	Uncharacterized protein	NA
+G12863	Chr3_2946784;Chr3_1477274;Chr3_3219833;Chr3_3219841;Chr3_3219859;Chr3_3219876	A0A072VA64	F-box protein interaction domain protein	NA
+G1290	Chr1_15384496	K7KM53	Protein kinase domain-containing protein	NA
+G13297	Chr3_9490352	A0A660KSZ9	DYW_deaminase domain-containing protein	NA
+G13469	Chr3_16555315	G7IWG5	NBS-LRR type disease resistance protein (Putative P-loop containing nucleoside triphosphate hydrolase, leucine-rich repeat domain, L)	NA
+G14002	Chr3_23830185	G7IWN5	F-box SKIP23-like protein (Putative F-box domain-containing protein)	NA
+G1431	Chr1_16835770	A0A151T3A3	Uncharacterized protein	NA
+G14367	Chr3_32149788	A0A5B6UMZ5	Flavonol synthase/flavanone 3-hydroxylase-like	NA
+G14570	Chr3_38640823;Chr3_38640806;Chr3_38633801;Chr3_38655094;Chr3_38655088;Chr3_38994159;Chr3_38994160;Chr3_38988941	A0A0B2QPM0	Uncharacterized protein (Fragment)	NA
+G14822	Chr3_45540409	UPI00080A447A	serine/threonine-protein phosphatase 7 long form homolog isoform X2	NA
+G1510	Chr1_18368145	A0A2I4FVC9	armadillo repeat-containing protein 6	NA
+G1516	Chr1_18427240	UPI00092F12FB	uncharacterized protein LOC109360908	NA
+G15247	Chr3_52516069	G7JM59	Uncharacterized protein	NA
+G15326	Chr3_53968050	A0A2I4DZR4	protein TORNADO 1	GO:0000166;GO:0036094;GO:0005488;GO:0003674;GO:0097159;GO:1901363;GO:1901265
+G15496	Chr3_56672376	UPI00077E6333	DNA-directed RNA polymerases I and III subunit RPAC1	NA
+G15529	Chr3_57429191	A0A0L9VBR0	Aa_trans domain-containing protein	NA
+G1554	Chr1_18847994	B7FFR5	Uncharacterized protein	NA
+G15692	Chr3_59482146	A0A392QY77	Uncharacterized protein (Fragment)	NA
+G15905	Chr3_63866997;Chr3_63564974	A0A072TD78	Uncharacterized protein	NA
+G16212	Chr3_69157619;Chr3_68136267;Chr3_69178475;Chr3_69180801;Chr3_69180805;Chr3_68411879	UPI0005113120	thaumatin-like protein	NA
+G16250	Chr3_70200252	A0A396IZG6	Uncharacterized protein	NA
+G16408	Chr3_70324040	A0A4P1RMM7	Uncharacterized protein	NA
+G16420	Chr3_70537760	A0A0B2RNR3	Putative ABC1 protein	NA
+G16782	Chr3_74703639;Chr3_74703648;Chr3_74703674;Chr3_74588054;Chr3_74703659;Chr3_75259640;Chr3_75234641;Chr3_74587967	UPI000A2B0238	protein POLLEN DEFECTIVE IN GUIDANCE 1 isoform X2	NA
+G16970	Chr3_76491832;Chr3_76491833	UPI0003DEB17A	disease resistance protein RPV1 isoform X1;TMV resistance protein N-like isoform X1;TMV resistance protein N isoform X1;Uncharacterized protein	NA
+G17039	Chr3_77217352	A0A498JT47	Vacuolar protein sorting-associated protein 29	NA
+G17332	Chr3_80298226	A0A0B2QWQ6	HORMA domain-containing protein 1	NA
+G17351	Chr3_80481011	A0A444ZSF1	Protein kinase domain-containing protein	NA
+G17371	Chr3_80641191	UPI000CE1FB60	Uncharacterized protein;uncharacterized protein LOC111985483;uncharacterized protein LOC115979427;hypothetical protein	NA
+G17410	Chr3_80961281	A0A5N6R4R3	PH domain-containing protein	NA
+G17432	Chr3_81184419	A0A059B1D5	O-fucosyltransferase family protein	NA
+G178	Chr1_1993409	I3SA23	Uncharacterized protein	NA
+G17924	Chr3_86430321	V7ASW6	NAC-A/B domain-containing protein	GO:0032991;GO:0005737;GO:0005622;GO:0110165;GO:0005575
+G18084	Chr3_88208549	A0A5B7B0M7	Uncharacterized protein	NA
+G18476	Chr3_93189692;Chr3_93189793	A0A2P5DTR0	BRISC and BRCA1-A complex member 1 (Mediator of RAP80 interactions and targeting subunit of 40 kDa) (New component of the BRCA1-A complex)	NA
+G18578	Chr3_93255691	UPI00098D7A32	transcription initiation factor TFIID subunit 4b isoform X3	NA
+G18869	Chr3_96248044	A0A1S3BC26	uncharacterized protein LOC103488297 isoform X1	GO:0016021;GO:0110165;GO:0031224;GO:0005575;GO:0016020
+G1898	Chr1_25366470	A0A2G3C699	Uncharacterized protein	NA
+G19231	Chr3_100057288	G7J442	Glutamyl-tRNA reductase (EC 1.2.1.70)	NA
+G1935	Chr1_26058041;Chr1_26070731	UPI0010388E10	splicing factor U2AF 65 kDa subunit-like isoform X1	NA
+G19382	Chr3_103104552	G7L8K3	Uncharacterized protein	NA
+G19479	Chr3_102486717	UPI00092F0BFA	uncharacterized protein LOC109328399	NA
+G19494	Chr3_102599386	A0A2P5EY73	RING-type E3 ubiquitin transferase (EC 2.3.2.27)	GO:0004842;GO:0140096;GO:0003824;GO:0019787;GO:0003674;GO:0016740
+G19527	Chr3_102920985	A0A1J7HPP7	Uncharacterized protein	NA
+G19672	Chr4_128206	A0A5D2AUP3	H(+)-exporting diphosphatase (EC 7.1.3.1)	NA
+G19964	Chr4_3974668	A0A0B0Q070	Metallothiol transferase FosB	NA
+G20066	Chr4_8204355	A0A072UF51	Uncharacterized protein	NA
+G202	Chr1_2252368	UPI00080A11F2	uncharacterized protein LOC108318737 isoform X1	NA
+G20355	Chr4_9678494	A0A2I4F2P2	Ammonium transporter	NA
+G20440	Chr4_11104132;Chr4_11104153	A0A1J7HYH8	Uncharacterized protein	NA
+G20541	Chr4_13610228;Chr4_13611812	UPI000B773834	3-ketoacyl-CoA thiolase 2, peroxisomal-like	NA
+G20973	Chr4_19756573	UPI0003DE8281	ethylene receptor-like isoform X2;ethylene receptor isoform X2	NA
+G21072	Chr4_21906332	A0A2K3M536	Putative peptide/nitrate transporter (Fragment)	NA
+G2123	Chr1_29445999	UPI000579BC33	uncharacterized aarF domain-containing protein kinase At1g79600, chloroplastic isoform X1	NA
+G21315	Chr4_26429206;Chr4_26425656	A0A445E1Y7	RING-type domain-containing protein	NA
+G21471	Chr4_29598449;Chr4_29598467;Chr4_29598629;Chr4_29598668	UPI00092F49EE	cytokinin dehydrogenase 6-like	NA
+G21513	Chr4_30965527;Chr4_30965528	UPI001247CE38	Component of oligomeric Golgi complex 7;conserved oligomeric Golgi complex subunit 7	NA
+G21830	Chr4_39019472	A0A445A5T7	SPARK domain-containing protein	NA
+G22001	Chr4_43225572;Chr4_43225602	UPI000B7796C3	zinc finger A20 and AN1 domain-containing stress-associated protein 3	NA
+G2203	Chr1_30887455	A0A1Q3C951	Pkinase domain-containing protein/LRR_1 domain-containing protein/LRRNT_2 domain-containing protein	NA
+G22034	Chr4_42657768;Chr4_42657855	A0A371GD34	Disease resistance protein RGA2 (Fragment)	NA
+G2204	Chr1_32078200	A0A1S2YA51	probable E3 ubiquitin-protein ligase RZFP34 isoform X1	GO:0008270;GO:0046872;GO:0005488;GO:0003674;GO:0043167;GO:0043169;GO:0046914
+G22081	Chr4_43261070;Chr4_43261090	A0A4D6LI97	Uncharacterized protein	NA
+G22084	Chr4_43298177	UPI0010A52C8D	protein SUPPRESSOR OF K(+) TRANSPORT GROWTH DEFECT 1-like	NA
+G22287	Chr4_47727264;Chr4_48489907;Chr4_47878307;Chr4_48249510	A0A2K3PKV6	RNA ligase (Fragment)	NA
+G22308	Chr4_49771757;Chr4_49771760;Chr4_49771761;Chr4_49771777	UPI00103EEC0D	uncharacterized protein LOC114380166 isoform X4	NA
+G22433	Chr4_49711651	UPI001016724A	uncharacterized protein LOC114168225 isoform X1	NA
+G22820	Chr4_54763992	A0A2K3NK88	Serine/threonine-protein kinase SMG1 (Fragment)	GO:0016301;GO:0003824;GO:0016772;GO:0003674;GO:0016740
+G23194	Chr4_58775639	UPI0010A9AA5C	GTP-binding protein BRASSINAZOLE INSENSITIVE PALE GREEN 2, chloroplastic-like	NA
+G23414	Chr4_65729994	A0A1S2YJK2	O-acyltransferase WSD1-like	NA
+G23484	Chr4_64612990	UPI000CE1D5DB	Isoleucine--trna ligase, cytoplasmic;isoleucine--tRNA ligase, cytoplasmic;isoleucine--trna ligase, cytoplasmic	NA
+G23495	Chr4_64777947	A0A5B6YQW9	Uncharacterized protein (Fragment)	NA
+G23506	Chr4_64932760	UPI000B8CDB4F	cyclin-B1-2-like	NA
+G23514	Chr4_65008688	A0A445M7B0	Uncharacterized protein	NA
+G23536	Chr4_65205710	I3SZN5	Uncharacterized protein	NA
+G23591	Chr4_65800258	A0A445HPC6	Mitotic checkpoint serine/threonine-protein kinase BUB1 isoform A	NA
+G23671	Chr4_66747005	A0A396H0U4	Putative F-box domain, leucine-rich repeat domain, L domain-containing protein	NA
+G23797	Chr4_68074639	A0A218XWT8	integrin-linked protein kinase 1	NA
+G23833	Chr4_68524789	A0A444ZJV2	RING-type E3 ubiquitin transferase (EC 2.3.2.27)	GO:0004842;GO:0140096;GO:0003824;GO:0019787;GO:0003674;GO:0016740
+G23919	Chr4_69621698	A0A444ZHE6	Uncharacterized protein	NA
+G23970	Chr4_72037515;Chr4_72037540;Chr4_72037542;Chr4_72037544;Chr4_72015317;Chr4_71710081;Chr4_71710082;Chr4_71505077	A0A2Z6PUJ3	Uncharacterized protein	NA
+G24214	Chr4_73094695;Chr4_73094702;Chr4_73094716;Chr4_73094717	UPI00080A3D2F	uncharacterized protein LOC108323765 isoform X4	NA
+G24227	Chr4_73182599;Chr4_73182616	UPI000788B0F0	Aspergillus nuclease S(1);endonuclease 4	NA
+G24252	Chr4_73580197	A0A2I4EL77	sugar carrier protein C	NA
+G24269	Chr4_74461095	A0A2P5EVS0	Phosphate-induced protein	NA
+G24408	Chr4_75279358	UPI000F7C4CF3	protein LNK1-like isoform X5	NA
+G24478	Chr4_75939230;Chr4_75939266	UPI00092E4F27	probable WRKY transcription factor 9 isoform X4	NA
+G24585	Chr4_77069439	A0A4D6L5P3	HECT-type E3 ubiquitin transferase (EC 2.3.2.26)	GO:0004842;GO:0140096;GO:0003824;GO:0019787;GO:0003674;GO:0016740
+G24600	Chr4_78822618	A0A151T2G9	Protein SRG1	NA
+G24722	Chr4_78738854;Chr4_78739074	A0A0R0HLV3	Protein kinase domain-containing protein	NA
+G24741	Chr4_78989957	UPI0012444F7D	F-box/kelch-repeat protein At1g67480	NA
+G24745	Chr4_79423968	UPI000E705CF2	15-cis-zeta-carotene isomerase, chloroplastic-like	NA
+G24768	Chr4_79239039	A0A2Z6MA05	Uncharacterized protein	NA
+G24790	Chr4_79471493	A0A0R0IJZ6	Amidase domain-containing protein	NA
+G25199	Chr4_83713150	UPI000B3F1D34	LOW QUALITY PROTEIN: oxidation resistance protein 1	NA
+G25331	Chr4_85662245	A0A4P1QZ32	AIR synthase (EC 6.3.3.1) (Phosphoribosyl-aminoimidazole synthetase)	NA
+G25365	Chr4_85260620	A0A0B0MMR0	Protein TONSOKU-like protein	NA
+G25397	Chr4_85594973;Chr4_85595387;Chr4_85595445	A0A371G9T7	Mitogen-activated protein kinase kinase kinase 3 (Fragment)	NA
+G2540	Chr1_39299470	A0A396JRT5	Uncharacterized protein	NA
+G25413	Chr4_85836350	UPI000DED27B6	protein CHROMATIN REMODELING 24 isoform X1	NA
+G25432	Chr4_86054092	UPI000F7C1CCE	aspartic proteinase Asp1 isoform X1	NA
+G25442	Chr4_86208882	UPI0010AA5BA2	diacylglycerol kinase 2 isoform X1	NA
+G25468	Chr4_86563111	A0A2P5AGF6	MYB transcription factor	NA
+G25489	Chr4_86648454	A0A371FC41	Respiratory burst oxidase-like protein C (Fragment)	NA
+G25490	Chr4_86661129;Chr4_86661179	UPI00080A18C6	uncharacterized protein LOC108337723 isoform X1	NA
+G25502	Chr4_87038029	A0A0B2QY64	Transaldolase (EC 2.2.1.2)	NA
+G25513	Chr4_86861223	UPI001016FDA5	protein MEI2-like 1 isoform X1	NA
+G25520	Chr4_86930116;Chr4_86930157;Chr4_86934920	A0A445KRS9	ADP-ribosylation factor GTPase-activating protein AGD3 isoform B	NA
+G25710	Chr4_91519351;Chr4_91438935	A0A0A0LJ20	Trafficking protein particle complex subunit	NA
+G26025	Chr4_91746968	G7LBH9	Putative nucleotide-binding alpha-beta plait domain-containing protein (RNA recognition motif)	GO:0003723;GO:0005488;GO:0003674;GO:0003676;GO:0097159;GO:1901363
+G26285	Chr5_4200761	A0A444Z830	Peptidylprolyl isomerase (EC 5.2.1.8)	GO:0016853;GO:0140096;GO:0003824;GO:0003674
+G26956	Chr5_9719146;Chr5_9719191	A0A1J7GKD8	Proteasome subunit alpha type	NA
+G27362	Chr5_14231156	UPI000B788540	pentatricopeptide repeat-containing protein At3g51320	NA
+G27446	Chr5_15325747;Chr5_15325711;Chr5_15324593	B6ECZ0	Acyl-[acyl-carrier-protein] desaturase (EC 1.14.19.-)	NA
+G27531	Chr5_16863827;Chr5_16863849	A0A151TWN9	60S ribosomal protein L13	NA
+G27875	Chr5_20857272	A0A444WVX9	Uncharacterized protein	NA
+G27886	Chr5_22279615	UPI000786B184	Glycosyltransferase;7-deoxyloganetic acid glucosyltransferase isoform X2	NA
+G27961	Chr5_23702006;Chr5_23745167	A0A4P1QTC3	PMR5N domain-containing protein	NA
+G28082	Chr5_23763574;Chr5_23763316;Chr5_23763320	A0A2U1MU27	RNA polymerases N / 8 kDa subunit	NA
+G28121	Chr5_24979001	UPI0007882794	uncharacterized protein LOC107488864 isoform X2	NA
+G28341	Chr5_28744359;Chr5_28744258	A0A445JM09	Phospholipid-transporting ATPase (EC 7.6.2.1)	NA
+G28384	Chr5_29422840;Chr5_29365477	A0A445DP35	Protein kinase domain-containing protein	NA
+G28489	Chr5_32132004	A0A5N6R163	Uncharacterized protein	NA
+G28571	Chr5_32793843	A0A061EB13	WRKY DNA-binding protein 4, putative isoform 2	NA
+G28615	Chr5_34303966;Chr5_33456548;Chr5_34304268	A0A1U7VSE9	multiple myeloma tumor-associated protein 2 homolog	NA
+G28685	Chr5_34312549	UPI0002C2E47E	protein GDAP2 homolog isoform X1	NA
+G289	Chr1_3134345;Chr1_3134345;Chr1_3134345	UPI0007AF13CD	polyadenylate-binding protein RBP47C isoform X1	NA
+G28920	Chr5_40612515;Chr5_40612529	A0A484LR75	Uncharacterized protein	NA
+G2898	Chr1_52257428;Chr1_52257452	UPI0010A33B4E	carboxyl-terminal-processing peptidase 3, chloroplastic	NA
+G29561	Chr5_58870104;Chr5_58870126	UPI00092FAAEE	LEAF RUST 10 DISEASE-RESISTANCE LOCUS RECEPTOR-LIKE PROTEIN KINASE-like 1.1 isoform X2	NA
+G29663	Chr5_61020164;Chr5_61020166;Chr5_61020171	A0A5N6RET4	M20_dimer domain-containing protein	NA
+G30137	Chr5_70734224	UPI00098DC7F2	lysine-specific demethylase JMJ25 isoform X1	NA
+G30420	Chr5_75692343	A0A0R0GEU3	RING-type domain-containing protein (Fragment)	GO:0046872;GO:0005488;GO:0003674;GO:0043167;GO:0043169
+G3063	Chr1_55314115;Chr1_55314116;Chr1_55314114;Chr1_55314118;Chr1_55314136;Chr1_55314157	A0A072UBI2	Uncharacterized protein	NA
+G30666	Chr5_80719069;Chr5_80719083;Chr5_80719115;Chr5_80710582	Q84X69	Asparagine synthetase [glutamine-hydrolyzing] (EC 6.3.5.4)	NA
+G30719	Chr5_81826038	A0A396HRQ4	Putative Late nodulin	NA
+G30845	Chr5_83436457	I1MZN6	Uncharacterized protein	NA
+G30954	Chr5_85754441	A0A444YC58	Uncharacterized protein	NA
+G31215	Chr5_89847415;Chr5_89847485	A0A2P0JZU9	R2R3 protein	NA
+G31360	Chr5_92080456	UPI000F7C788A	rop guanine nucleotide exchange factor 5-like isoform X1	NA
+G31420	Chr5_93123375	A0A5E4EAX0	PREDICTED: glycosyltransferase family	NA
+G3146	Chr1_56822611;Chr1_56822612	V7BL03	Uncharacterized protein	NA
+G3178	Chr1_58957562	A0A2I4H4S8	Deleted.	NA
+G32098	Chr5_101859152	A0A445I6Y0	Protein argonaute 16 isoform B	NA
+G32480	Chr5_107214689	A0A392W270	Uncharacterized protein (Fragment)	NA
+G32502	Chr5_107597375	A0A4P1REN0	CMP/dCMP-type deaminase domain-containing protein	NA
+G32626	Chr6_508879;Chr6_508961	V7CP04	N-acetylglucosaminylphosphatidylinositol deacetylase (EC 3.5.1.89)	NA
+G32928	Chr6_7415031	A0A445FB58	Uncharacterized protein	NA
+G33362	Chr6_12709831	A0A0B2PKU8	Solute carrier family 25 member 44	NA
+G33660	Chr6_18828220	M5WSS1	MFS domain-containing protein	NA
+G33910	Chr6_23320051	UPI000F7C8038	transcription factor IIIB 90 kDa subunit isoform X5	NA
+G34056	Chr6_25741915	A0A072U9L2	Replication factor-A carboxy-terminal domain protein	NA
+G34177	Chr6_28131341	A0A2R6RTK5	Heat shock protein 70 family protein	GO:0000166;GO:0005524;GO:0032559;GO:0036094;GO:0017076;GO:0030554;GO:0097367;GO:0005488;GO:0003674;GO:0097159;GO:1901363;GO:0043167;GO:0043168;GO:0035639;GO:0032553;GO:1901265;GO:0032555
+G34568	Chr6_39541957;Chr6_39464928	A0A392PPF9	Uncharacterized protein	NA
+G34588	Chr6_40734899	A0A396JWD6	Uncharacterized protein	NA
+G34873	Chr6_49307309	G7KWD0	PPR containing plant-like protein	NA
+G35370	Chr6_63510999	A0A445IRD2	ABC-type xenobiotic transporter (EC 7.6.2.2)	NA
+G35377	Chr6_63804971	UPI00092E7E65	mediator of RNA polymerase II transcription subunit 15a-like isoform X1	NA
+G35472	Chr6_67624059	UPI001015FD8B	uncharacterized protein LOC114184316 isoform X2	NA
+G35780	Chr6_74132979	D0VFF7	DREB-like protein 1	NA
+G36007	Chr6_79951924	UPI00124411C2	K(+) efflux antiporter 5	NA
+G36626	Chr6_94056574;Chr6_94056575	A0A371FCJ9	Putative serine/threonine-protein kinase dyrk2	NA
+G36941	Chr6_102318042	A0A1S3E3P1	uncharacterized protein LOC101515213	NA
+G36973	Chr6_101419375	A0A1S3TB33	uncharacterized protein LOC106753648	NA
+G37222	Chr6_106200359	A0A445A2P8	Uncharacterized protein	NA
+G37582	Chr6_112288342;Chr6_112288358;Chr6_112288390	A0A444YC37	Arginyl-tRNA synthetase (EC 6.1.1.19)	NA
+G38317	Chr7_10643598	UPI000F7C45B7	receptor-like protein kinase FERONIA	NA
+G38420	Chr7_12109656	UPI0010FC5E7D	transcription factor BIM3 isoform X3	NA
+G38840	Chr7_19797478;Chr7_19797493	UPI00092FA52F	uncharacterized protein LOC109358270 isoform X4	NA
+G39134	Chr7_27223945	A0A445CVG2	Uncharacterized protein	NA
+G40127	Chr7_48897589	UPI0010A3BE14	DEAD-box ATP-dependent RNA helicase 13 isoform X2	NA
+G40168	Chr7_49651865	UPI0010A55C58	E3 ubiquitin-protein ligase PRT1-like isoform X3	NA
+G40182	Chr7_50007656	A0A2P5EF46	Laccase (EC 1.10.3.2) (Benzenediol:oxygen oxidoreductase) (Diphenol oxidase) (Urishiol oxidase)	NA
+G40226	Chr7_50709513	A0A2I4FI59	RING-type E3 ubiquitin transferase (EC 2.3.2.27)	NA
+G40403	Chr7_54514208	UPI0010A2F51B	ultraviolet-B receptor UVR8-like	NA
+G40614	Chr7_58900573	A0A072TFJ8	Uncharacterized protein	NA
+G40782	Chr7_61379143	A0A445JX87	Protein DETOXIFICATION (Multidrug and toxic compound extrusion protein)	NA
+G40816	Chr7_62160078	A0A5J4ZIZ6	CASP-like protein	NA
+G40861	Chr7_63063011	A0A392PGF6	Regulatory-associated protein of TOR 1-like (Fragment)	NA
+G40874	Chr7_63250905	A0A445AL58	Uncharacterized protein	NA
+G40898	Chr7_63633398	G7JMP8	Transmembrane protein, putative	GO:0016021;GO:0110165;GO:0031224;GO:0005575;GO:0016020
+G40982	Chr7_64908428;Chr7_64907179	UPI0010A33F37	BEACH domain-containing protein C2-like	NA
+G41239	Chr7_67973395;Chr7_67973428	A0A0D2SHG2	Cysteine synthase (EC 2.5.1.47)	NA
+G41255	Chr7_68132909;Chr7_68126747	A0A371GD34	Disease resistance protein RGA2 (Fragment)	NA
+G41273	Chr7_68575521	A0A0L9U3T8	Uncharacterized protein	NA
+G41360	Chr7_69754571;Chr7_69754283;Chr7_69754305;Chr7_69764695;Chr7_70045519	UPI001245E821	ELMO domain-containing protein;ELMO domain-containing protein A-like isoform X2	NA
+G41497	Chr7_71080242;Chr7_71080252	A0A392V9Z1	Plastidic glucose transporter 4-like (Fragment)	GO:0071702;GO:0006810;GO:0051234;GO:0051179;GO:0008150
+G41633	Chr7_73969212	UPI000B7B10D1	Alpha-mannosidase;alpha-mannosidase At3g26720-like isoform X2	NA
+G4167	Chr1_71318288	A0A4D6N2X0	Uncharacterized protein	GO:0050789;GO:0065007;GO:0008150
+G41755	Chr7_73920058	A0A1R3GW37	Glutamate dehydrogenase	NA
+G41784	Chr7_76094475	UPI0010A428DB	WAT1-related protein At5g07050-like	NA
+G42115	Chr7_78227755;Chr7_78227755;Chr7_78227755	UPI000B7B1AD0	ABC transporter A family member 1	NA
+G42177	Chr7_78808554	A0A445CLF0	Uncharacterized protein	NA
+G42315	Chr7_80375919	A0A0D2PLN4	Uncharacterized protein	NA
+G42351	Chr7_80684473;Chr7_80684495;Chr7_80684516;Chr7_80684517	A0A5C7I515	tRNA (guanine-N(7)-)-methyltransferase non-catalytic subunit (WD repeat-containing protein 4 homolog)	NA
+G42371	Chr7_81267585;Chr7_81848596;Chr7_82794808;Chr7_81820066;Chr7_82499403;Chr7_81511740;Chr7_81512173	UPI0003DEA97F	PDR-like ABC-transporter isoform X1	NA
+G42543	Chr7_82873362	UPI0010AAC7F8	WD repeat-containing protein 70	NA
+G42571	Chr7_83172349	UPI000A2C370C	uncharacterized protein LOC107491693 isoform X2;uncharacterized protein LOC112695122 isoform X1	NA
+G42678	Chr7_84214374;Chr7_84214385;Chr7_84214349	A0A0R0GDT3	Mur_ligase_M domain-containing protein	NA
+G42682	Chr7_84249788;Chr7_84249789	A0A067E7L0	t-SNARE coiled-coil homology domain-containing protein	NA
+G42696	Chr7_84326158	A0A394DCM4	RING-type domain-containing protein	NA
+G42830	Chr7_85709514;Chr7_85709506;Chr7_85709509	A0A151TV81	Pectinesterase (EC 3.1.1.11)	NA
+G42839	Chr7_85764838	B9S0B5	VPS37 C-terminal domain-containing protein	NA
+G42869	Chr7_86057542	A0A1S3V1S1	uncharacterized protein LOC106770948	GO:0050789;GO:0065007;GO:0008150
+G42970	Chr7_87390413;Chr7_87390422	A0A396H4P1	Putative FBD domain-containing protein	NA
+G43105	Chr7_89111480	A0A2P5B8E7	DEAD-box ATP-dependent RNA helicase	NA
+G43268	Chr7_92250557	UPI0010A41BAD	LOW QUALITY PROTEIN: cathepsin B-like protease 2	NA
+G43338	Chr7_90537576	UPI00092F0244	squamosa promoter-binding-like protein 1 isoform X2	NA
+G43512	Chr7_92331549	A0A445FKL3	Sucrose nonfermenting 4-like protein isoform C	NA
+G44340	Chr8_7074650	UPI00071907A5	G-type lectin S-receptor-like serine/threonine-protein kinase At1g11330 isoform X2	NA
+G44365	Chr8_7365438	A0A4D6MKV9	Homeobox-leucine zipper protein	NA
+G44432	Chr8_10274852;Chr8_10082789	I1KGC9	Uncharacterized protein	GO:0016021;GO:0110165;GO:0031224;GO:0005575;GO:0016020
+G4446	Chr1_75439965;Chr1_74970724	A0A1S2Z027	PHD finger protein At1g33420-like	GO:0046872;GO:0005488;GO:0003674;GO:0043167;GO:0043169
+G44820	Chr8_13948820	A0A0L9VG04	Uncharacterized protein	GO:0016021;GO:0110165;GO:0031224;GO:0005575;GO:0016020
+G44865	Chr8_14583976;Chr8_14586304;Chr8_14586385	B9T3Y5	eIF-2B GDP-GTP exchange factor subunit alpha	NA
+G45115	Chr8_18340703	A0A445EI37	RIX1 domain-containing protein	GO:0005634;GO:0005622;GO:0110165;GO:0043231;GO:0005575;GO:0043226;GO:0043227;GO:0043229
+G45139	Chr8_18673735;Chr8_18673739;Chr8_18673760;Chr8_18673765	A0A1S3VAH0	BTB/POZ domain-containing protein POB1	NA
+G45194	Chr8_19266330;Chr8_19266914	M5X1E2	Uncharacterized protein	NA
+G45219	Chr8_19573389;Chr8_19573390;Chr8_19573391;Chr8_19573392;Chr8_19573444;Chr8_19578298	UPI000788A7E9	uncharacterized protein LOC107472719	NA
+G45251	Chr8_19971640;Chr8_19971637;Chr8_19971638	K7MU97	Med12 domain-containing protein	NA
+G45280	Chr8_20336180	A0A2C9VV68	Uncharacterized protein	NA
+G45461	Chr8_23422784	UPI000F7C5FDA	uncharacterized protein LOC113851106	NA
+G45527	Chr8_24891804	G7J797	F-box protein interaction domain protein (Putative F-box domain-containing protein)	NA
+G45631	Chr8_26452123	UPI00092EE9C5	annexin-like protein RJ4	NA
+G46019	Chr8_34260736	A0A371GE52	Geraniol 8-hydroxylase (Fragment)	NA
+G46058	Chr8_34926865	A0A1Q3D0P3	LTP_2 domain-containing protein	NA
+G46059	Chr8_34934446	A0A5E4FX11	GlcNAc-1-P transferase (EC 2.7.8.15) (N-acetylglucosamine-1-phosphate transferase) (UDP-N-acetylglucosamine--dolichyl-phosphate N-acetylglucosaminephosphotransferase)	NA
+G46084	Chr8_35455562	A0A067DFZ6	Uncharacterized protein	NA
+G46144	Chr8_38854982	UPI000B7B3FC0	uncharacterized protein At4g15545 isoform X1;uncharacterized protein At4g15545 isoform X2	NA
+G46255	Chr8_39882686;Chr8_39882695;Chr8_39882702	A0A151TPK9	Putative rhamnose biosynthetic enzyme 1	NA
+G46779	Chr8_50878132	A0A2K1J132	Histone H3	NA
+G46997	Chr8_54359597	A0A4P1RRL4	BHLH domain-containing protein	NA
+G47007	Chr8_54466334	A0A1S3U283	Iron-sulfur cluster assembly protein	NA
+G47302	Chr8_58997201	UPI000F7C8078	dual specificity protein kinase YAK1 homolog isoform X3	NA
+G47797	Chr8_65248960;Chr8_65239745	A0A444WT08	Uncharacterized protein	NA
+G47869	Chr8_66179449	UPI000C045047	probable inactive receptor kinase At5g67200	NA
+G48252	Chr8_70699725;Chr8_71161259;Chr8_72535182;Chr8_70726906	A0A140CWU3	Aldehyde dehydrogenase 10A8	GO:0016491;GO:0003824;GO:0003674
+G48516	Chr8_73387610	UPI0007194169	LOW QUALITY PROTEIN: ABC transporter A family member 7-like	NA
+G48521	Chr8_73483402;Chr8_73483454	A0A371E2P9	Transcription factor bHLH47 (Fragment)	NA
+G48991	Chr8_78808863	F6HRR6	Uncharacterized protein	NA
+G49023	Chr8_79070720;Chr8_79070018;Chr8_79069122;Chr8_79069140;Chr8_79070170;Chr8_79070181;Chr8_79070432	UPI00108494E6		NA
+G49153	Chr8_80528426	UPI000F7CCE89	pyruvate, phosphate dikinase, chloroplastic isoform X7	NA
+G4946	Chr1_81711958	N0DKL7	Phytochrome	NA
+G49460	Chr8_83879889	A0A4D6KPZ3	ATP-binding cassette	NA
+G49470	Chr8_84502925	A0A151SSM8	Uncharacterized protein	GO:0016021;GO:0110165;GO:0031224;GO:0005575;GO:0016020
+G49504	Chr8_84440692;Chr8_84440701	UPI000F7CDD29	uncharacterized protein LOC113852922 isoform X2	NA
+G49524	Chr8_84452230;Chr8_84453362	UPI000DED0594	LOW QUALITY PROTEIN: kinesin-like protein KIN-7B	NA
+G49550	Chr8_86252857	A0A072V7B7	EEIG1/EHBP1 protein amino-terminal domain protein	NA
+G4957	Chr1_82800168	A0A0S3S9W7	Uncharacterized protein	NA
+G49800	Chr8_87381090;Chr8_87381092	A0A2P5BFI7	Mitogen-activated protein kinase kinase kinase	NA
+G49811	Chr8_87549976	A0A151S9H9	Chaperone protein clpB (Fragment)	NA
+G5021	Chr1_81411511;Chr1_81411516	A0A1U8IG76	mitochondrial import receptor subunit TOM20-like isoform X4	NA
+G5061	Chr1_81880578	A0A3Q0FHM5	LOW QUALITY PROTEIN: uncharacterized protein LOC106770350	NA
+G50986	contig410end_27940	G7IWR7	F-box SKIP23-like protein	NA
+G5102	Chr1_82310310	A0A0K0KBI1	Squamosa promoter-binding-like protein	NA
+G51125	contig455end_10554	UPI00064DDD7C	putative pentatricopeptide repeat-containing protein At5g08310, mitochondrial	NA
+G51170	contig467end_6201	UPI00092FD74D	protein ELC-like isoform X2;protein ELC-like isoform X3	NA
+G5122	Chr1_82581247;Chr1_82581247;Chr1_82581247	A0A2I4EXX0	uncharacterized protein LOC108993701	NA
+G51402	contig540end_16519	A0A0L9UUJ0	Xyloglucan endotransglucosylase/hydrolase (EC 2.4.1.207)	NA
+G5197	Chr1_83759563;Chr1_83818977;Chr1_83819001;Chr1_83750205;Chr1_83759531;Chr1_83759531;Chr1_83759531	A0A5D2BVU5	Fumarate hydratase (EC 4.2.1.2)	NA
+G5356	Chr1_84920076	UPI000F7C66A1	nuclear pore complex protein NUP1 isoform X3	NA
+G5360	Chr1_84910839	A0A5N6R0E2	Uncharacterized protein	NA
+G5607	Chr1_87922117	A0A0S3R331	Uncharacterized protein	NA
+G5801	Chr1_90250011;Chr1_90250037;Chr1_90250135	A0A0L9VLK7	Uncharacterized protein	NA
+G5861	Chr1_90854777	I3S2E6	Uncharacterized protein	NA
+G5897	Chr1_91197122	UPI000CE22EC1	Thioredoxin y1, chloroplastic;uncharacterized protein LOC112013919;thioredoxin y1, chloroplastic	NA
+G5956	Chr1_91733353	I3SVX8	Uncharacterized protein	NA
+G597	Chr1_8092091	UPI000F7C5E7D	F-box/LRR-repeat protein 15 isoform X3	NA
+G6120	Chr1_93445212	A0A1S3Z8T0	Beta-ketoacyl-[acyl-carrier-protein] synthase I (EC 2.3.1.41)	NA
+G6130	Chr1_93521627	C6T357	N-acetyltransferase domain-containing protein	GO:0016747;GO:0003824;GO:0003674;GO:0016740;GO:0016746
+G6387	Chr1_96577278	UPI001016BA82	beta-glucuronosyltransferase GlcAT14A-like	NA
+G6448	Chr1_97296006;Chr1_97250155	UPI00092FAAEE	LEAF RUST 10 DISEASE-RESISTANCE LOCUS RECEPTOR-LIKE PROTEIN KINASE-like 1.1 isoform X2	NA
+G6504	Chr1_97980057	A0A151U750	Glutaminyl-tRNA synthetase (EC 6.1.1.18)	NA
+G6588	Chr1_98716490	UPI0008099C8D	uncharacterized protein LOC108326144 isoform X3	NA
+G6981	Chr2_695762;Chr2_695762;Chr2_695762	UPI000C9D9F6A	SNW/SKI-interacting protein A-like	NA
+G7152	Chr2_2195285	UPI000F7C4CF3	protein LNK1-like isoform X5	NA
+G7209	Chr2_2990730;Chr2_2993320;Chr2_2990867;Chr2_2993095	UPI00098DB1C4	heat shock 70 kDa protein, mitochondrial	NA
+G7299	Chr2_3549263	UPI000579DBC8	BTB/POZ domain-containing protein At3g22104-like	NA
+G7330	Chr2_3837811	A0A5J4ZS71	RING-type domain-containing protein	NA
+G7361	Chr2_4470563;Chr2_4470599	A0A151T211	Uncharacterized protein	GO:0005516;GO:0005488;GO:0003674;GO:0005515
+G7546	Chr2_6128050	A0A445GQT9	Auxin response factor	NA
+G7921	Chr2_10433795	UPI000C04679C	classical arabinogalactan protein 25-like	NA
+G8062	Chr2_14902972;Chr2_14903014	UPI000F5C9CAA	stigma-specific STIG1-like protein 1	NA
+G8502	Chr2_17848371	A0A4P1R0G6	Elongation factor G, mitochondrial (EF-Gmt) (Elongation factor G 1, mitochondrial) (mEF-G 1) (Elongation factor G1)	NA
+G8636	Chr2_19475176	V4U872	Protein kinase domain-containing protein	NA
+G8835	Chr2_22292505	UPI0012460FFD	Uncharacterized protein;uncharacterized protein LOC115970784;uncharacterized protein LOC115994030	NA
+G8858	Chr2_22741684	A0A0B2Q492	Protein DEHYDRATION-INDUCED 19 like 7	NA
+G8982	Chr2_24474264	A0A371HFX7	CW-type domain-containing protein (Fragment)	GO:0008270;GO:0046872;GO:0005488;GO:0003674;GO:0043167;GO:0043169;GO:0046914
+G9161	Chr2_27420749	A0A126WZB9	Putative LOV domain-containing protein	NA
+G918	Chr1_10547376;Chr1_10547379	A0A392QWY6	Uncharacterized protein (Fragment)	NA
+G929	Chr1_10672730	UPI00057AB844	L-arabinokinase-like isoform X1	NA
+G9360	Chr2_30693421	A0A1S3U4W1	uncharacterized protein LOC106761942 isoform X1	GO:0016747;GO:0003824;GO:0003674;GO:0016740;GO:0016746
+G96	Chr1_1226414	A0A2C9U0H3	Uncharacterized protein	NA
+G9615	Chr2_35626579	A0A371GM41	Cyclin-dependent kinase B1-1 (Fragment)	GO:0016301;GO:0003824;GO:0016772;GO:0003674;GO:0016740
+G9691	Chr2_36935489	A0A0B2SH49	Putative inositol transporter 2 (Putative inositol transporter 2 isoform A)	NA
+G9825	Chr2_39325629	UPI0010A2B68C	uncharacterized protein LOC114746143 isoform X2	NA
