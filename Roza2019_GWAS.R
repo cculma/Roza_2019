@@ -20,7 +20,8 @@ library(VennDiagram)
 library(plotly)
 library(reticulate)
 
-load("~/OneDrive - Washington State University (email.wsu.edu)/Roza_2019/GWASpoly_results/data_3_80177_year.RData")
+# load("~/OneDrive - Washington State University (email.wsu.edu)/Roza_2019/GWASpoly_results/data_3_80177_year.RData")
+# load("~/Documents/Cesar/blup_data/Roza2019/Analysis_2021/GWAS/data_3_80177_year.RData")
 
 ####################
 # GWASpoly using all mr.bean data (pheno_nph.csv) and genotypic matrix (MPP_Ms2_GWASPoly.txt)
