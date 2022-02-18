@@ -40,26 +40,6 @@ marks.3[1:5,1:5]
 marks.3 <- as.data.frame(t(marks.3)) %>% mutate_if(is.integer,as.factor)
 str(marks.3)
 
-marks.3$Chr1_10270033
-a0 <- marks.3[marks.3$Chr1_10270033 %in% c(0), ]
-a1 <- marks.3[marks.3$Chr1_10270033 %in% c(1), ]
-a2 <- marks.3[marks.3$Chr1_10270033 %in% c(2), ]
-a3 <- marks.3[marks.3$Chr1_10270033 %in% c(3), ]
-a4 <- marks.3[marks.3$Chr1_10270033 %in% c(4), ]
-rownames(a0)
-
-
-c0 <- intersect(rownames(pheno), rownames(a0))
-p0 <- pheno[c0, ]
-p0 <- pheno[,1, drop = F]
-p0 <- merge(p0, marks.3, by = "row.names")
-p1 <- merge(as.data.frame(p0), as.data.frame(marks.3), by = 'row.names', all = TRUE)
-rownames(p0)
-
-
-pheno$may_20_1stage
-rownames(pheno)
-boxplot()
 G6 <- as.data.frame(summary(marks.3))
 G6 <- G6[,-1]
 G6 <- separate(data = G6, col = 2, into = c("MARKER", "count"), remove = T, sep = ":")
@@ -70,5 +50,16 @@ G7 <- spread(data = G6, key = MARKER, value = count, )
 colnames(G7) <- c("Marker1", "0", "1", "2", "3", "4")
 
 G8 <- QTL_01 %>% dplyr::select(Marker, Chrom, Position, Ref, Alt, Effect) %>% distinct(Marker, .keep_all = TRUE) %>% unite(col = "SNP", 5:4, sep = "/", remove = T) %>% unite(col = "Marker1", 2:3, sep = "_", remove = T)
-
 G9 <- inner_join(G8, G7, by = "Marker1")
+
+write.table(G9, "~/Documents/Cesar/blup_data/Roza2019/git/Roza2019/G9.tsv", row.names = F, quote = F, sep = "\t")
+
+
+p1 <- merge(as.data.frame(pheno), as.data.frame(marks.3), by = 'row.names', all = TRUE) %>% remove_rownames() %>% column_to_rownames(var = 'Row.names')
+
+boxplot(MET_all~Chr8_72535182,data=p1, 
+        xlab="Minor allele count", ylab="yield") 
+
+boxplot(MET_sep~Chr8_73483402,data=p1, 
+        xlab="Minor allele count", ylab="yield") 
+trait1
