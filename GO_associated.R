@@ -69,15 +69,15 @@ tab_BP$GO_process <- "BP"
 tab_CC$GO_process <- "CC"
 tab_MF$GO_process <- "MF"
 
+# this part requires to change c(tab_BP, tab_CC, tab_MF) and c(myGOdata_BP, myGOdata_CC, myGOdata_MF)
 myterms =tab_MF$GO.ID
 mygenes = genesInTerm(myGOdata_MF, myterms)
-
 tab_MF$genes <- sapply(tab_MF$GO.ID, function(x)
 {
   genes <- genesInTerm(myGOdata_MF, x) 
   genes[[1]][genes[[1]] %in% sigGenes(myGOdata_MF)] # significant genes
 })
-
+# ~~~~~~~~
 GO_associated <- rbind(tab_BP, tab_CC, tab_MF)
 
 a1 <- unnest(GO_associated, genes) %>% dplyr::select(1,2,7,8)
