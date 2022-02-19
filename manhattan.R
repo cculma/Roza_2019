@@ -4,6 +4,8 @@ rm(list = ls())
 library(plotly)
 library(dplyr)
 library(ggpubr)
+library(GWASpoly)
+library(ggplot2)
 
 load("~/OneDrive - Washington State University (email.wsu.edu)/Roza_2019/GWASpoly_results/data_3_80177_year.RData")
 trait1
@@ -11,7 +13,8 @@ trait1
 p <- LD.plot(data_5)
 p + xlim(0,30)
 
-manhattan.plot(data = data_5, traits=c ("FA1_all", "MET_all"))
+manhattan.plot(data = data_5, traits="may_21_1stage", chrom = "Chr1") + theme_classic(base_family = "Arial", base_size = 12) + theme(legend.position = "none", axis.title.x=element_blank(), axis.text.x=element_blank(), axis.ticks.x=element_blank(), axis.title.y = element_text(size = 12), plot.tag = element_blank()) 
+
 # qq.plot(data = data_5, trait = "MET_jul")
 
 
