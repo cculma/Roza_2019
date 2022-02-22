@@ -15,8 +15,6 @@ p + xlim(0,30)
 
 manhattan.plot(data = data_5, traits="may_21_1stage", chrom = "Chr1") + theme_classic(base_family = "Arial", base_size = 12) + theme(legend.position = "none", axis.title.x=element_blank(), axis.text.x=element_blank(), axis.ticks.x=element_blank(), axis.title.y = element_text(size = 12), plot.tag = element_blank()) 
 
-# qq.plot(data = data_5, trait = "MET_jul")
-
 
 P1 <- manhattan.plot(data = data_5, traits=c ("may_20_1stage")) + theme_classic(base_family = "Arial", base_size = 12) + scale_color_manual(values=c("aquamarine4","azure4")) + theme(legend.position = "none", axis.title.x=element_blank(), axis.text.x=element_blank(), axis.ticks.x=element_blank(), axis.title.y = element_text(size = 12), plot.tag = element_blank()) 
 P2 <- manhattan.plot(data = data_5, traits=c ("jun_20_1stage")) + theme_classic(base_family = "Arial", base_size = 12) + scale_color_manual(values=c("aquamarine4","azure4")) + theme(legend.position = "none", axis.title.x=element_blank(), axis.text.x=element_blank(), axis.ticks.x=element_blank(), axis.title.y = element_text(size = 12), plot.tag = element_blank()) 
@@ -51,4 +49,6 @@ myplot2 <- ggarrange(Q1, Q2, Q3, Q4, Q5, Q6, Q7,
 
 ggsave(filename = "myplot1.jpg", plot = myplot1, width = 15, height = 9)
 ggsave(filename = "myplot2.jpg", plot = myplot2, width = 9, height = 9)
+
+
 
