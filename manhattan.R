@@ -10,9 +10,6 @@ library(ggplot2)
 load("~/OneDrive - Washington State University (email.wsu.edu)/Roza_2019/GWASpoly_results/data_3_80177_year.RData")
 trait1
 
-p <- LD.plot(data_5)
-p + xlim(0,30)
-
 manhattan.plot(data = data_5, traits="may_21_1stage", chrom = "Chr1") + theme_classic(base_family = "Arial", base_size = 12) + theme(legend.position = "none", axis.title.x=element_blank(), axis.text.x=element_blank(), axis.ticks.x=element_blank(), axis.title.y = element_text(size = 12), plot.tag = element_blank()) 
 
 
@@ -51,4 +48,7 @@ ggsave(filename = "myplot1.jpg", plot = myplot1, width = 15, height = 9)
 ggsave(filename = "myplot2.jpg", plot = myplot2, width = 9, height = 9)
 
 
+myplot1 <- LD.plot(data_5) + theme_classic(base_family = "Arial", base_size = 12) + ggtitle("LD plot")
 
+
+ggsave(filename = "myplot1.jpg", plot = myplot1, width = 6, height = 6)
