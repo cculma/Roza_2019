@@ -50,5 +50,4 @@ ggsave(filename = "myplot2.jpg", plot = myplot2, width = 9, height = 9)
 
 myplot1 <- LD.plot(data_5) + theme_classic(base_family = "Arial", base_size = 12) + ggtitle("LD plot")
 
-
 ggsave(filename = "myplot1.jpg", plot = myplot1, width = 6, height = 6)
