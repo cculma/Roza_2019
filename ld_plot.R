@@ -20,3 +20,8 @@ ggsave(filename = "~/Documents/Cesar/blup_data/Roza2019/git/Roza2019/myplot2.pdf
 ggsave(filename = "myplot1.jpg", plot = myplot1, width = 6, height = 6)
 save(myplot1, file = "myplot1.RData")
 save(myplot1, file = "myplot1.RData")
+
+load("~/Documents/Cesar/blup_data/Roza2019/Analysis_2021/GWAS/myplot1.RData")
+myplot2 <- myplot1 + theme_light()
+
+ggsave(filename = "myplot2.pdf", plot = myplot2, width = 3, height = 3)
