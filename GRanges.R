@@ -39,8 +39,9 @@ nrow(QTL_08 %>% distinct(gene_id, .keep_all = TRUE))
 sum(!is.na(QTL_08$gene_id))
 
 QTL_09 <- QTL_08 %>% group_by(gene_id) %>% summarise(Marker1 = paste(Marker1, collapse = ";")) 
-QTL_10 <- inner_join(QTL_09, QTL_10, by = "gene_id")
 QTL_10 <- QTL_08 %>% distinct(gene_id, .keep_all = TRUE) %>% dplyr::select(6:8)
+QTL_10 <- inner_join(QTL_09, QTL_10, by = "gene_id")
+
 QTL_10 <- na.omit(QTL_10)
 head(QTL_10)
 write.table(QTL_10, "~/OneDrive - Washington State University (email.wsu.edu)/Roza_2019/GWASpoly_results/QTL_10.tsv", row.names = F, quote = F, sep = "\t")
