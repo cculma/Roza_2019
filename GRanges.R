@@ -1,6 +1,12 @@
 # annotate associated markers
 
 library(tidyverse)
+library(vcfR)
+library(GenomicRanges)
+library(genomation)
+library(plyranges)
+library(Repitools)
+
 load("~/OneDrive - Washington State University (email.wsu.edu)/Roza_2019/GWASpoly_results/data_3_80177_year.RData")
 
 # # load gene annotation Medicago sativa Zhongmu No1
