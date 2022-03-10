@@ -11,12 +11,22 @@ colnames(pheno)
 
 p1 <- pheno %>% dplyr::select(-c(24:26)) %>% rownames_to_column(var = "gen")
 colnames(p1)
+
 p2 <- p1[,c(1:11)]
 
 colnames(p2) <-  c("gen", "ST1_Yi_2020_1","ST1_Yi_2020_2", "ST1_Yi_2020_3", "ST1_Yi_2020_4", "ST1_Yi_2020_5", "ST1_Yi_2021_1", "ST1_Yi_2021_2", "ST1_Yi_2021_3", "ST1_Yi_2021_4", "ST1_Yi_2021_5")
 p2 <- p2 %>% gather(key = "trait1", value = "BLUE", 2:11) %>% separate(2, into = c("stage", "trait", "year", "cut"), sep = "_", remove = F, convert = T, extra = "warn")
 
 ggplot(data = p2, aes(x = cut, y = BLUE, group = gen, color = gen)) + geom_line() + facet_grid(. ~ year) + theme(legend.position = "none")
+
+trait_2 <- colnames(p2)[1:(length(colnames(p2))-1)]
+p2[,trait_2] <- lapply(p2[,trait_2], factor)
+str(p2)
+hist(p2$BLUE)
+
+
+########
+# ASReml
 
 # variance model for the residual term
 model_uniform <- asreml(BLU3 ~ Year + cut + Year:cut,
