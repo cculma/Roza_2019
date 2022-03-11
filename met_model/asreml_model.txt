@@ -1,0 +1,27 @@
+asreml::asreml(	fixed = resp ~ 1, 
+				random = ~+trial + fa(trial, 1):gen, 
+				data = df, 
+				na.action = list(x = "include", y = "include"), 
+				weights = weight, 
+				family = asreml::asr_gaussian(dispersion = 1))
+
+
+
+Experiment = trial
+Genotype (acc_num) = gen
+Response Varaible (predicted.values) = resp
+
+number of varaince components (n.VC) is 20 if
+Genotype fixed
+Experiment fixed
+
+number of varaince components (n.VC) is 21 if
+Genotype random
+Experiment fixed
+
+number of varaince components (n.VC) is 22 if
+Genotype random
+Experiment random
+
+If genotype is assumed as fixed, the computer can not process the FA because not enought memory
+
