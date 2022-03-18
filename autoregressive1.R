@@ -55,3 +55,27 @@ wald(model_ante)
 
 # predict tratment by time means
 predict(model_ante, classify = "Year:cut")
+
+
+P1 <- read.csv("~/Documents/Cesar/git/Norberg_2020/BLUE_values/split_data/ID_2018_1.csv")
+head(P1)
+P1 <- P1[,c(1:10,14)]
+# P1 <- na.omit(P1)
+model_uniform <- asreml::asreml(fixed = resp ~ 1 + gen, 
+               random = ~+block + gen, residual = ~id(row):ar1(col), 						
+               data = df, 
+               na.action = list(x = "include", y = "include")) 	
+
+model_uniform <- asreml::asreml(fixed = Yield ~1 + at(check, "control"):Treatment,
+                                random = ~ + Block + at(check, "test"):Treatment, 
+                                residual = ~id(row):id(col),
+                                data = P1, na.action = list(x = "include", y = "include"))
+str(P1)
+check <- c(201, 202)
+
+asreml::asreml(fixed = resp ~ 1 + gen, random = ~+block, residual = ~id(row):id(col), 
+               data = df, na.action = list(x = "include", y = "include"))
+
+
+model_uniform <- asreml(BLUE ~ year*cut,
+                        residual = ~gen:cor(cut), data = p2)
