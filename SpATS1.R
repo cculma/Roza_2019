@@ -7,6 +7,7 @@ library(data.table)
 library(ggcorrplot)
 library(asreml)
 library(asremlPlus)
+library(patchwork)
 
 ############
 
@@ -53,9 +54,9 @@ Y3 <- cor(Y3, use = "complete")
 
 Y3[lower.tri(Y3)] <- BLUP4[lower.tri(BLUP4)]
 
-P1 <- ggcorrplot(Y3[,ncol(Y3):1], hc.order = F, type = "full", lab = T, lab_col = "grey3", lab_size = 3, show.diag = T) + theme_classic(base_family = "Arial", base_size = 12) + theme(axis.text.x = element_text(angle = 90, hjust = 0.95, vjust = 0.2), axis.title.x=element_blank(), axis.title.y = element_blank()) + labs(title = "Roza2019 Yield Single-Stage vs Stage-Wise")
+P1 <- ggcorrplot(Y3[,ncol(Y3):1], hc.order = F, type = "full", lab = T, lab_col = "grey3", lab_size = 3, show.diag = T) + theme_classic(base_family = "Arial", base_size = 12) + theme(axis.text.x = element_text(angle = 90, hjust = 0.95, vjust = 0.2), axis.title.x=element_blank(), axis.title.y = element_blank()) + labs(title = "Single-Stage vs Stage-Wise")
 
-ggplot(Y3, aes(x = env, y = predicted.values)) + geom_boxplot(outlier.shape = NA, alpha = 0.6, width=0.6, position = position_dodge(width=0.8, preserve = "single")) + theme_bw(base_family = "Arial") + theme(legend.position = "none", panel.spacing = unit(0.3, "lines"), strip.text.x = element_text(size = 10), axis.text.x = element_text(angle = 90, hjust = 0.95, vjust = 0.2), axis.title = element_text(size = 12)) + labs(title = "Roza2019 yield ST10", y = "", x = "") + ylim(0, 400)
+# ggplot(Y3, aes(x = env, y = predicted.values)) + geom_boxplot(outlier.shape = NA, alpha = 0.6, width=0.6, position = position_dodge(width=0.8, preserve = "single")) + theme_bw(base_family = "Arial") + theme(legend.position = "none", panel.spacing = unit(0.3, "lines"), strip.text.x = element_text(size = 10), axis.text.x = element_text(angle = 90, hjust = 0.95, vjust = 0.2), axis.title = element_text(size = 12)) + labs(title = "Roza2019 yield ST10", y = "", x = "") + ylim(0, 400)
 
 
 # save.image("~/Documents/git/big_files/SpATS1.RData")
@@ -100,13 +101,13 @@ lev4 <- c("may_20","jun_20","jul_20","aug_20","sep_20","all_20",
 
 BLUP2 <- BLUP2 %>% arrange(env) %>% mutate(env = factor(env, levels= lev4))
 
-ggplot(BLUP2, aes(x = env, y = predicted.value)) + geom_boxplot(outlier.shape = NA, alpha = 0.6, width=0.6, position = position_dodge(width=0.8, preserve = "single")) + theme_bw(base_family = "Arial") + theme(legend.position = "none", panel.spacing = unit(0.3, "lines"), strip.text.x = element_text(size = 10), axis.text.x = element_text(angle = 90, hjust = 0.95, vjust = 0.2), axis.title = element_text(size = 12)) + labs(title = "Roza2019 yield ST1", y = "", x = "") + ylim(0, 400)
+P2 <- ggplot(BLUP2, aes(x = env, y = predicted.value)) + geom_boxplot(outlier.shape = NA, alpha = 0.6, width=0.6, position = position_dodge(width=0.8, preserve = "single")) + theme_bw(base_family = "Arial", base_size = 12) + theme(legend.position = "none", panel.spacing = unit(0.3, "lines"), axis.text.x = element_text(angle = 90, hjust = 0.95, vjust = 0.2), axis.title = element_text(size = 12)) + labs(title = "Roza2019 yield ST1", y = "", x = "") + ylim(0, 400)
 
 
-P2 <- BLUP4 <- BLUP2 %>% select(1:3) %>% spread(key = env, value = predicted.value) %>% column_to_rownames("gen")
+BLUP4 <- BLUP2 %>% select(1:3) %>% spread(key = env, value = predicted.value) %>% column_to_rownames("gen")
+BLUP4 <- cor(BLUP4, use = "complete")
 
-
-
+P2 + P1 + plot_layout(ncol = 2)
 
 
 
