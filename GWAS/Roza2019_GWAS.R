@@ -4,6 +4,7 @@ rm(list = ls()) # clean Global Environment
 
 library(GWASpoly)
 library(tidyverse)
+
 library(vcfR)
 library(parallel)
 library(doParallel)
@@ -43,10 +44,24 @@ data_1 <- read.GWASpoly(ploidy=4,
 data_2 <- set.K(data = data_1, LOCO = T, n.core = 32)
 Yi_data_3 <- GWASpoly(data = data_2, models = models_1, traits = trait1, params = params, n.core = 32)
 save(Yi_data_3, file = "~/Documents/Cesar/blup_data/Roza2019/Analysis_2021/GWAS/Yi_data_3_82156.RData")
+load("~/Documents/Cesar/blup_data/Roza2019/Analysis_2021/GWAS/Yi_data_3_82156.RData")
 
-data_5 <- set.threshold(data_3, method= "Bonferroni", level=0.05)
+data_5 <- set.threshold(Yi_data_3, method= "Bonferroni", level=0.05)
 QTL_01 <- get.QTL(data_5)
-QTL_02 <- QTL_01 %>% distinct(Marker, .keep_all = T) 
+QTL_02 <- QTL_01 %>% distinct(Trait, .keep_all = T) 
+QTL_02$Trait
+
+
+lev0 <- subset(QTL_02$Trait, grepl("ST0_", QTL_02$Trait))
+lev1 <- subset(QTL_02$Trait, grepl("ST1_", QTL_02$Trait))
 
 # save.image("~/Documents/Cesar/blup_data/Roza2019/Analysis_2021/GWAS/data_3_80177_year.RData")
 # load("~/Documents/Cesar/blup_data/Roza2019/Analysis_2021/GWAS/data_3_80177_year.RData")
+
+M0 <- manhattan.plot(data = data_5, traits = lev0) + theme_classic(base_family = "Arial", base_size = 12) + theme(legend.position = "none", axis.title.x=element_blank(), axis.text.x=element_blank(), axis.ticks.x=element_blank(), axis.title.y = element_text(size = 12), plot.tag = element_blank()) 
+
+ggsave(filename = "~/Documents/Cesar/blup_data/Roza2019/Analysis_2021/GWAS/M0.jpg", plot = M0, width = 16, height = 16)
+
+M1 <- manhattan.plot(data = data_5, traits = lev1) + theme_classic(base_family = "Arial", base_size = 12) + theme(legend.position = "none", axis.title.x=element_blank(), axis.text.x=element_blank(), axis.ticks.x=element_blank(), axis.title.y = element_text(size = 12), plot.tag = element_blank()) 
+
+ggsave(filename = "~/Documents/Cesar/blup_data/Roza2019/Analysis_2021/GWAS/M1.jpg", plot = M1, width = 16, height = 16)
