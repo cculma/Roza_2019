@@ -16,13 +16,15 @@ ST3 <- ST3 %>% select(1:3) %>% spread(key = year, value = predicted.value)
 ST2 <- ST2[,c(1,5,4,3,2,6)]
 
 # BLUP5 <- inner_join(ST2, ST3, by = "gen") %>% inner_join(., ST4, by = "gen") %>% column_to_rownames("gen")
-BLUP5 <- inner_join(ST2, ST3, by = "gen") %>% inner_join(., ST4, by = "gen")
-BLUP5 <- BLUP5 %>% gather(key = "env", value = "BLUE", 2:10)
+BLUP4 <- inner_join(ST2, ST3, by = "gen") %>% inner_join(., ST4, by = "gen")
+
+BLUP5 <- BLUP4 %>% gather(key = "env", value = "BLUE", 2:10)
 BLUP5$env <- factor(BLUP5$env, levels = c("ST2_may","ST2_jun","ST2_jul","ST2_aug","ST2_sep","ST3_20","ST3_21","ST3_22","ST4_Yi"))
 levels(BLUP5$env)
 
 ggplot(BLUP5, aes(x = env, y = BLUE)) + geom_boxplot(outlier.shape = NA, alpha = 0.6, width=0.6, position = position_dodge(width=0.8, preserve = "single")) + theme_bw(base_family = "Arial", base_size = 12) + theme(legend.position = "none", panel.spacing = unit(0.3, "lines"), axis.text.x = element_text(angle = 90, hjust = 0.95, vjust = 0.2), axis.title = element_text(size = 12)) + labs(title = "Roza2019 yield ST0", y = "BLUE Yield (lb * plot * 100)", x = "") + ylim(0, 100)
 
+BLUP5 <- BLUP4 %>% column_to_rownames("gen")
 BLUP5 <- cor(BLUP5, use = "complete")
 
 ggcorrplot(BLUP5[,ncol(BLUP5):1], hc.order = F, type = "full", lab = T, lab_col = "grey3", lab_size = 3, show.diag = T) + theme_classic(base_family = "Arial", base_size = 12) + theme(axis.text.x = element_text(angle = 90, hjust = 0.95, vjust = 0.2), axis.title.x=element_blank(), axis.title.y = element_blank()) + labs(title = "Single-Stage vs Stage-Wise")

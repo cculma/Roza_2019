@@ -9,6 +9,12 @@ library(asreml)
 library(asremlPlus)
 library(patchwork)
 
+remotes::install_github("AparicioJohan/MrBeanApp")
+devtools::install_github("AparicioJohan/MrBeanApp", force = T)
+install.packages( pkgs = "summarytools" )
+
+library(MrBean)
+run_app()
 ############
 
 
@@ -65,6 +71,7 @@ Y3 <- cor(Y3, use = "complete")
 #####################
 # ST1 FA1
 head(Y2)
+
 Y2$env <- as.factor(Y2$env)
 levels(Y2$env)
 
@@ -94,13 +101,57 @@ FA_1 <- asreml::asreml(fixed = predicted.values ~ 1,
                        data = data1, na.action = list(x = "include", y = "include"), 
                        weights = weight, family = asreml::asr_gaussian(dispersion = 1))
 
+# model <- asreml(fixed = yield ~ 1 + county,
+#                 random = ~ fa(county, 2):gen + county:rep + diag(county):rep:block,
+#                 residual = ~ dsum(~ units | county),
+#                 data = dat,
+#                 na.action = list(x="include",y="include"))
+
 FA_1 <- update.asreml(FA_1)
 summary(FA_1)$varcomp
+current.asrt <- as.asrtests(FA_1, NULL, NULL)
+current.asrt <- rmboundary.asrtests(current.asrt)
 
-ST4 <- predict.asreml(FA_1, classify='gen', vcov=F)$pvals
+
+ST1 <- predict.asreml(FA_1, classify='gen:env', vcov=F)$pvals
+head(ST1)
+hist(ST1$predicted.value)
+
+# this part collapse the program
+# diffs <- predictPlus(classify = "gen:env", 
+#                      asreml.obj = FA_1, 
+#                      wald.tab = current.asrt$wald.tab, 
+#                      present = c("month","gen","year","env"))
 
 
-US <- asreml::asreml(fixed = predicted.values ~ 1,
+diffs <- predictPlus(classify = "gen:month", 
+                     asreml.obj = FA_1, 
+                     wald.tab = current.asrt$wald.tab, 
+                     present = c("month","gen","year","env"))
+ST2 <-diffs[[1]]
+
+diffs <- predictPlus(classify = "gen:year", 
+                     asreml.obj = FA_1, 
+                     wald.tab = current.asrt$wald.tab, 
+                     present = c("month","gen","year","env"))
+ST3 <-diffs[[1]]
+
+diffs <- predictPlus(classify = "gen", 
+                     asreml.obj = FA_1, 
+                     wald.tab = current.asrt$wald.tab, 
+                     present = c("month","gen","year","env"))
+ST4 <-diffs[[1]]
+
+head(ST1)
+head(ST2)
+head(ST3)
+head(ST4)
+
+
+hist(ST4$predicted.value)
+
+
+US <- asreml::asreml(fixed = predicted.values ~ 1 + gen,
                        random = ~ us(year):ar1(month):id(gen),
                        data = data1, na.action = list(x = "include", y = "include"),
                        weights = weight, family = asreml::asr_gaussian(dispersion = 1))
@@ -139,7 +190,8 @@ ST3 <- diffs[[1]]
 # asreml.options(workspace="512mb")
 # asreml.options(workspace="1024mb")
 
-
+# save.image("~/Documents/git/big_files/1_SpATS1.RData")
+# load("~/Documents/git/big_files/1_SpATS1.RData")
 
 ST1 <- predict.asreml(US, classify='gen:year:month', vcov=F)$pvals
 ST2 <- predict.asreml(US, classify='gen:month', vcov=F)$pvals
