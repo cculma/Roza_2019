@@ -27,10 +27,6 @@ nlevels(a1$R)
 
 lev3 <- colnames(a1)[7:23]
 
-lev4 <- c("may_20","jun_20","jul_20","aug_20","sep_20","total_20",
-          "may_21","jun_21","jul_21","aug_21","sep_21","total_21",
-          "jun_22","jul_22","aug_22","sep_22","total_22")
-
 
 Y1 <- list()
 for (i in 1:length(lev3)) {
@@ -51,9 +47,14 @@ for (i in 1:length(lev3)) {
 names(Y1) <- lev3
 
 Y2 <-rbindlist(Y1, use.names=TRUE, fill=TRUE, idcol="env")
+colnames(Y2)[2] <- "gen" 
 head(Y2)
 
-Y3 <- Y2 %>% arrange(env) %>% mutate(env = factor(env, levels= lev4)) %>% select(1:3) %>% spread(key = env, value = predicted.values) %>% column_to_rownames("acc_num")
+Y3 <- Y2 %>% arrange(env) %>% mutate(env = factor(env, levels= lev3)) %>% select(1:3) %>% spread(key = env, value = predicted.values) %>% column_to_rownames("gen")
+
+Y3 <- ST1 %>% unite("env", c(year, month), sep = "_", remove = F) %>% select(c(1,2,5)) %>% spread(key = env, value = predicted.value) %>% column_to_rownames("gen")
+
+
 Y3 <- cor(Y3, use = "complete")
 
 # ggplot(Y3, aes(x = env, y = predicted.values)) + geom_boxplot(outlier.shape = NA, alpha = 0.6, width=0.6, position = position_dodge(width=0.8, preserve = "single")) + theme_bw(base_family = "Arial") + theme(legend.position = "none", panel.spacing = unit(0.3, "lines"), strip.text.x = element_text(size = 10), axis.text.x = element_text(angle = 90, hjust = 0.95, vjust = 0.2), axis.title = element_text(size = 12)) + labs(title = "Roza2019 yield ST10", y = "", x = "") + ylim(0, 400)
@@ -64,63 +65,93 @@ Y3 <- cor(Y3, use = "complete")
 #####################
 # ST1 FA1
 head(Y2)
-colnames(Y2)[2] <- "gen" 
 Y2$env <- as.factor(Y2$env)
 levels(Y2$env)
 
-Y4 <- Y2 %>% dplyr::filter(!env %in% c("total_20","total_21","total_22"))
+
 # Y4 <- Y2 %>% dplyr::filter(env %in% c("total_20","total_21","total_22"))
+
+Y4 <- Y2 %>% dplyr::filter(!env %in% c("total_20","total_21","total_22"))
 Y4$env <- droplevels(Y4$env)
 levels(Y4$env)
 head(Y4)
 Y4 <- Y4 %>% separate(1, c("month", "year"), sep = "_", remove = F, convert = FALSE, extra = "merge")
-str(Y4)
 lev5 <- c("month", "year")
 Y4 <- as.data.frame(Y4)
 Y4[,lev5] <- lapply(Y4[,lev5], factor)
+Y4$month <- fct_relevel(Y4$month, c("may", "jun", "jul", "aug", "sep"))
+levels(Y4$month)
+levels(Y4$year)
 
-# data <- Y2
-data <- Y2
+data <- Y4
 data <- data[order(data$gen, data$env), ]
 data1 <- na.omit(data)
 head(data1)
 str(data1)
 
 FA_1 <- asreml::asreml(fixed = predicted.values ~ 1, 
-                       random = ~ fa(env, 2):id(gen),
+                       random = ~ fa(year, 1):ar1(month):id(gen) + env,
                        data = data1, na.action = list(x = "include", y = "include"), 
                        weights = weight, family = asreml::asr_gaussian(dispersion = 1))
 
 FA_1 <- update.asreml(FA_1)
+summary(FA_1)$varcomp
+
+ST4 <- predict.asreml(FA_1, classify='gen', vcov=F)$pvals
 
 
-FA_1 <- asreml::asreml(fixed = predicted.values ~ 1 + gen, 
-                       random = ~ fa(env, 2):id(gen) + month + year,
-                       data = data1, na.action = list(x = "include", y = "include"), 
+US <- asreml::asreml(fixed = predicted.values ~ 1,
+                       random = ~ us(year):ar1(month):id(gen),
+                       data = data1, na.action = list(x = "include", y = "include"),
                        weights = weight, family = asreml::asr_gaussian(dispersion = 1))
+
+
+summary(FA_1)$aic
+summary(US)$aic
+
+
+current.asrt <- as.asrtests(US, NULL, NULL)
+current.asrt <- rmboundary.asrtests(current.asrt)
+
+diffs <- predictPlus(classify = "gen:year:month", 
+                     asreml.obj = US, 
+                     wald.tab = current.asrt$wald.tab, 
+                     present = c("month","gen","year"))
+
+
+diffs <- predictPlus(classify = "gen:month", 
+                     asreml.obj = US, 
+                     wald.tab = current.asrt$wald.tab, 
+                     present = c("month","gen","year"))
+ST2 <-diffs[[1]]
+
+diffs <- predictPlus(classify = "gen:year", 
+                     asreml.obj = US, 
+                     wald.tab = current.asrt$wald.tab, 
+                     present = c("month","gen","year"))
+
+names(diffs)
+ST3 <- diffs[[1]]
+
 
 
 # asreml.options(workspace="128mb")
 # asreml.options(workspace="512mb")
 # asreml.options(workspace="1024mb")
 
-# save.image("~/Documents/git/big_files/1_SpATS1.RData")
-# load("~/Documents/git/big_files/1_SpATS1.RData")
 
-ST1 <- predict.asreml(FA_1, classify='gen:env', vcov=F)$pvals
-ST2 <- predict.asreml(FA_1, classify='gen:month', vcov=F)$pvals
-ST3 <- predict.asreml(FA_1, classify='gen:year', vcov=F)$pvals
-ST4 <- predict.asreml(FA_1, classify='gen', vcov=F)$pvals
+
+ST1 <- predict.asreml(US, classify='gen:year:month', vcov=F)$pvals
+ST2 <- predict.asreml(US, classify='gen:month', vcov=F)$pvals
+ST3 <- predict.asreml(US, classify='gen:year', vcov=F)$pvals
+ST4 <- predict.asreml(US, classify='gen', vcov=F)$pvals
 
 hist(ST1$predicted.value)
 hist(ST2$predicted.value)
 hist(ST3$predicted.value)
 hist(ST4$predicted.value)
 
-head(BLUP2)
 
-levels(BLUP2$env)
-BLUP2$env <- factor(BLUP2$env, levels = lev4)
 
 # BLUP2 <- BLUP2 %>% arrange(env) %>% mutate(env = factor(env, levels= lev4))
 

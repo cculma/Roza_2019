@@ -1,6 +1,8 @@
+head(ST1)
 head(ST2)
 head(ST3)
 head(ST4)
+hist(ST4$predicted.value)
 
 ST2$month <- paste0("ST2_", ST2$month)
 ST3$year <- paste0("ST3_", ST3$year)
