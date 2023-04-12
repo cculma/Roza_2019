@@ -23,7 +23,9 @@ Harvest has been done during 2020, 2021, 2022 and posible 2023. Data modeling ca
 |          | Total  | Total | Total | -         | -        | -           |
 
 ## R scripts
+
 1. Roza2019_GWAS.R is the main file wich runs GWASpoly analysis using a phenotypic matrix of $400 \times 23$ and a genotypic matrix of $82,156 \times 501$ in GWASpoly format 'ACGT'.
 
+2. Install and run `updog` to check LD decay.
 
 
