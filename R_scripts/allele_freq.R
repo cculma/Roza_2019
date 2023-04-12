@@ -1,5 +1,5 @@
+# install.packages("sommer")
 library(sommer)
-
 
 # MPP_Ms2_GWASPoly.txt
 G <- read.csv('~/Documents/Cesar/blup_data/Roza2019/GWASPOLY/MPP_Ms2_GWASPoly.txt', header = TRUE, row.names = 1, check.names = F)
