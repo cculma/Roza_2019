@@ -23,6 +23,8 @@ library(AGHmatrix)
 library(ggfortify)
 library(ggplot2)
 
+# install.packages(c("GROAN","AGHmatrix","ggfortify"))
+
 cl <- makePSOCKcluster(15)
 registerDoParallel(cl)
 
