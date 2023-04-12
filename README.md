@@ -10,7 +10,7 @@ Roza 2019 NAM population was constructed using a drought resistant parent popula
 
 ## Yield
 
-Harvest has been done during 2020, 2021, 2022 and posible 2023. Data modeling can be done using two stages approach or random regression model. Because this is an experiment with repeated measurements or longitudinal data, Random Regression Analysis is a good option.
+Harvest has been done during 2020, 2021, 2022 and possibly 2023. Data modeling can be done using two stages approach or random regression model. Because this is an experiment with repeated measurements or longitudinal data, Random Regression Analysis is a good option.
 
 |          | Single | Trial |       | Stagewise |          |             |
 |----------|--------|-------|-------|-----------|----------|-------------|
@@ -28,4 +28,4 @@ Harvest has been done during 2020, 2021, 2022 and posible 2023. Data modeling ca
 
 2. Install and run `updog` to check LD decay.
 
-
+3. Try SNP-based association to Gene-based association.
