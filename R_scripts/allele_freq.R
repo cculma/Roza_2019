@@ -3,6 +3,7 @@ library(sommer)
 
 
 # MPP_Ms2_GWASPoly.txt
+G <- read.csv('MPP_Ms2_GWASPoly.txt', header = TRUE, row.names = 1, check.names = F)
 G <- read.csv('~/Documents/Cesar/blup_data/Roza2019/GWASPOLY/MPP_Ms2_GWASPoly.txt', header = TRUE, row.names = 1, check.names = F)
 G[1:5,1:5]
 dim(G)
