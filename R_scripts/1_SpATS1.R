@@ -30,11 +30,11 @@ lev3 <- colnames(a1)[7:23]
 
 Y1 <- list()
 for (i in 1:length(lev3)) {
-  m1 <- SpATS(response = lev3[i],
+  m1 <- SpATS(response = lev3[11],
               spatial = ~PSANOVA(col, row, nseg = c(nlevels(a1$C),nlevels(a1$R)), degree = c(3,3), nest.div = 2),
               fixed = ~rep,
               random = ~ rep:C + rep:R,
-              genotype.as.random = F,
+              genotype.as.random = T,
               genotype = "acc_num",
               data = a1,
               control = list(tolerance = 1e-03))
