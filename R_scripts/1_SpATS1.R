@@ -11,7 +11,6 @@ library(patchwork)
 
 ############
 
-
 a1 <- read.csv("~/Documents/git/Roza_2019/raw_data/Roza2019_yield.csv")
 head(a1)
 
@@ -172,18 +171,9 @@ summary(FA_1)$varcomp
 current.asrt <- as.asrtests(FA_1, NULL, NULL)
 current.asrt <- rmboundary.asrtests(current.asrt)
 
-
-
-
-
-
-
 # asreml.options(workspace="128mb")
 # asreml.options(workspace="512mb")
 # asreml.options(workspace="1024mb")
-
-
-
 
 # ~~~~~~~~~~~~~~~~~~~~~
 

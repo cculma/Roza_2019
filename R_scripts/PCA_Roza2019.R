@@ -28,7 +28,9 @@ library(ggplot2)
 cl <- makePSOCKcluster(15)
 registerDoParallel(cl)
 
-
+load("~/OneDrive - Washington State University (email.wsu.edu)/Roza_2019/GS1/PCA_Roza2019.R")
+load("/Users/cesarmedina/Library/CloudStorage/OneDrive-WashingtonStateUniversity(email.wsu.edu)/Roza_2019/GS1/PCA_Roza2019.RData")
+# load("/home/hawkins/Documents/Cesar/blup_data/Roza2019/git/r_data/PCA_Roza2019.RData")
 # load("/home/hawkins/Documents/Cesar/blup_data/Roza2019/git/r_data/PCA_Roza2019.RData")
 ######################
 # pheno
