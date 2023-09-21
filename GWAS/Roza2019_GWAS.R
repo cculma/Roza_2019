@@ -1,4 +1,4 @@
-rm(list = ls()) # clean Global Environment
+rm(list = ls())
 # setwd("~/OneDrive - Washington State University (email.wsu.edu)/Roza_2019/git/Roza2019/")
 
 library(GWASpoly)
