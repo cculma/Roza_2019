@@ -24,6 +24,9 @@ Harvest has been done during 2020, 2021, 2022 and possibly 2023. Data modeling c
 |          | Sep    | Sep   | Sep   | ST2_sep   | -        | -           |
 |          | Total  | Total | Total | -         | -        | -           |
 
+Note: obtain percentage of each yield in total yield.
+Harvest 1 + Harvest 2 + Harvest 4 = 100% (Season total yield)
+
 ## R scripts
 
 1. Roza2019_GWAS.R is the main file wich runs GWASpoly analysis using a phenotypic matrix of $400 \times 23$ and a genotypic matrix of $82,156 \times 501$ in GWASpoly format 'ACGT'.

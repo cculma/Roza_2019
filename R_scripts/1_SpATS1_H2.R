@@ -4,10 +4,10 @@ rm(list = ls())
 library(SpATS)
 library(tidyverse)
 library(data.table)
-library(ggcorrplot)
+# library(ggcorrplot)
 library(asreml)
 library(asremlPlus)
-library(patchwork)
+# library(patchwork)
 
 ############
 
