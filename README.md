@@ -34,3 +34,8 @@ Harvest 1 + Harvest 2 + Harvest 4 = 100% (Season total yield)
 2. Install and run `updog` to check LD decay.
 
 3. Try SNP-based association to Gene-based association.
+
+## Definitions
+
+1. SNV: Single nucleotide variant is a variation of a single nucleotide in a population's genome.
+2. SNP: Single nucleotide polimorphism is the same variation of a single nucleotide in a population's genome, but it is limeted to germline DNA and must be present in at leat 1% of the population. MAF filtering 0.01.
