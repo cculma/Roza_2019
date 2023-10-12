@@ -39,3 +39,32 @@ Harvest 1 + Harvest 2 + Harvest 4 = 100% (Season total yield)
 
 1. SNV: Single nucleotide variant is a variation of a single nucleotide in a population's genome.
 2. SNP: Single nucleotide polimorphism is the same variation of a single nucleotide in a population's genome, but it is limeted to germline DNA and must be present in at leat 1% of the population. MAF filtering 0.01.
+
+## Generation of VCF
+
+Please check file `bash_scripts/4.1_ngsep_NMGS.sh`
+
+1. Generate the raw VCF file with the function `MultisampleVariantsDetector`
+
+- `java -Xmx50g -Xms40g -jar ${NGSEP} MultisampleVariantsDetector -maxAlnsPerStartPos 100 -maxBaseQS 30 -ploidy 4 -psp -knownSTRs ${STR} -r ${GENOME} -o Roza2019_01.vcf `
+
+2. Filter the raw VCF file using multiple filtering parameters with the function `VCFFilter`
+
+- `java -Xmx50g -Xms45g -jar ${NGSEP} VCFFilter -q 40 -s -fi -m 250 -minRD 8 -i Roza2019_01.vcf -o ../4_vcf_monoploid/Roza2019_02.vcf`
+
+Oct 11, 2023 2:58:08 PM ngsep.vcf. \
+VCFFilter logParameters \
+INFO: Input file: Roza2019_01.vcf \
+Output file: ../4_vcf_monoploid/ \ Roza2019_02.vcf \
+Genotype filters \
+Minimum genotype quality: 40 `-q 40` \
+Minimum read depth: 8 `-minRD 8`\
+Variant context filters \
+Population data filters \
+Minimum samples genotyped: 250 `-m 250` \
+Keep only biallelic SNVs `-s` \
+Filter sites where only one allele is observed in the population `-fi`
+
+3. GWASPoly format
+
+- `java -Xmx50g -Xms45g -jar ${NGSEP} VCFConverter -GWASPoly -i Roza2019_03_imputed.vcf -o Roza2019_04`
