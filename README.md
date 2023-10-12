@@ -65,6 +65,19 @@ Minimum samples genotyped: 250 `-m 250` \
 Keep only biallelic SNVs `-s` \
 Filter sites where only one allele is observed in the population `-fi`
 
-3. GWASPoly format
+3. Impute
+
+- `java -Xmx50g -Xms45g -jar ${NGSEP} VCFImpute -i Roza2019_02.vcf -o Roza2019_03`
+
+Oct 12, 2023 8:46:36 AM ngsep.variants.imputation.GenotypeImputer logParameters \
+INFO: Input file: Roza2019_02.vcf \
+Prefix for output files: Roza2019_03 \
+Parents: [] \
+Number of haplotype clusters: 8 \
+Window size: 5000 \
+Overlap: 50 \
+Average centimorgans per Kbp: 0.001 \
+
+4. GWASPoly format
 
 - `java -Xmx50g -Xms45g -jar ${NGSEP} VCFConverter -GWASPoly -i Roza2019_03_imputed.vcf -o Roza2019_04`
