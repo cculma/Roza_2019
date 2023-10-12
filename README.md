@@ -40,6 +40,21 @@ Harvest 1 + Harvest 2 + Harvest 4 = 100% (Season total yield)
 1. SNV: Single nucleotide variant is a variation of a single nucleotide in a population's genome.
 2. SNP: Single nucleotide polimorphism is the same variation of a single nucleotide in a population's genome, but it is limeted to germline DNA and must be present in at leat 1% of the population. MAF filtering 0.01.
 
+## Genotyping
+
+### GBS
+
+505 DNA samples were sent to GBS to University of Minnesota Genomic Center. 505 FASTQ files were retrieved. Metrics can be found in `GBS/metrics.csv`. Six samples had low reads yield. Subsequent analysis were done with 499 files.
+
+| ID      | fastp  |
+|---------|--------|
+| 338     | 102328 |
+| 287     | 127897 |
+| 327     | 140080 |
+| 217     | 140974 |
+| 204     | 162640 |
+| 258.A07 | 293989 |
+
 ## Generation of VCF
 
 Please check file `bash_scripts/4.1_ngsep_NMGS.sh`
