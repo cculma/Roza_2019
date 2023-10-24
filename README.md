@@ -1,6 +1,6 @@
 # Roza2019
 
-This project summarize the data analysis for Roza2019 field.
+This project summarize the data analysis for Roza2019 field. This is a project to identify molecular markers associanted with drought stress by GWAS and GS. The population was genotyped by high deep GBS (40X) and DArT. Breeding Insight (BI) uses the ID: Project # 11 and DAl22-7535.  
 
 ## Phenotypic data
 
