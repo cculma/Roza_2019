@@ -93,6 +93,20 @@ Window size: 5000 \
 Overlap: 50 \
 Average centimorgans per Kbp: 0.001 \
 
-4. GWASPoly format
+Roza2019_03_imputed.vcf contains 499 taxa and 243,454 sites.
+
+4. Filter, second step.
+- `java -Xmx50g -Xms45g -jar ${NGSEP} VCFFilter -minMAF 0.05 -i Roza2019_03_imputed.vcf -o Roza2019_04.vcf`
+
+INFO: Input file: Roza2019_03_imputed.vcf \
+Output file: Roza2019_04.vcf \
+Genotype filters \
+Minimum genotype quality: 0 \
+Minimum read depth: 0 \
+Variant context filters \
+Population data filters \
+Minimum minor allele frequency (MAF): 0.05 \
+
+5. GWASPoly format
 
 - `java -Xmx50g -Xms45g -jar ${NGSEP} VCFConverter -GWASPoly -i Roza2019_03_imputed.vcf -o Roza2019_04`
