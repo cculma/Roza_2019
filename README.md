@@ -107,6 +107,11 @@ Variant context filters \
 Population data filters \
 Minimum minor allele frequency (MAF): 0.05 \
 
+500 taxa = 100% taxa, 25 taxa = 5% taxa. At least 25 taxa contain minor allele.
+Roza2019_04.vcf contains 499 taxa and 62,839 sites.
+
 5. GWASPoly format
 
 - `java -Xmx50g -Xms45g -jar ${NGSEP} VCFConverter -GWASPoly -i Roza2019_03_imputed.vcf -o Roza2019_04`
+
+Roza2019_05_GWASPoly.txt contains 499 taxa and 62,839 sites.
