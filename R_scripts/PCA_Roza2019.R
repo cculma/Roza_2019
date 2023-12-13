@@ -23,7 +23,6 @@ library(AGHmatrix)
 library(ggfortify)
 library(ggplot2)
 
-# install.packages(c("GROAN","AGHmatrix","ggfortify"))
 
 cl <- makePSOCKcluster(15)
 registerDoParallel(cl)
@@ -34,12 +33,12 @@ load("/Users/cesarmedina/Library/CloudStorage/OneDrive-WashingtonStateUniversity
 # load("/home/hawkins/Documents/Cesar/blup_data/Roza2019/git/r_data/PCA_Roza2019.RData")
 ######################
 # pheno
-Y <- read.csv("~/Documents/Cesar/blup_data/Roza2019/git/Roza2019/pheno_data/pheno_nph.csv", header = T)
-Y1 <- read.csv("~/Documents/Cesar/blup_data/Roza2019/git/Roza2019/pheno_data/deglos.csv", header = T)
+Y <- read.csv("~/Documents/git/Roza_2019/pheno_data/pheno_nph.csv", header = T)
+Y1 <- read.csv("~/Documents/git/Roza_2019/pheno_data/deglos.csv", header = T)
 colnames(Y1)[2] <- "Acc_roza2019"
 Y1$Acc_roza2019 <- as.factor(Y1$Acc_roza2019)
 head(Y1)
-Y2 <- read.csv("/home/hawkins/Documents/Cesar/blup_data/Roza2019/git/Roza2019/pheno_data/VCF_IDs.csv", header = T, check.names = F)
+Y2 <- read.csv("~/Documents/git/Roza_2019/pheno_data/VCF_IDs.csv", header = T, check.names = F)
 Y2 <- Y2[,c(1,3,8)]
 Y3 <- inner_join(Y1, Y2, by = "Acc_roza2019")
 head(Y3)
@@ -53,8 +52,9 @@ Y4 <- Y3  %>% column_to_rownames(var = 'VCF')
 ###########################
 # geno data
 
-G <- read.csv("~/Documents/Cesar/blup_data/Roza2019/Analysis_2021/GWAS/MPP_Ms2_GWASPoly.txt", header = TRUE, row.names = 1, check.names = F)
-
+G <- read.csv("~/Documents/git/big_files/Roza2019_05_GWASPoly.txt", header = TRUE, row.names = 1, check.names = F)
+# G <- read.csv("~/Documents/blup_data/Roza2019/Analysis_2021/GWAS/MPP_Ms2_GWASPoly.txt", header = TRUE, row.names = 1, check.names = F)
+G[1:5,1:5]
 G1 <- G %>% unite(Chrom1, 1:2, remove = T)
 G1 <- as.matrix(G1 %>% remove_rownames() %>% column_to_rownames(var = "Chrom1"))
 G2 <- t(G1)

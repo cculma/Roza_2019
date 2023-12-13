@@ -24,4 +24,4 @@ scp -r py3_server cesar.medinaculma@ceres.scinet.usda.gov:/project/xu_alfalfabre
 
 /home/cesar.medinaculma/NGSEP/
 /project/xu_alfalfabreeding/system_from_home
-/project/xu_alfalfabreeding/system_from_home/MSI
+/project/xu_alfalfabreeding/system_from_home/msi
