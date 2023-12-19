@@ -115,3 +115,15 @@ Roza2019_04.vcf contains 499 taxa and 62,839 sites.
 - `java -Xmx50g -Xms45g -jar ${NGSEP} VCFConverter -GWASPoly -i Roza2019_03_imputed.vcf -o Roza2019_04`
 
 Roza2019_05_GWASPoly.txt contains 499 taxa and 62,839 sites.
+
+6. Numeric format
+
+Roza2019_05_GWASPoly.txt in `ACGT` format is converted in numeric format using the function `atcg1234` from Sommer R package. Intersect between numeric Format of GWASpoly matrix and phenotypic matrix produce a vector of 424 taxa. 424 taxa $\times$ 62,839 markers (geno.ps).
+
+The function `snp.pruning` from ASRgenomics R package allows to remove snps in LD to reduce redundant markers.
+
+`Mpr <- snp.pruning(M = geno.ps, pruning.thr = 0.90, window.n = 100, by.chrom = F, overlap.n = 10, seed = 1208, iterations = 20)`.
+
+Pruned matrix contains 424 taxa $\times$ 51,081 markers. A total of 11,758 markers were pruned. Range of minor allele frequency after pruning: 0.02 ~ 0.48. Range of marker call rate after pruning: 100 ~ 100. Range of individual call rate after pruning: 100 ~ 100.
+
+New file is saved with the name Roza2019_06_GWASPoly.txt is the file for GWASpoly and Roza2019_06_GS.txt is the file for GS. Both files have 424 taxa $\times$ 51,081 markers.
