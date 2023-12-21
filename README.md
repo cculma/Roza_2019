@@ -59,11 +59,11 @@ Harvest 1 + Harvest 2 + Harvest 4 = 100% (Season total yield)
 
 Please check file `bash_scripts/4.1_ngsep_NMGS.sh`
 
-1. Generate the raw VCF file with the function `MultisampleVariantsDetector`
+**1. Generate the raw VCF file with the function `MultisampleVariantsDetector`**
 
 - `java -Xmx50g -Xms40g -jar ${NGSEP} MultisampleVariantsDetector -maxAlnsPerStartPos 100 -maxBaseQS 30 -ploidy 4 -psp -knownSTRs ${STR} -r ${GENOME} -o Roza2019_01.vcf `
 
-2. Filter the raw VCF file using multiple filtering parameters with the function `VCFFilter`
+**2. Filter the raw VCF file using multiple filtering parameters with the function `VCFFilter`**
 
 - `java -Xmx50g -Xms45g -jar ${NGSEP} VCFFilter -q 40 -s -fi -m 250 -minRD 8 -i Roza2019_01.vcf -o ../4_vcf_monoploid/Roza2019_02.vcf`
 
@@ -80,7 +80,7 @@ Minimum samples genotyped: 250 `-m 250` \
 Keep only biallelic SNVs `-s` \
 Filter sites where only one allele is observed in the population `-fi`
 
-3. Impute
+**3. Impute**
 
 - `java -Xmx50g -Xms45g -jar ${NGSEP} VCFImpute -i Roza2019_02.vcf -o Roza2019_03`
 
@@ -95,7 +95,8 @@ Average centimorgans per Kbp: 0.001 \
 
 Roza2019_03_imputed.vcf contains 499 taxa and 243,454 sites.
 
-4. Filter, second step.
+**4. Filter, second step**
+
 - `java -Xmx50g -Xms45g -jar ${NGSEP} VCFFilter -minMAF 0.05 -i Roza2019_03_imputed.vcf -o Roza2019_04.vcf`
 
 INFO: Input file: Roza2019_03_imputed.vcf \
@@ -110,13 +111,13 @@ Minimum minor allele frequency (MAF): 0.05 \
 500 taxa = 100% taxa, 25 taxa = 5% taxa. At least 25 taxa contain minor allele.
 Roza2019_04.vcf contains 499 taxa and 62,839 sites.
 
-5. GWASPoly format
+**5. GWASPoly format**
 
 - `java -Xmx50g -Xms45g -jar ${NGSEP} VCFConverter -GWASPoly -i Roza2019_03_imputed.vcf -o Roza2019_04`
 
-Roza2019_05_GWASPoly.txt contains 499 taxa and 62,839 sites.
+`Roza2019_05_GWASPoly.txt` contains 499 taxa $\times$ 62,839 markers.
 
-6. Numeric format
+**6. Numeric format**
 
 Roza2019_05_GWASPoly.txt in `ACGT` format is converted in numeric format using the function `atcg1234` from Sommer R package. Intersect between numeric Format of GWASpoly matrix and phenotypic matrix produce a vector of 424 taxa. 424 taxa $\times$ 62,839 markers (geno.ps).
 
@@ -126,14 +127,15 @@ The function `snp.pruning` from ASRgenomics R package allows to remove snps in L
 
 Pruned matrix contains 424 taxa $\times$ 51,081 markers. A total of 11,758 markers were pruned. Range of minor allele frequency after pruning: 0.02 ~ 0.48. Range of marker call rate after pruning: 100 ~ 100. Range of individual call rate after pruning: 100 ~ 100.
 
-New file is saved with the name Roza2019_06_GWASPoly.txt is the file for GWASpoly and Roza2019_06_GS.txt is the file for GS. Both files have 424 taxa $\times$ 51,081 markers.
+New files are saved in Box: `Roza2019_06_GWASPoly.txt` is the file for GWASpoly and `Roza2019_06_GS.txt` is the file for GS. Both files have 424 taxa $\times$ 51,081 markers.
 
 ## BLUEs and BLUPs
 
-Yield was collected from 2019 to 2023 with 436 accessions (Families). Yield of three replicates was collected and modelled using SpATS to obtain BLUEs by each env (harvest). 
+Yield was collected from 2019 to 2023 in 436 accessions (Families). Yield of three replicates was modelled using SpATS to obtain BLUEs by each env (harvest). 
 
 GWAS results have suspicious (inflated) results in aug_22, jun_20, jun_22, jun_23, may_21, may_23, sep_20, jul_22.
 
+Samples considered outliers by qqplot with BLUEs
 | aug_22 | jul_22 | may_21 | jun_22 | may_22 | order | Ntimes | Plant_ID |
 |--------|--------|--------|--------|--------|-------|--------|----------|
 | 347    | 347    | 347    | 111    | 347    | 347   | 5      | 584      |
