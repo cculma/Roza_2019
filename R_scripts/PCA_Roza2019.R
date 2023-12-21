@@ -2,15 +2,6 @@ rm(list = ls())
 library(tidyr)
 library(tidyverse)
 library(sommer)
-library(biganalytics)
-library(bigmemory)
-library(parallel)
-library(doParallel)
-library(iterators)
-library(foreach)
-library(gbm)
-library(rrBLUP)
-library(e1071)
 library(caret)
 library(dplyr)
 library(ranger)
@@ -92,8 +83,10 @@ dim(Y1)
 PCs <- prcomp(G4, scale=F, center = T)
 PC2s <- as.data.frame(PCs$x[,1:3])
 autoplot(PCs) + theme_bw()
-fviz_eig(PCs, addLabels = T, ylim = c(0, 4))
 
+fviz_eig(PCs, addlabels=TRUE, hjust = -0.3) + ylim(0, 4)
+
+PCs$rotation
 
 # PC1s <- prcomp(G_OK, scale=F, center = T)
 # autoplot(PC1s) + theme_bw()
@@ -102,6 +95,9 @@ fviz_eig(PCs, addLabels = T, ylim = c(0, 4))
 PC2s <- as.data.frame(PCs$x[,1:3]) %>% rownames_to_column("Roza2019_VCF_ID")
 head(PC2s)
 
+# PC2s <- as.data.frame(PCs$x)
+# dim(PC2s) # 424 by 424
+# 80% 340 PCs
 
 ######################
 # pheno
@@ -115,6 +111,7 @@ head(Y1)
 
 Y2 <- read.csv("~/Documents/git/Roza_2019/pheno_data/deglos.csv", header = T)
 head(Y2)
+Y2$Plant_ID <- as.character(Y2$Plant_ID)
 
 Y5 <- inner_join(Y1, Y, by = "Plant_ID")
 head(Y5)
@@ -151,14 +148,20 @@ setwd("~/Documents/git/big_files/")
 write.csv(Y7, "Yi_st2.csv", row.names = F, quote = F)
 
 ?kmeans
-classif <- kmeans(x = PCs$x[,1:5], centers = 3, iter.max = 1000, nstart = 10, algorithm = "Lloyd", trace = F)
-PC2s$group <- classif$cluster
+classif <- kmeans(x = PCs$x[,1:5], centers = 3, iter.max = 10000, nstart = 10, algorithm = "Lloyd", trace = F)
+PC2s$kmeans <- classif$cluster
 str(PC2s)
-PC2s$group <- as.factor(PC2s$group)
+PC2s$kmeans <- as.factor(PC2s$kmeans)
 head(PC2s)
 
+PC2s$kmeans <- recode_factor(PC2s$kmeans, "1" = "1", "2" = "3", "3" = "2")
+PC2s <- PC2s %>% mutate(kmeans = fct_relevel(kmeans, c("1","2","3")))
 
-p1 <- ggplot(PC2s, aes(x = PC1, y = PC2, color = group)) + geom_point() + theme_minimal()
+my.cols <- brewer.pal(3, "Set1")
+my.cols
+cols1 <- c("1" = "#E41A1C", "2" = "#377EB8", "3" = "#4DAF4A")
+
+p1 <- ggplot(PC2s, aes(y = PC1, x = (PC2*-1), color = kmeans)) + geom_point() + theme_bw() + scale_color_manual(values = cols1)
 p1
 
 setwd("~/Documents/git/big_files/")
@@ -167,8 +170,11 @@ ggsave(filename = "PCA_Roza2019.pdf", plot = p1, dpi = 300, width = 5, height = 
 head(Y1)
 head(Y2)
 
-Y3 <- inner_join(Y1, Y2, by = "Sample_ID") %>% inner_join(., PC2s, by = "Roza2019_VCF_ID")
+Y3 <- inner_join(Y1, Y2, by = c("Sample_ID","Plant_ID")) %>% inner_join(., PC2s, by = "Roza2019_VCF_ID")
 head(Y3)
+
+# setwd("~/Documents/git/Roza_2019/pheno_data/")
+# write.csv(Y3, "PCA_Roza2019.csv", row.names = F, quote = F)
 
 ggplot(Y3, aes(x = PC1, y = PC2, color = group)) + geom_point() + theme_minimal() + ggrepel::geom_text_repel(aes(label = Susceptible_parent, size = 4), nudge_x = .75)
 
@@ -179,8 +185,7 @@ ggplot(Y3, aes(x = PC1, y = PC2, color = group, label = Susceptible_parent1)) + 
                  box.padding = unit(0.5, "lines"), max.overlaps = 30)
 
 # max.overlaps = Inf
-setwd("~/Documents/git/Roza_2019/pheno_data/")
-write.csv(Y3, "PCA_Roza2019.csv", row.names = F, quote = F)
+
 
 # nb.cols <- 15
 # mycolors <- colorRampPalette(brewer.pal(8, "Paired"))(nb.cols)
@@ -191,8 +196,8 @@ head(Y3)
 Y3$Female <- as.factor(Y3$Female)
 Y3$Male <- as.factor(Y3$Male)
 
-cc <- dplyr::count(Y3, group, Susceptible_parent1)
-cc <- cc %>% spread(key = group, value = n)
+cc <- dplyr::count(Y3, kmeans, Susceptible_parent1)
+cc <- cc %>% spread(key = kmeans, value = n)
 setwd("~/Documents/git/Roza_2019/pheno_data/")
 write.csv(cc, "kmeans_pca.csv", row.names = F, quote = F)
 
@@ -215,3 +220,4 @@ G4  <- G4[order1,]
 
 write.table(G4, "~/Documents/git/big_files/Roza2019_06_GS.txt", row.names = T, col.names = T, sep = "\t", quote = F)
 
+G4 <- read.table("~/Documents/git/big_files/Roza2019_06_GS.txt", row.names = 1, header = T, sep = "\t")

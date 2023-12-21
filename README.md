@@ -127,3 +127,20 @@ The function `snp.pruning` from ASRgenomics R package allows to remove snps in L
 Pruned matrix contains 424 taxa $\times$ 51,081 markers. A total of 11,758 markers were pruned. Range of minor allele frequency after pruning: 0.02 ~ 0.48. Range of marker call rate after pruning: 100 ~ 100. Range of individual call rate after pruning: 100 ~ 100.
 
 New file is saved with the name Roza2019_06_GWASPoly.txt is the file for GWASpoly and Roza2019_06_GS.txt is the file for GS. Both files have 424 taxa $\times$ 51,081 markers.
+
+## BLUEs and BLUPs
+
+Yield was collected from 2019 to 2023 with 436 accessions (Families). Yield of three replicates was collected and modelled using SpATS to obtain BLUEs by each env (harvest). 
+
+GWAS results have suspicious (inflated) results in aug_22, jun_20, jun_22, jun_23, may_21, may_23, sep_20, jul_22.
+
+| aug_22 | jul_22 | may_21 | jun_22 | may_22 | order | Ntimes | Plant_ID |
+|--------|--------|--------|--------|--------|-------|--------|----------|
+| 347    | 347    | 347    | 111    | 347    | 347   | 5      | 584      |
+| 84     | 172    | 322    | 347    | 172    | 197   | 2      | 423      |
+| 299    | 363    | 197    | 363    | 197    | 84    | 2      | 186      |
+| 212    | 84     | 258    | 322    | 329    | 172   | 2      | 274      |
+|        |        |        |        |        | 363   | 2      | 570      |
+|        |        |        |        |        | 322   | 2      | 515      |
+
+What to do?

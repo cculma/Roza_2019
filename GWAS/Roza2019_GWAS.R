@@ -4,13 +4,7 @@ rm(list = ls())
 library(GWASpoly)
 library(tidyverse)
 library(vcfR)
-library(parallel)
-library(doParallel)
-library(iterators)
-library(foreach)
 library(tidyr)
-library(devtools)
-library(sommer)
 library(ggplot2)
 library(ggpubr)
 library(data.table)
@@ -48,13 +42,14 @@ save(Yi_data_3, file = "~/Documents/git/big_files/Yi_st2_51081.RData")
 save(Yi_data_3, file = "~/Documents/git/big_files/Yi_st1_51081.RData")
 
 load("~/Documents/git/big_files/Yi_st1_51081.RData")
+load("~/Documents/git/big_files/Yi_st2_51081.RData")
 
 data_5 <- set.threshold(Yi_data_3, method= "Bonferroni", level=0.05)
 QTL_01 <- get.QTL(data_5)
 QTL_02 <- QTL_01 %>% distinct(Trait, .keep_all = T) 
 QTL_02$Trait
 
-QTL_04 <- QTL_01 %>% dplyr::filter(Trait == "ST4_Yi")
+# QTL_04 <- QTL_01 %>% dplyr::filter(Trait == "ST4_Yi")
 
 lev0 <- QTL_02$Trait
 lev0 <- subset(QTL_02$Trait, grepl("ST0_", QTL_02$Trait))
@@ -66,9 +61,9 @@ lev4 <- subset(QTL_01$Trait, grepl("ST4_", QTL_01$Trait))
 # load("~/Documents/Cesar/blup_data/Roza2019/Analysis_2021/GWAS/data_3_80177_year.RData")
 
 M0 <- manhattan.plot(data = data_5, traits = lev0) + theme_classic(base_family = "Arial", base_size = 12) + theme(legend.position = "none", axis.title.x=element_blank(), axis.text.x=element_blank(), axis.ticks.x=element_blank(), axis.title.y = element_text(size = 12), plot.tag = element_blank()) 
-M0
+# M0
 
-ggsave(filename = "~/Documents/git/big_files/M0.jpg", plot = M0, width = 16, height = 16)
+ggsave(filename = "~/Documents/git/big_files/M1.jpg", plot = M0, width = 16, height = 16)
 
 M1 <- manhattan.plot(data = data_5, traits = lev1) + theme_classic(base_family = "Arial", base_size = 12) + theme(legend.position = "none", axis.title.x=element_blank(), axis.text.x=element_blank(), axis.ticks.x=element_blank(), axis.title.y = element_text(size = 12), plot.tag = element_blank()) 
 
