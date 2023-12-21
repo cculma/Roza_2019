@@ -12,7 +12,9 @@ Marker <- seq(1:nrow(pheno))
 pheno1 <- cbind(Marker, pheno)
 
 ?qqPlot
-qqPlot(pheno$aug_22)
+plot1 <- qqPlot(pheno$aug_22)
+class(plot1)
+
 pheno1 <- pheno[-c(347,84,299,212,363,172,224,178,331,168),]
 pheno1 <- pheno[-c(347,84,299,212,363),]
 pheno1 <- pheno[-c(347,84,197,172,363,322),]
