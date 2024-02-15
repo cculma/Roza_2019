@@ -5,12 +5,14 @@ library(topGO)
 
 #######################
 # This part of code allows to use GO_id from allele_aware to ZhongmuNo1
+setwd("~/Documents/lordec_reports/tama_merge_2/fusion_all2")
 
-setwd("~/Documents/Cesar/RNA/globus/lordec_reports/tama_merge_2/fusion_all2")
-a1 <- read.table('~/Documents/Cesar/RNA/globus/lordec_reports/tama_merge_2/fusion_all2/background.csv', header = F, sep = '\t')
+a1 <- read.table('background.csv', header = F, sep = '\t')
 colnames(a1) <- c('uniprot', 'GO_id')
-
-load("/home/hawkins/Documents/Cesar/RNA/globus/lordec_reports/lordec_trim/bed_Shen/ORF_NMD/i_5.2.3.RData")
+head(a1)
+# load("/home/hawkins/Documents/Cesar/RNA/globus/lordec_reports/lordec_trim/bed_Shen/ORF_NMD/i_5.2.3.RData")
+load("i_5.2.3.RData")
+head(i_5.2.3)
 i_5.2.4 <- i_5.2.3 %>% separate(4, col_headings_1, sep = ";", remove = TRUE, convert = FALSE, extra = "warn") %>% separate(4, col_headings_2, sep = "\\.", remove = TRUE, convert = FALSE, extra = "warn") %>% dplyr::select(4,6) %>% distinct(gene_id, .keep_all = TRUE)
 head(i_5.2.4)
 a2 <- inner_join(i_5.2.4, a1, by = "uniprot")  %>% dplyr::select(-1)
