@@ -10,13 +10,10 @@ library(data.table)
 library(ggthemes)
 library(hrbrthemes)
 library(plotly)
-
-
 library(GenomicRanges)
 library(genomation)
 library(plyranges)
 library(Repitools)
-
 library(devtools)
 library(sommer)
 
