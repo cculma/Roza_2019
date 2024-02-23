@@ -17,24 +17,19 @@ library(Repitools)
 library(devtools)
 library(sommer)
 
-
-
 ####################
 setwd("~/Documents/git/big_files/")
 
-
 pheno <- read.csv("BLUE_Yi_sqrt_DArT_DS1.csv")
-pheno$X20
 head(pheno)
 trait1 <- c("X20","X21","X22","X23")
-trait1 <- colnames(pheno)[2:(length(colnames(pheno))-5)]
+trait1 <- colnames(pheno)[2:(length(colnames(pheno))-4)]
 trait1
 
 params <- set.params(fixed=c("PC1","PC2","PC3","Stress"),
                      fixed.type= c("numeric","numeric","numeric","factor"), n.PC = 3)
 
 models_1 <- c("general", "additive", "1-dom", "2-dom",  "diplo-additive", "diplo-general")
-
 
 data_1 <- read.GWASpoly(ploidy=4, 
                         pheno.file="BLUE_Yi_sqrt_DArT_DS1.csv", 
@@ -47,21 +42,16 @@ Yi_data_3 <- GWASpoly(data = data_2, models = models_1, traits = trait1, params 
 # save.image("~/Documents/git/big_files/data_Yi_DS_20.RData")
 # load("~/Documents/git/big_files/data_Yi_DS_20.RData")
 
-
-ggsave(filename = "~/Documents/git/big_files/M0_sqrt.jpg", plot = M0, width = 16, height = 16)
-
 data_5 <- set.threshold(Yi_data_3, method= "Bonferroni", level=0.05)
 QTL_01 <- get.QTL(data_5)
-# manhattan.plot(data = data_5)
 
+QTL_02 <- QTL_01 %>% distinct(QTL_01$Marker, .keep_all = T)
 
 lev0 <- unique(QTL_01$Trait)
 
-M0 <- manhattan.plot(data = data_5, traits = lev0) + theme_classic(base_family = "Arial", base_size = 12) + theme(legend.position = "none", axis.title.x=element_blank(), axis.text.x=element_blank(), axis.ticks.x=element_blank(), axis.title.y = element_text(size = 12), plot.tag = element_blank()) 
+M3 <- manhattan.plot(data = data_5, traits = lev0) + theme_classic(base_family = "Arial", base_size = 12) + theme(legend.position = "none", axis.title.x=element_blank(), axis.text.x=element_blank(), axis.ticks.x=element_blank(), axis.title.y = element_text(size = 12), plot.tag = element_blank()) 
 
-ggsave(filename = "~/Documents/git/big_files/M0_sqrt_DS.jpg", plot = M0, width = 8, height = 8)
-
-QTL_02 <- QTL_01 %>% distinct(QTL_01$Marker, .keep_all = T)
+ggsave(filename = "~/Documents/git/big_files/M0_sqrt_DS.jpg", plot = M3, width = 8, height = 8)
 
 
 
@@ -74,7 +64,6 @@ cc1 <- count(QTL_01, Model)
 cc1$Model
 
 QTL_03 <- QTL_01 %>% dplyr::filter(!Model %in% c("diplo-general", "diplo-additive"))
-
 
 fit_05 <- fit.QTL(data=data_5, trait = "X20",
                   qtl=QTL_03[,c("Marker","Model")])

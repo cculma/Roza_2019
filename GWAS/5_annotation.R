@@ -100,8 +100,7 @@ QTL_08 <- inner_join(QTL_07, df3, by = "Marker1")
 setwd("~/Documents/git/big_files/")
 write.table(QTL_08, "markers_DS.tsv", row.names = F, quote = F, sep = "\t")
 
-
-
+# using a range of 10 kb upstream and 10 kb downstream
 gr6 <- GRanges(seqnames = QTL_02$chrom,
                ranges = IRanges(start=QTL_02$pos - 10000, end=QTL_02$pos + 10000, width=20001))
 gr6
@@ -135,5 +134,6 @@ GO2$GO_ID <- gsub("^[^_]*_|\\]","",GO2$GO_ID)
 cc <- dplyr::count(GO2, GO_ID)
 cc <- dplyr::count(GO2, term)
 
+setwd("~/Documents/git/big_files/")
 write.table(cc, "count_GO.tsv", row.names = F, quote = F, sep = "\t")
 write.table(GO2, "markers_Yi_GO2.tsv", row.names = F, quote = F, sep = "\t")
