@@ -22,7 +22,7 @@ library(arm)
 library(monomvn)
 library(GROAN)
 library(AGHmatrix)
-cl <- makePSOCKcluster(15)
+cl <- makePSOCKcluster(40)
 registerDoParallel(cl)
 #################
 
@@ -31,34 +31,17 @@ setwd("~/Documents/Cesar/blup_data/Roza2019/GS1")
 setwd("~/Documents/git/big_files/")
 # Y <- read.csv("/home/hawkins/Documents/Cesar/blup_data/Roza2019/GWASPOLY/BLUP_BLUE.1.csv", header = T)
 
-Y <- read.csv("~/Documents/git/big_files/BLUE_Yi_sqrt_SpATS_DArT.csv", header = T)
+Y <- read.csv("BLUE_Yi_sqrt_SpATS_DArT.csv", header = T)
 
-#Y <- as.matrix(read.csv("/home/hawkins/Documents/Cesar/blup_data/Roza2019/GWASPOLY/BLUP_BLUE.1.csv", header = TRUE, row.names = 1))
 colnames(Y)
 head(Y)
 Y <- Y[,-c(24:26)]
 Y1 <- na.omit(Y) 
 
-
-# G <- read.csv("/home/hawkins/Documents/Cesar/NGSEP/ngsep_tutorial/Roza_2019/2_vcf/MPP_Ms2_GWASPoly.txt", header = TRUE, check.names = F)
 G <- read.table("Roza2019_06_GS.txt", header = TRUE, check.names = F)
 
 G[1:5,1:5]
 dim(G)
-# G <- G[,-1]
-# G1 <- unite(G, SNP, 1,2, sep = "_", remove = TRUE, na.rm = FALSE)
-# G1[1:5,1:5]
-# G2 <- t(G1)
-# G1 <- G1 %>% remove_rownames() %>% column_to_rownames(var = 'SNP')
-# str(G2)
-# G2[1:5,1:5]
-# rownames(G2)
-# colnames(G2)
-# G2 <- as.data.frame(G2)
-# numo <- atcg1234(data=G2, ploidy=4)
-# 
-# numo$M[1:5,1:5]; 
-# numo$ref.allele[,1:5]
 
 common <- intersect(Y1$Roza2019_VCF_ID,rownames(G))
 
@@ -84,19 +67,19 @@ dim(Y4)
 library(GROAN)
 #creating a GROAN.NoisyDataset without any extra noise injected
 
-roza1 = createNoisyDataset(
-  name = 'may_20',
+roza1 = createNoisyDataset(name = 'may_20',
   genotypes = Y4[,-1], 
   phenotypes = Y4[,1],
   ploidy = 4
 )
 print(roza1)
 
-wb = createWorkbench(
-  folds = 10, reps = 1, stratified = FALSE, 
-  outfolder = NULL, saveHyperParms = FALSE, saveExtraData = FALSE,
-  regressor = phenoRegressor.rrBLUP, regressor.name = 'rrBLUP'
-)
+set.seed(123)
+wb = createWorkbench(folds = 10, reps = 10, stratified = FALSE, outfolder = NULL, saveHyperParms = T, saveExtraData = T, regressor = phenoRegressor.rrBLUP, regressor.name = "GBLUP")
+
+?createWorkbench
+# wb = createWorkbench(folds = 10, reps = 1, stratified = FALSE, outfolder = NULL, saveHyperParms = FALSE, saveExtraData = FALSE,regressor = phenoRegressor.rrBLUP, regressor.name = 'rrBLUP')
+
 print(wb)
 res = GROAN.run(roza1, wb)
 sum.res <- summary(res)
@@ -104,31 +87,56 @@ sum.res <- summary(res)
 
 GS1 <- as.matrix(marks)
 G_Van <- Gmatrix(GS1, method="VanRaden", ploidy=4) 
-# G_FullAutopolyploid <- Gmatrix(marks, method="Slater", ploidy=4)
 G_Van[1:5,1:5]
+
+
+rownames(G_Van) == colnames(G_Van)
+rownames(G_Van) == rownames(Y2)
+
+head(Y2)
 
 roza2 = createNoisyDataset(
   name = 'yield',
-  #  genotypes = data[,-1], 
-  phenotypes = phenos,
-  covariance = G_Van,
-  ploidy = 4)
-  
-roza2 = createNoisyDataset(
-  name = 'yield',
   genotypes = NULL, 
-  phenotypes = Y4[,1],
+  phenotypes = Y2[,1],
   covariance = G_Van,
   ploidy = 4
 )
 print(roza2)
 res2 = GROAN.run(roza2, wb)
-sum.res2 <- summary(res2)
 
-res = GROAN.run(roza2, wb)
+mean(res2$pearson)
+# 0.1964714
+
 print(res[,c("dataset.train", "dataset.test", "pearson")])
 
 # actual predictions ------------------------------------------------------
+
+res.4 = phenoRegressor.rrBLUP(phenotypes =  Y2[,1], genotypes = NULL, covariances = G_Van, SE = T, return.Hinv = T)
+
+P0 <- data.frame(Y2[,1], res.4$predictions)
+colnames(P0) <- c('yield', 'GEVB')
+P0$pc <- predict(prcomp(~yield+GEVB, P0))[,1]
+cor(P0$yield, P0$GEVB)
+
+P0 <- as.data.frame(res.4$predictions) %>% rownames_to_column("INDIV")
+colnames(P0)[2] <- "GROAN"
+
+P1 <- as.data.frame(res.4$predictions) %>% rownames_to_column("INDIV")
+colnames(P1)[2] <- "GROAN1"
+
+GEBV_ASReml <- read.csv("GEBV_GBLUP_st1.csv")
+GEBV_ASReml <- GEBV_ASReml %>% dplyr::select(INDIV, may_20)
+colnames(GEBV_ASReml)[2] <- "ASReml"
+
+head(Y2)
+Y3 <- Y2 %>% rownames_to_column("INDIV") %>% dplyr::select(INDIV, may_20)
+
+Y4 <- inner_join(P0, GEBV_ASReml, by = "INDIV") %>% inner_join(., Y3, by = "INDIV") %>% inner_join(., P1, by = "INDIV") %>% column_to_rownames("INDIV") 
+
+cor(Y4)
+Y4 <- inner_join(P0, P1, by = "INDIV") 
+
 
 #GROAN.KI has 103 samples, we'll use the first 50 samples for training
 #and the remaining will be predicted
