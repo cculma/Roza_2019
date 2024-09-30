@@ -1,0 +1,184 @@
+3. Index the Genome
+    To start, download the reference genome of Saccharomyces cerevisiae from the 'training' directory in the NGSEP site in the "Files" sheet.
+    The sequence is in FASTA format, the annotation is in gff format and the repeats and STRs are text files.
+    Download all files and save them in the 'reference' directory created at step 0.
+
+bowtie2-build MtrunA17r5.0-20161119-ANR.fasta MtrunA17r5.0-20161119-ANR.fasta >& MtrunA17r5.0-20161119-ANR.idxlog 
+
+awk '{ if(substr($1,1,1)==">") print substr($1,2) }' MtrunA17r5.0-20161119-ANR.fasta > MtrunA17r5.0-20161119-ANR_seqNames.txt
+
+./runMapping_all.sh 
+
+java -Xmx80g -jar ~/java/NGSEPcore_3.3.2.jar MultisampleVariantsDetector -maxAlnsPerStartPos 100 -maxBaseQS 30 -ploidy 4 -psp -knownSTRs /home/hawkins/Documents/Cesar/NGSEP/ngsep_tutorial/Mt_5_0/MtrunA17r5.0-20161119-ANR_strs.list -r /home/hawkins/Documents/Cesar/NGSEP/ngsep_tutorial/Mt_5_0/MtrunA17r5.0-20161119-ANR.fasta -o NMGS_Mt5_0.vcf 100_S45_R1_001_bowtie2_sorted.bam 101_S57_R1_001_bowtie2_sorted.bam 102_S69_R1_001_bowtie2_sorted.bam 103_S81_R1_001_bowtie2_sorted.bam 104_S93_R1_001_bowtie2_sorted.bam 105_S11_R1_001_bowtie2_sorted.bam 106_S22_R1_001_bowtie2_sorted.bam 107_S34_R1_001_bowtie2_sorted.bam 109_S46_R1_001_bowtie2_sorted.bam 10_S12_R1_001_bowtie2_sorted.bam 110_S58_R1_001_bowtie2_sorted.bam 111_S70_R1_001_bowtie2_sorted.bam 112_S82_R1_001_bowtie2_sorted.bam 113_S94_R1_001_bowtie2_sorted.bam 114_S95_R1_001_bowtie2_sorted.bam 116_S107_R1_001_bowtie2_sorted.bam 117_S141_R1_001_bowtie2_sorted.bam 118_S153_R1_001_bowtie2_sorted.bam 119_S165_R1_001_bowtie2_sorted.bam 11_S24_R1_001_bowtie2_sorted.bam 120_S177_R1_001_bowtie2_sorted.bam 121_S96_R1_001_bowtie2_sorted.bam 122_S108_R1_001_bowtie2_sorted.bam 123_S119_R1_001_bowtie2_sorted.bam 124_S130_R1_001_bowtie2_sorted.bam 127_S142_R1_001_bowtie2_sorted.bam 128_S154_R1_001_bowtie2_sorted.bam 129_S166_R1_001_bowtie2_sorted.bam 12_S36_R1_001_bowtie2_sorted.bam 132_S97_R1_001_bowtie2_sorted.bam 133_S109_R1_001_bowtie2_sorted.bam 134_S120_R1_001_bowtie2_sorted.bam 135_S131_R1_001_bowtie2_sorted.bam 136_S143_R1_001_bowtie2_sorted.bam 137_S155_R1_001_bowtie2_sorted.bam 138_S167_R1_001_bowtie2_sorted.bam 139_S179_R1_001_bowtie2_sorted.bam 141_S98_R1_001_bowtie2_sorted.bam 142_S110_R1_001_bowtie2_sorted.bam 143_S121_R1_001_bowtie2_sorted.bam 144_S132_R1_001_bowtie2_sorted.bam 145_S144_R1_001_bowtie2_sorted.bam 146_S156_R1_001_bowtie2_sorted.bam 147_S168_R1_001_bowtie2_sorted.bam 148_S180_R1_001_bowtie2_sorted.bam 149_S134_R1_001_bowtie2_sorted.bam 14_S48_R1_001_bowtie2_sorted.bam 150_S111_R1_001_bowtie2_sorted.bam 151_S122_R1_001_bowtie2_sorted.bam 152_S133_R1_001_bowtie2_sorted.bam 153_S145_R1_001_bowtie2_sorted.bam 154_S157_R1_001_bowtie2_sorted.bam 155_S169_R1_001_bowtie2_sorted.bam 156_S181_R1_001_bowtie2_sorted.bam 159_S100_R1_001_bowtie2_sorted.bam 15_S60_R1_001_bowtie2_sorted.bam 160_S112_R1_001_bowtie2_sorted.bam 161_S123_R1_001_bowtie2_sorted.bam 162_S99_R1_001_bowtie2_sorted.bam 163_S146_R1_001_bowtie2_sorted.bam 164_S158_R1_001_bowtie2_sorted.bam 165_S170_R1_001_bowtie2_sorted.bam 166_S182_R1_001_bowtie2_sorted.bam 167_S101_R1_001_bowtie2_sorted.bam 168_S113_R1_001_bowtie2_sorted.bam 169_S124_R1_001_bowtie2_sorted.bam 16_S72_R1_001_bowtie2_sorted.bam 170_S135_R1_001_bowtie2_sorted.bam 171_S147_R1_001_bowtie2_sorted.bam 172_S159_R1_001_bowtie2_sorted.bam 173_S171_R1_001_bowtie2_sorted.bam 174_S183_R1_001_bowtie2_sorted.bam 175_S102_R1_001_bowtie2_sorted.bam 176_S114_R1_001_bowtie2_sorted.bam 177_S125_R1_001_bowtie2_sorted.bam 178_S136_R1_001_bowtie2_sorted.bam 179_S148_R1_001_bowtie2_sorted.bam 17_S84_R1_001_bowtie2_sorted.bam 180_S160_R1_001_bowtie2_sorted.bam 181_S172_R1_001_bowtie2_sorted.bam 182_S184_R1_001_bowtie2_sorted.bam 183_S103_R1_001_bowtie2_sorted.bam 184_S115_R1_001_bowtie2_sorted.bam 185_S126_R1_001_bowtie2_sorted.bam 186_S137_R1_001_bowtie2_sorted.bam 187_S149_R1_001_bowtie2_sorted.bam 188_S161_R1_001_bowtie2_sorted.bam 189_S173_R1_001_bowtie2_sorted.bam 18_S2_R1_001_bowtie2_sorted.bam 191_S185_R1_001_bowtie2_sorted.bam 192_S104_R1_001_bowtie2_sorted.bam 193_S116_R1_001_bowtie2_sorted.bam 194_S127_R1_001_bowtie2_sorted.bam 195_S138_R1_001_bowtie2_sorted.bam 196_S150_R1_001_bowtie2_sorted.bam 198_S162_R1_001_bowtie2_sorted.bam 19_S13_R1_001_bowtie2_sorted.bam 1_S23_R1_001_bowtie2_sorted.bam 201_S174_R1_001_bowtie2_sorted.bam 204_S186_R1_001_bowtie2_sorted.bam 205_S105_R1_001_bowtie2_sorted.bam 207_S117_R1_001_bowtie2_sorted.bam 20_S25_R1_001_bowtie2_sorted.bam 321_S210_R1_001_bowtie2_sorted.bam 211_S139_R1_001_bowtie2_sorted.bam 213_S151_R1_001_bowtie2_sorted.bam 214_S163_R1_001_bowtie2_sorted.bam 215_S175_R1_001_bowtie2_sorted.bam 217_S187_R1_001_bowtie2_sorted.bam 218_S106_R1_001_bowtie2_sorted.bam 21_S37_R1_001_bowtie2_sorted.bam 220_S118_R1_001_bowtie2_sorted.bam 224_S129_R1_001_bowtie2_sorted.bam 225_S140_R1_001_bowtie2_sorted.bam 226_S152_R1_001_bowtie2_sorted.bam 228_S164_R1_001_bowtie2_sorted.bam 22_S49_R1_001_bowtie2_sorted.bam 230_S176_R1_001_bowtie2_sorted.bam 231_S188_R1_001_bowtie2_sorted.bam 232_S189_R1_001_bowtie2_sorted.bam 234_S201_R1_001_bowtie2_sorted.bam 236_S213_R1_001_bowtie2_sorted.bam 237_S225_R1_001_bowtie2_sorted.bam 238_S259_R1_001_bowtie2_sorted.bam 239_S271_R1_001_bowtie2_sorted.bam 23_S61_R1_001_bowtie2_sorted.bam 241_S190_R1_001_bowtie2_sorted.bam 242_S202_R1_001_bowtie2_sorted.bam 243_S214_R1_001_bowtie2_sorted.bam 244_S226_R1_001_bowtie2_sorted.bam 245_S237_R1_001_bowtie2_sorted.bam 246_S248_R1_001_bowtie2_sorted.bam 248_S272_R1_001_bowtie2_sorted.bam 250_S191_R1_001_bowtie2_sorted.bam 251_S203_R1_001_bowtie2_sorted.bam 253_S215_R1_001_bowtie2_sorted.bam 254_S227_R1_001_bowtie2_sorted.bam 255_S238_R1_001_bowtie2_sorted.bam 257_S249_R1_001_bowtie2_sorted.bam 258_S260_R1_001_bowtie2_sorted.bam 259_S273_R1_001_bowtie2_sorted.bam 25_S47_R1_001_bowtie2_sorted.bam 260_S192_R1_001_bowtie2_sorted.bam 262_S204_R1_001_bowtie2_sorted.bam 263_S216_R1_001_bowtie2_sorted.bam 264_S228_R1_001_bowtie2_sorted.bam 265_S239_R1_001_bowtie2_sorted.bam 267_S250_R1_001_bowtie2_sorted.bam 268_S261_R1_001_bowtie2_sorted.bam 269_S274_R1_001_bowtie2_sorted.bam 26_S85_R1_001_bowtie2_sorted.bam 270_S193_R1_001_bowtie2_sorted.bam 271_S205_R1_001_bowtie2_sorted.bam 272_S217_R1_001_bowtie2_sorted.bam 273_S229_R1_001_bowtie2_sorted.bam 274_S240_R1_001_bowtie2_sorted.bam 275_S251_R1_001_bowtie2_sorted.bam 276_S262_R1_001_bowtie2_sorted.bam 277_S275_R1_001_bowtie2_sorted.bam 278_S194_R1_001_bowtie2_sorted.bam 279_S206_R1_001_bowtie2_sorted.bam 27_S3_R1_001_bowtie2_sorted.bam 280_S218_R1_001_bowtie2_sorted.bam 281_S230_R1_001_bowtie2_sorted.bam 284_S241_R1_001_bowtie2_sorted.bam 285_S252_R1_001_bowtie2_sorted.bam 286_S263_R1_001_bowtie2_sorted.bam 287_S276_R1_001_bowtie2_sorted.bam 288_S195_R1_001_bowtie2_sorted.bam 28_S14_R1_001_bowtie2_sorted.bam 290_S207_R1_001_bowtie2_sorted.bam 291_S219_R1_001_bowtie2_sorted.bam 293_S231_R1_001_bowtie2_sorted.bam 294_S242_R1_001_bowtie2_sorted.bam 296_S253_R1_001_bowtie2_sorted.bam 297_S264_R1_001_bowtie2_sorted.bam 298_S277_R1_001_bowtie2_sorted.bam 299_S196_R1_001_bowtie2_sorted.bam 29_S26_R1_001_bowtie2_sorted.bam 2_S35_R1_001_bowtie2_sorted.bam 300_S208_R1_001_bowtie2_sorted.bam 301_S220_R1_001_bowtie2_sorted.bam 302_S232_R1_001_bowtie2_sorted.bam 303_S243_R1_001_bowtie2_sorted.bam 305_S254_R1_001_bowtie2_sorted.bam 306_S265_R1_001_bowtie2_sorted.bam 308_S278_R1_001_bowtie2_sorted.bam 310_S197_R1_001_bowtie2_sorted.bam 312_S209_R1_001_bowtie2_sorted.bam 313_S221_R1_001_bowtie2_sorted.bam 314_S233_R1_001_bowtie2_sorted.bam 315_S244_R1_001_bowtie2_sorted.bam 316_S255_R1_001_bowtie2_sorted.bam 317G09_S267_R1_001_bowtie2_sorted.bam 317_S266_R1_001_bowtie2_sorted.bam 318_S279_R1_001_bowtie2_sorted.bam 319_S198_R1_001_bowtie2_sorted.bam 31_S38_R1_001_bowtie2_sorted.bam 210_S128_R1_001_bowtie2_sorted.bam 322_S222_R1_001_bowtie2_sorted.bam 323_S234_R1_001_bowtie2_sorted.bam 324_S245_R1_001_bowtie2_sorted.bam 325_S256_R1_001_bowtie2_sorted.bam 328_S268_R1_001_bowtie2_sorted.bam 329_S280_R1_001_bowtie2_sorted.bam 32_S50_R1_001_bowtie2_sorted.bam 330_S199_R1_001_bowtie2_sorted.bam 34_S62_R1_001_bowtie2_sorted.bam 35_S74_R1_001_bowtie2_sorted.bam 36_S86_R1_001_bowtie2_sorted.bam 38_S4_R1_001_bowtie2_sorted.bam 3_S73_R1_001_bowtie2_sorted.bam 40_S15_R1_001_bowtie2_sorted.bam 41_S27_R1_001_bowtie2_sorted.bam 42_S39_R1_001_bowtie2_sorted.bam 44_S51_R1_001_bowtie2_sorted.bam 45_S63_R1_001_bowtie2_sorted.bam 46_S75_R1_001_bowtie2_sorted.bam 47_S87_R1_001_bowtie2_sorted.bam 48_S5_R1_001_bowtie2_sorted.bam 49_S16_R1_001_bowtie2_sorted.bam 4_S59_R1_001_bowtie2_sorted.bam 50_S28_R1_001_bowtie2_sorted.bam 51_S40_R1_001_bowtie2_sorted.bam 52_S52_R1_001_bowtie2_sorted.bam 53_S64_R1_001_bowtie2_sorted.bam 54_S76_R1_001_bowtie2_sorted.bam 55_S88_R1_001_bowtie2_sorted.bam 58_S6_R1_001_bowtie2_sorted.bam 59_S17_R1_001_bowtie2_sorted.bam 60_S29_R1_001_bowtie2_sorted.bam 61_S41_R1_001_bowtie2_sorted.bam 62_S53_R1_001_bowtie2_sorted.bam 63_S65_R1_001_bowtie2_sorted.bam 64_S77_R1_001_bowtie2_sorted.bam 65_S89_R1_001_bowtie2_sorted.bam 66_S7_R1_001_bowtie2_sorted.bam 67_S18_R1_001_bowtie2_sorted.bam 68_S30_R1_001_bowtie2_sorted.bam 69_S42_R1_001_bowtie2_sorted.bam 6_S71_R1_001_bowtie2_sorted.bam 70_S54_R1_001_bowtie2_sorted.bam 71_S66_R1_001_bowtie2_sorted.bam 72_S78_R1_001_bowtie2_sorted.bam 73_S90_R1_001_bowtie2_sorted.bam 74_S8_R1_001_bowtie2_sorted.bam 76_S19_R1_001_bowtie2_sorted.bam 77_S31_R1_001_bowtie2_sorted.bam 78_S43_R1_001_bowtie2_sorted.bam 79_S55_R1_001_bowtie2_sorted.bam 80_S67_R1_001_bowtie2_sorted.bam 81_S79_R1_001_bowtie2_sorted.bam 83_S91_R1_001_bowtie2_sorted.bam 85_S9_R1_001_bowtie2_sorted.bam 87_S20_R1_001_bowtie2_sorted.bam 88_S32_R1_001_bowtie2_sorted.bam 89_S44_R1_001_bowtie2_sorted.bam 8_S83_R1_001_bowtie2_sorted.bam 90_S56_R1_001_bowtie2_sorted.bam 93_S68_R1_001_bowtie2_sorted.bam 94_S80_R1_001_bowtie2_sorted.bam 95_S92_R1_001_bowtie2_sorted.bam 96_S10_R1_001_bowtie2_sorted.bam 97_S21_R1_001_bowtie2_sorted.bam 98_S33_R1_001_bowtie2_sorted.bam 9_S1_R1_001_bowtie2_sorted.bam B11_S211_R1_001_bowtie2_sorted.bam B12_S223_R1_001_bowtie2_sorted.bam B13_S235_R1_001_bowtie2_sorted.bam B14_S246_R1_001_bowtie2_sorted.bam B15_S257_R1_001_bowtie2_sorted.bam B16_S269_R1_001_bowtie2_sorted.bam B17_S281_R1_001_bowtie2_sorted.bam B2_S200_R1_001_bowtie2_sorted.bam B4_S212_R1_001_bowtie2_sorted.bam B7_S224_R1_001_bowtie2_sorted.bam B8_S236_R1_001_bowtie2_sorted.bam B9_S247_R1_001_bowtie2_sorted.bam CH28_S258_R1_001_bowtie2_sorted.bam CW192_S270_R1_001_bowtie2_sorted.bam W1_S282_R1_001_bowtie2_sorted.bam >& NMGS_Mt5_0.log
+
+source /home/hawkins/miniconda2/bin/activate
+conda list
+
+bcftools reheader -s header_NMGS.txt -o NMGS_Mt5_0_h.vcf NMGS_Mt5_0.vcf
+
+java -Xmx64g -jar ~/java/NGSEPcore_3.3.2.jar FilterVCF -saf saf_file_All.txt -q 20 -fs -fi -minI 94 -minMAF 0.05 NMGS_Mt5_0_h.vcf > NMGS_Mt5_0_1.vcf
+
+java -Xmx32g -jar ~/java/NGSEPcore_3.3.2.jar ImputeVCF NMGS_Mt5_0_1.vcf NMGS_Mt5_0_1
+
+cd ../4_sorted_bam
+
+CollectMultipleMetrics.sh
+
+mkdir 1_summary_metrics 2_distribution_by_cycle_pdf 3_distribution_by_cycle_metrics 4_quality_by_cycle_pdf 5_quality_distribution_pdf 6_quality_distribution_metrics 7_quality_by_cycle_metrics
+
+mv *alignment_summary_metrics 1_summary_metrics
+mv *distribution_by_cycle.pdf 2_distribution_by_cycle_pdf
+mv *base_distribution_by_cycle_metrics 3_distribution_by_cycle_metrics
+mv *quality_by_cycle.pdf 4_quality_by_cycle_pdf
+mv *quality_distribution.pdf 5_quality_distribution_pdf
+mv *metrics.quality_distribution_metrics 6_quality_distribution_metrics
+mv *metrics.quality_by_cycle_metrics 7_quality_by_cycle_metrics
+
+cd ../1_summary_metrics
+
+#CollectMultipleMetrics_script
+#to generate a summary file of all data from *_multiple_metrics.alignment_summary_metrics
+
+awk '/CATEGORY/{getline;print;}' *summary_metrics > all.txt
+
+file * *>> ../files.txt
+
+#To generate the format in suppermassa
+# In supermassa folder run:
+
+python VCF2SM.py -i NMGS_Mt5_0_1.vcf -o NMGS_Mt5_0_1_poly.vcf -a ACN -S ./src/SuperMASSA.py -I hw -d 4 -f 4  -p 0.80 -n 0.90 -c 0.75 -t 14
+
+#then to import into the GS rprogram (Dawkins) we change the format to numeric format using
+
+python convert-tet-vcf.py -v NMGS_Mt5_0_1_poly.vcf -o NMGS_Mt5_0_1_poly.txt -t
+
+python convert-tet-vcf.py -v NMGS_Mt5_0_1_poly.vcf -o NMGS_Mt5_0_1_poly1.txt -m 0.05 -t #to filter MAF 0.05
+
+
+
+##
+
+java -Xmx64g -jar ~/java/NGSEPcore_3.3.2.jar QualStats /home/hawkins/Documents/Cesar/NGSEP/ngsep_tutorial/Mt_5_0/MtrunA17r5.0-20161119-ANR.fasta 88_S32_R1_001_bowtie2_sorted.bam >& 88_S32_R1_001_bowtie2_readpos.stats
+
+awk '{if($5>0){a[$1]=$3;l=$1}if($1=="Alignments"){print "Read length:",l;print "Positions to ignore:";for(i=1;i<=l;i++){y=a[i]/$3;if(y>0.02)printf(" %d",i);}print "";}}' 88_S32_R1_001_bowtie2_readpos.stats
+
+java -Xmx64g -jar ~/java/NGSEPcore_3.3.2.jar QualStats /home/hawkins/Documents/Cesar/NGSEP/ngsep_tutorial/Mt_5_0/MtrunA17r5.0-20161119-ANR.fasta W1_S282_R1_001_bowtie2_sorted.bam >& W1_S282_R1_001_bowtie2_readpos.stats
+
+
+awk '/aligned 0 times/ {print $1} && /aligned exactly 1 time/ {print $1}' *.log
+
+
+awk '/aligned 0 times/ {print $1}' *.log
+awk '/aligned exactly 1 time/ {print $1}' *.log
+awk '/aligned >1 times/ {print $1}' *.log
+
+java -Xmx64g -jar ~/java/NGSEPcore_3.3.2.jar FilterVCF -saf saf_file_All.txt -q 40 -s -fs -fi -minI 94 -minMAF 0.05 NMGS_Mt5_0_h.vcf > NMGS_Mt5_0_2.vcf # 9538
+
+java -Xmx64g -jar ~/java/NGSEPcore_3.3.2.jar FilterVCF -saf saf_file_All.txt -q 40 -s -fs -fi -minI 159 -minMAF 0.05 NMGS_Mt5_0_h.vcf > NMGS_Mt5_0_3.vcf # 369
+
+java -Xmx64g -jar ~/java/NGSEPcore_3.3.2.jar FilterVCF -saf saf_file_All.txt -q 20 -s -fs -fi -minI 159 -minMAF 0.05 NMGS_Mt5_0_h.vcf > NMGS_Mt5_0_4.vcf # 6572
+
+java -Xmx64g -jar ~/java/NGSEPcore_3.3.2.jar FilterVCF -saf saf_file_All.txt -q 20 -s -fs -fi -minI 112 -minMAF 0.05 NMGS_Mt5_0_h.vcf > NMGS_Mt5_0_5.vcf # filtered minI = 60% (112) 63324
+
+java -Xmx64g -jar ~/java/NGSEPcore_3.3.2.jar FilterVCF -saf saf_file_All.txt -q 40 -s -fs -fi -minI 112 -minMAF 0.05 NMGS_Mt5_0_h.vcf > NMGS_Mt5_0_6.vcf # filtered minI = 60% (112) 5134. This not 
+
+java -Xmx64g -jar ~/java/NGSEPcore_3.3.2.jar FilterVCF -saf saf_file_All.txt -q 20 -s -fs -fi -minI 159 -minMAF 0.05 NMGS_Mt5_0_h.vcf > NMGS_Mt5_0_7.vcf # filtered mniI = 85% (159) 6572
+
+java -Xmx64g -jar ~/java/NGSEPcore_3.3.2.jar FilterVCF -saf saf_file_All.txt -q 20 -s -fs -fi -minI 130 -minMAF 0.05 NMGS_Mt5_0_h.vcf > NMGS_Mt5_0_8.vcf # filtered mniI = 70% (130) 38123 Use this parameters
+
+java -Xmx32g -jar ~/java/NGSEPcore_3.3.2.jar ImputeVCF NMGS_Mt5_0_8.vcf NMGS_Mt5_0_8
+
+java -Xmx32g -jar ~/java/NGSEPcore_3.3.2.jar ImputeVCF NMGS_Mt5_0_7.vcf NMGS_Mt5_0_7
+
+java -Xmx64g -jar ~/java/NGSEPcore_3.3.2.jar FilterVCF -q 20 -s -fs -fi -minI 238 -minMAF 0.05 NMGS_Mt5_0_h.vcf > NMGS_Mt5_0_9.vcf #281*85=238
+
+vcftools --vcf NMGS_Mt5_0_9.vcf --exclude-positions frs_file_NMGS_0_9 --recode --out NMGS_Mt5_0_10
+
+java -Xmx64g -jar ~/java/NGSEPcore_3.3.2.jar ImputeVCF NMGS_Mt5_0_10.vcf NMGS_Mt5_0_10
+
+vcftools --vcf NMGS_Mt5_0_20_159.vcf --exclude-positions frs_file_NMGS_0_20_159 --recode --out NMGS_Mt5_0_20_159_1
+
+java -Xmx64g -jar ~/java/NGSEPcore_3.3.2.jar ImputeVCF NMGS_Mt5_0_20_159_1.vcf NMGS_Mt5_0_20_159_1 #71266 sites | 159*100/281=56.5 | proportion of missing of 0.529 in CW192
+
+java -Xmx64g -jar ~/java/NGSEPcore_3.3.2.jar FilterVCF -minMAF 0.05 NMGS_Mt5_0_20_159_1_imputed.vcf > NMGS_Mt5_1 # Number of sites = 65381, nuber of taxa 281
+
+
+source /home/hawkins/miniconda2/bin/activate
+conda list
+
+bcftools reheader -s header_NMGS_Mt_5_1.txt -o NMGS_Mt5_2.vcf  NMGS_Mt5_1.vcf
+
+
+#####################################
+
+
+java -Xmx64g -jar ~/java/NGSEPcore_3.3.2.jar FilterVCF -q 40 -s -fs -fi -minI 140 -minMAF 0.05 NMGS_Mt5_0_h.vcf > NMGS_Mt5_0_9.vcf #281*0.5=140 | produce 281 taxa and 9864 sites | proportion of missing 0.37683
+
+java -Xmx64g -jar ~/java/NGSEPcore_3.3.2.jar FilterVCF -q 20 -s -fs -fi -minI 238 -minMAF 0.05 NMGS_Mt5_0_h.vcf > NMGS_Mt5_0_10.vcf #281*85=238 | produce 281 taxa and 6755 sites | proportion of missing 0.11667
+
+vcftools --exclude-positions NMGS_Mt5_0_10_frs --vcf NMGS_Mt5_0_10.vcf --recode --out NMGS_Mt5_0_10
+
+java -Xmx32g -jar ~/java/NGSEPcore_3.3.2.jar ImputeVCF -p CH28,CW192,W1 -k 3 NMGS_Mt5_0_10.vcf NMGS_Mt5_0_10 # error java.lang.IndexOutOfBoundsException: Index: 3, Size: 3
+
+java -Xmx32g -jar ~/java/NGSEPcore_3.3.2.jar ImputeVCF -p CH28,CW192,W1 NMGS_Mt5_0_10.vcf NMGS_Mt5_0_10
+
+java -Xmx32g -jar ~/java/NGSEPcore_3.3.2.jar FilterVCF -minMAF 0.05 NMGS_Mt5_0_10_imputed.vcf > NMGS_Mt5_0_11.vcf #| produce 281 taxa and 5658 sites | this version has to be refilter by MAF 0.05
+
+java -Xmx64g -jar ~/java/NGSEPcore_3.3.2.jar Annotate NMGS_Mt5_0_11.vcf /home/hawkins/Documents/Cesar/NGSEP/ngsep_tutorial/Mt_5_0/MtrunA17r5.0-ANR-EGN-r1.6.gff3 /home/hawkins/Documents/Cesar/NGSEP/ngsep_tutorial/Mt_5_0/MtrunA17r5.0-20161119-ANR.fasta > NMGS_Mt5_0_12.vcf
+
+java -Xmx32g -jar ~/java/NGSEPcore_3.3.2.jar SummaryStats -m 281 NMGS_Mt5_0_12.vcf > NMGS_Mt5_0_12.log
+
+java -jar NGSEPcore_3.3.3.jar ConvertVCF -printGWASPoly NMGS_Mt5_0_12.vcf NMGS_Mt5_0_12_GWASPoly.txt
+
+
+vcftools --vcf AllSamples_Ms_filter_q30_imputed_Ubuntuu_Annotated.vcf --chr Chr1 --chr Chr2 --chr Chr3 --chr Chr4 --chr Chr5 --chr Chr6 --chr Chr7 --chr Chr8 --recode --recode-INFO-all --out AllSamples_Ms_filter_q30_imputed_no_contigs
+
+java -Xmx64g -jar NGSEPcore_4.3.1.jar VCFConverter -plink -i AllSamples_Ms_filter_q30_imputed_no_contigs.recode.vcf -o AllSamples_Ms_filter_q30
+
+java -Xmx64g -jar NGSEPcore_4.3.1.jar VCFConverter -haploview -i AllSamples_Ms_filter_q30_imputed_no_contigs.recode.vcf -o AllSamples_Ms_filter_q30
+
+# Chr1
+vcftools --vcf AllSamples_Ms_filter_q30_imputed_no_contigs.recode.vcf --chr Chr1 --recode --recode-INFO-all --out AllSamples_Chr1
+java -Xmx64g -jar NGSEPcore_4.3.1.jar VCFConverter -haploview -i AllSamples_Chr1.recode.vcf -o AllSamples_Chr1
+
+# Chr2
+vcftools --vcf AllSamples_Ms_filter_q30_imputed_no_contigs.recode.vcf --chr Chr2 --recode --recode-INFO-all --out AllSamples_Chr2
+java -Xmx64g -jar NGSEPcore_4.3.1.jar VCFConverter -haploview -i AllSamples_Chr2.recode.vcf -o AllSamples_Chr2
+
+# Chr3
+vcftools --vcf AllSamples_Ms_filter_q30_imputed_no_contigs.recode.vcf --chr Chr3 --recode --recode-INFO-all --out AllSamples_Chr3
+java -Xmx64g -jar NGSEPcore_4.3.1.jar VCFConverter -haploview -i AllSamples_Chr3.recode.vcf -o AllSamples_Chr3
+
+# Chr4
+vcftools --vcf AllSamples_Ms_filter_q30_imputed_no_contigs.recode.vcf --chr Chr4 --recode --recode-INFO-all --out AllSamples_Chr4
+java -Xmx64g -jar NGSEPcore_4.3.1.jar VCFConverter -haploview -i AllSamples_Chr4.recode.vcf -o AllSamples_Chr4
+
+#Chr5
+vcftools --vcf AllSamples_Ms_filter_q30_imputed_no_contigs.recode.vcf --chr Chr5 --recode --recode-INFO-all --out AllSamples_Chr5
+java -Xmx64g -jar NGSEPcore_4.3.1.jar VCFConverter -haploview -i AllSamples_Chr5.recode.vcf -o AllSamples_Chr5
+
+#Chr6
+vcftools --vcf AllSamples_Ms_filter_q30_imputed_no_contigs.recode.vcf --chr Chr6 --recode --recode-INFO-all --out AllSamples_Chr6
+java -Xmx64g -jar NGSEPcore_4.3.1.jar VCFConverter -haploview -i AllSamples_Chr6.recode.vcf -o AllSamples_Chr6
+
+#Chr7
+vcftools --vcf AllSamples_Ms_filter_q30_imputed_no_contigs.recode.vcf --chr Chr7 --recode --recode-INFO-all --out AllSamples_Chr7
+java -Xmx64g -jar NGSEPcore_4.3.1.jar VCFConverter -haploview -i AllSamples_Chr7.recode.vcf -o AllSamples_Chr7
+
+#Chr8
+vcftools --vcf AllSamples_Ms_filter_q30_imputed_no_contigs.recode.vcf --chr Chr8 --recode --recode-INFO-all --out AllSamples_Chr8
+java -Xmx64g -jar NGSEPcore_4.3.1.jar VCFConverter -haploview -i AllSamples_Chr8.recode.vcf -o AllSamples_Chr8
+
+java -Xmx64g -jar NGSEPcore_4.3.1.jar VCFFilter -srs srs_crom.txt -i AllSamples_Ms_filter_q30_imputed_no_contigs.recode.vcf -o AllSamples_Ms_filter_q30_imputed.vcf
+
+java -Xmx64g -jar NGSEPcore_4.3.1.jar VCFConverter -haploview -i AllSamples_Ms_filter_q30_imputed.vcf -o AllSamples_Ms_GWAS
+
+java -Xmx64g -jar NGSEPcore_4.3.1.jar VCFFilter -srs srs_crom1.txt -i AllSamples_Ms_filter_q30_imputed_no_contigs.recode.vcf -o AllSamples_Ms_filter_q30_imputed_5.vcf
+
+java -Xmx64g -jar NGSEPcore_4.3.1.jar VCFConverter -haploview -i AllSamples_Ms_filter_q30_imputed_5.vcf -o AllSamples_Ms_GWAS_5
+
+./plink --file AllSamples_Ms_filter_q30_plink --r2
+
+
+
+

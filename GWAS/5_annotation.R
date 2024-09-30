@@ -18,12 +18,22 @@ library(devtools)
 library(sommer)
 
 setwd("~/Documents/git/big_files/")
-load("Yi_st2_51081_sqrt.RData")
-load("Yi_st1_51081_sqrt.RData")
-load("data_Yi_DS_20.RData")
 
+load("~/Documents/git/big_files/Yi_st1_51081_sqrt.RData")
+data_3 <- set.threshold(Yi_data_3, method= "Bonferroni", level=0.05)
+QTL_03 <- get.QTL(data_3)
+
+load("~/Documents/git/big_files/Yi_st2_51081_sqrt.RData")
+data_4 <- set.threshold(Yi_data_3, method= "Bonferroni", level=0.05)
+QTL_04 <- get.QTL(data_4)
+
+load("~/Documents/git/big_files/data_Yi_DS_20.RData")
 data_5 <- set.threshold(Yi_data_3, method= "Bonferroni", level=0.05)
-QTL_01 <- get.QTL(data_5)
+QTL_05 <- get.QTL(data_5)
+
+QTL_06 <- rbind(QTL_03, QTL_04, QTL_05)
+QTL_06.1 <- QTL_06 %>% distinct(Marker, .keep_all = T)
+
 
 # Tidy --------------------------------------------------------------------
 
@@ -72,28 +82,35 @@ txdb <- readBed(file, track.line = FALSE, remove.unusual = FALSE,
 head(txdb)
 mean(txdb$thickEnd-txdb$thickStart)
 
-
 col_headings_2 <- c('gene_id',	'isoform')
 
-QTL_02 <- QTL_07_8 %>% separate(1, c("chrom", "pos"), sep = "_", remove = TRUE, convert = FALSE, extra = "warn") 
-QTL_02$chrom <- as.factor(QTL_02$chrom)
-QTL_02$pos <- as.numeric(QTL_02$pos)
+
+QTL_06 <- rbind(QTL_03, QTL_04, QTL_05)
+QTL_06.1 <- QTL_06 %>% distinct(Marker, .keep_all = T)
+
+QTL_06.1$Chrom <- as.factor(QTL_06.1$Chrom)
+QTL_06.1$Position <- as.numeric(QTL_06.1$Position)
 
 # genes in the same marker position
-# gr5 <- GRanges(seqnames = QTL_02$chrom,
-#                ranges = IRanges(QTL_02$pos, width = 1))
-# overlaps <- join_overlap_left(gr5, txdb)
+
+gr5 <- GRanges(seqnames = QTL_06.1$Chrom,
+               ranges = IRanges(QTL_06.1$Position, width = 1))
+overlaps <- join_overlap_left(gr5, txdb)
 
 df2 <- annoGR2DF(overlaps)
-df2 <- df2 %>% unite(col = "Marker1", 1:2, sep = "_", remove = T) %>% distinct(Marker1, .keep_all = TRUE) %>% dplyr::select(1,5) 
+df2 <- df2 %>% unite(col = "Marker", 1:2, sep = "_", remove = T) %>% distinct(Marker, .keep_all = TRUE) %>% dplyr::select(1,5) 
 head(df2)
 
-head(df3)
+head(i_5.2.8)
 head(anno2)
 df3 <- df2 %>% separate(2, col_headings_2, sep = ";", remove = TRUE, convert = FALSE, extra = "warn") %>% inner_join(., i_5.2.8, by = "gene_id")
+head(df3)
 
 df3 <- df2 %>% separate(2, col_headings_2, sep = ";", remove = TRUE, convert = FALSE, extra = "warn") %>% left_join(., anno2, by = "isoform")
 
+df3 <- df2 %>% separate(2, col_headings_2, sep = ";", remove = TRUE, convert = FALSE, extra = "warn") %>% inner_join(., anno2, by = "isoform")
+
+df4 <- na.omit(df3) 
 
 QTL_08 <- inner_join(QTL_07, df3, by = "Marker1")
 
@@ -101,18 +118,37 @@ setwd("~/Documents/git/big_files/")
 write.table(QTL_08, "markers_DS.tsv", row.names = F, quote = F, sep = "\t")
 
 # using a range of 10 kb upstream and 10 kb downstream
-gr6 <- GRanges(seqnames = QTL_02$chrom,
-               ranges = IRanges(start=QTL_02$pos - 10000, end=QTL_02$pos + 10000, width=20001))
+# using a range of 1 kb upstream and 1 kb downstream
+gr6 <- GRanges(seqnames = QTL_06.1$Chrom,
+               ranges = IRanges(start=QTL_06.1$Position - 1000, end=QTL_06.1$Position + 1000, width=2001))
 gr6
 
 overlaps <- join_overlap_left(gr6, txdb)
 
 df2 <- annoGR2DF(overlaps)
-df2 <- df2 %>% unite(col = "Marker1", 1:2, sep = "_", remove = T) %>% distinct(name, .keep_all = TRUE) %>% dplyr::select(1,5) 
-head(df2)
 
-df3 <- df2 %>% separate(2, col_headings_2, sep = ";", remove = TRUE, convert = FALSE, extra = "warn") %>% left_join(., anno2, by = "isoform") %>% distinct(gene_id, .keep_all = TRUE)
+df2 <- df2 %>% separate(col = "name", into = c("gene", "isoform"), sep = ";", remove = T) %>% distinct(gene, .keep_all = TRUE)
+
+df2$Position <- df2$start + 1000
+
+df3 <- df2 %>% left_join(., anno2, by = "isoform")
+colnames(df3)
 head(df3)
+
+# df3 <- df3 %>% dplyr::select("chr","thickStart","thickEnd","Position","Uniprot")
+# 
+# colnames(df3)[1] <- "Chrom"
+df3 <- df3 %>% unite(col = "Marker", sep = "_", c("chr","Position"), remove = F)
+
+# df3 <- df2 %>% separate(2, col_headings_2, sep = ";", remove = TRUE, convert = FALSE, extra = "warn") %>% left_join(., anno2, by = "isoform") %>% distinct(gene_id, .keep_all = TRUE)
+head(df3)
+dim(df3)
+
+df4 <- df3 %>% dplyr::select(Marker, Uniprot)
+colnames(df4)[2] <- "UniProt"
+df4 <- na.omit(df4)
+head(df4)
+df4$new <- 1
 
 setwd("~/Documents/git/big_files/")
 # write.csv(df3, "markers_DS1.csv", row.names = F, quote = F)
@@ -137,3 +173,18 @@ cc <- dplyr::count(GO2, term)
 setwd("~/Documents/git/big_files/")
 write.table(cc, "count_GO.tsv", row.names = F, quote = F, sep = "\t")
 write.table(GO2, "markers_Yi_GO2.tsv", row.names = F, quote = F, sep = "\t")
+
+setwd("~/Documents/git/big_files/")
+anno1 <- read.csv("roza_2019_anno.csv")
+head(anno1)
+dim(anno1)
+
+head(df3)
+dim(df3)
+colnames(df3)[1] <- "Marker"
+
+anno3 <- inner_join(anno1, df4, by = c("Marker","UniProt"))
+
+anno3 <- left_join(anno1, df4, by = c("Marker","UniProt"))
+setwd("~/Documents/git/big_files/")
+write.table(anno3, "roza_2019_anno1.csv", row.names = F, quote = F, sep = "\t")

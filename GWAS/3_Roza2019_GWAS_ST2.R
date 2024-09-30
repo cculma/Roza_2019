@@ -51,3 +51,20 @@ lev0 <- unique(QTL_01$Trait)
 
 M1 <- manhattan.plot(data = data_5, traits = lev0) + theme_classic(base_family = "Arial", base_size = 12) + theme(legend.position = "none", axis.title.x=element_blank(), axis.text.x=element_blank(), axis.ticks.x=element_blank(), axis.title.y = element_text(size = 12), plot.tag = element_blank()) 
 ggsave(filename = "~/Documents/git/big_files/M1_sqrt.jpg", plot = M1, width = 16, height = 16)
+
+
+cc <- dplyr::count(QTL_01, Trait)
+
+QTL_02 <- QTL_01 %>% dplyr::filter(Trait == "yi_may")
+QTL_02 <- QTL_01 %>% dplyr::filter(Trait == "yi_jun")
+QTL_02 <- QTL_01 %>% dplyr::filter(Trait == "yi_jul")
+QTL_02 <- QTL_01 %>% dplyr::filter(Trait == "yi_aug")
+QTL_02 <- QTL_01 %>% dplyr::filter(Trait == "yi_sep")
+
+QTL_02 <- QTL_01 %>% dplyr::filter(Trait == "yi_2020")
+QTL_02 <- QTL_01 %>% dplyr::filter(Trait == "yi_2021")
+QTL_02 <- QTL_01 %>% dplyr::filter(Trait == "yi_2022")
+QTL_02 <- QTL_01 %>% dplyr::filter(Trait == "yi_2023")
+
+QTL_02 <- QTL_01 %>% dplyr::filter(Trait == "yi_hrv")
+QTL_02 <- QTL_02 %>% distinct(Marker, .keep_all = T)

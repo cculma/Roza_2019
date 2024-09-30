@@ -1,4 +1,5 @@
 
+setwd("~/medin297@umn.edu - Google Drive/My Drive/Roza2019/BI_Project_11/")
 setwd("~/Documents/git/big_files/")
 rm(list = ls())
 
@@ -13,6 +14,66 @@ load("ldout_Roza2019.RData")
 summary(mout[["snpdf"]][["prop_mis"]]) # 0.16575
 summary(mout[["snpdf"]][["od"]]) # 0.008906
 summary(mout[["snpdf"]][["bias"]]) # 1.11057
+vcf2 <- readVcf("Roza_2019.vcf")
+
+any(elementNROWS(rowRanges(vcf2)$ALT) > 1)
+
+BSDP <- geno(vcf2)$BSDP
+dim(BSDP) # 62839   499     4
+dimnames(BSDP)[[3]] <- c("A","C","G","T")
+
+altvec <- unlist(CharacterList(rowRanges(vcf2)$ALT))
+refvec <- as.character(rowRanges(vcf2)$REF)
+stopifnot(length(altvec) == length(refvec))
+
+refmat <- matrix(NA_real_, nrow = dim(BSDP)[[1]], ncol = dim(BSDP)[[2]])
+altmat <- matrix(NA_real_, nrow = dim(BSDP)[[1]], ncol = dim(BSDP)[[2]])
+dimnames(refmat) <- dimnames(BSDP)[1:2]
+dimnames(altmat) <- dimnames(BSDP)[1:2]
+
+for (i in seq_len(nrow(refmat))) {
+  refmat[i, ] <- BSDP[i, , refvec[[i]]]
+  altmat[i, ] <- BSDP[i, , altvec[[i]]]
+}
+
+sizemat <- refmat + altmat
+
+mout <- multidog(refmat = refmat,
+                 sizemat = sizemat,
+                 ploidy = 4,
+                 model = "norm",
+                 nc = 50)
+
+setwd("~/Documents/git/big_files/")
+# save(mout, file = "mout_Roza2019.RData")
+load("mout_Roza2019.RData")
+
+# ldsep -------------------------------------------------------------------
+
+nrow(mout$snpdf) # 62839
+mout$snpdf[1:5,1:5]
+class(mout)
+hist(mout$snpdf$prop_mis)
+summary(mout[["snpdf"]][["prop_mis"]]) # 0.16575
+summary(mout[["snpdf"]][["od"]]) # 0.008906
+summary(mout[["snpdf"]][["bias"]]) # 1.11057
+msub <- filter_snp(mout, prop_mis < 0.16575 & od < 0.008906 & bias < 1.11057) 
+
+msub$snpdf[1:5,1:5]
+dim(msub$snpdf) # 39611    20
+
+ploidy <- 4
+# gp <- format_multidog(x = msub, varname = paste0("Pr_", 0:ploidy))
+# class(gp)
+# dim(gp) # 39611   499     5
+# ldout <- ldfast(gp = gp, type = "r2")
+
+setwd("~/Documents/git/big_files/")
+# save(ldout, file = "ldout_Roza2019.RData")
+load("ldout_Roza2019.RData")
+
+dim(ldout$ldmat)
+ldout$ldmat[1:5,1:5]
 
 msub <- filter_snp(mout, prop_mis < 0.16575 & od < 0.008906 & bias < 1.11057) 
 dim(msub$snpdf) # 25609    20
