@@ -28,3 +28,4 @@ names(L6_nph) <- list2
 save(L6_nph, file = "L6_nph.RData")
 
 ##############
+D1[1:5,1:5]

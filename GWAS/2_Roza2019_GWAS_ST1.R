@@ -34,17 +34,51 @@ data_1 <- read.GWASpoly(ploidy=4,
 data_2 <- set.K(data = data_1, LOCO = T, n.core = 16)
 Yi_data_3 <- GWASpoly(data = data_2, models = models_1, traits = trait1, params = params, n.core = 16)
 
-save(Yi_data_3, file = "~/Documents/git/big_files/Yi_st1_51081_sqrt.RData") # data sqrt transformed
+# save(Yi_data_3, file = "~/Documents/git/big_files/Yi_st1_51081_sqrt.RData") # data sqrt transformed
 
 # load("~/Documents/git/big_files/Yi_st1_51081_sqrt.RData")
 
 data_5 <- set.threshold(Yi_data_3, method= "Bonferroni", level=0.05)
 QTL_01 <- get.QTL(data_5)
 
-QTL_02 <- QTL_01 %>% distinct(QTL_01$Marker, .keep_all = T)
 
-lev0 <- unique(QTL_01$Trait)
+
+# lev0 <- unique(QTL_01$Trait)
 
 M0 <- manhattan.plot(data = data_5, traits = lev0) + theme_classic(base_family = "Arial", base_size = 12) + theme(legend.position = "none", axis.title.x=element_blank(), axis.text.x=element_blank(), axis.ticks.x=element_blank(), axis.title.y = element_text(size = 12), plot.tag = element_blank()) 
 ggsave(filename = "~/Documents/git/big_files/M0_sqrt.jpg", plot = M0, width = 16, height = 16)
+
+
+
+# count markers -----------------------------------------------------------
+
+cc <- dplyr::count(QTL_01, Trait)
+
+
+QTL_02 <- QTL_01 %>% dplyr::filter(Trait == "may_20")
+QTL_02 <- QTL_01 %>% dplyr::filter(Trait == "may_21")
+QTL_02 <- QTL_01 %>% dplyr::filter(Trait == "may_22")
+QTL_02 <- QTL_01 %>% dplyr::filter(Trait == "may_23")
+
+QTL_02 <- QTL_01 %>% dplyr::filter(Trait == "jun_20")
+QTL_02 <- QTL_01 %>% dplyr::filter(Trait == "jun_21")
+QTL_02 <- QTL_01 %>% dplyr::filter(Trait == "jun_22")
+QTL_02 <- QTL_01 %>% dplyr::filter(Trait == "jun_23")
+
+QTL_02 <- QTL_01 %>% dplyr::filter(Trait == "jul_20")
+QTL_02 <- QTL_01 %>% dplyr::filter(Trait == "jul_21")
+QTL_02 <- QTL_01 %>% dplyr::filter(Trait == "jul_22")
+QTL_02 <- QTL_01 %>% dplyr::filter(Trait == "jul_23")
+
+QTL_02 <- QTL_01 %>% dplyr::filter(Trait == "aug_20")
+QTL_02 <- QTL_01 %>% dplyr::filter(Trait == "aug_21")
+QTL_02 <- QTL_01 %>% dplyr::filter(Trait == "aug_22")
+QTL_02 <- QTL_01 %>% dplyr::filter(Trait == "aug_23")
+
+QTL_02 <- QTL_01 %>% dplyr::filter(Trait == "sep_20")
+QTL_02 <- QTL_01 %>% dplyr::filter(Trait == "sep_21")
+QTL_02 <- QTL_01 %>% dplyr::filter(Trait == "sep_22")
+QTL_02 <- QTL_01 %>% dplyr::filter(Trait == "sep_23")
+QTL_02 <- QTL_02 %>% distinct(Marker, .keep_all = T)
+
 

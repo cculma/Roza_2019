@@ -153,3 +153,17 @@ df3 <- df2 %>% separate(2, col_headings_2, sep = ";", remove = TRUE, convert = F
 
 setwd("~/Documents/git/big_files/")
 write.csv(df3, "markers_DS1.csv", row.names = F, quote = F)
+
+
+
+# count markers -----------------------------------------------------------
+
+cc <- dplyr::count(QTL_01, Trait)
+
+QTL_02 <- QTL_01 %>% dplyr::filter(Trait == "X20")
+QTL_02 <- QTL_01 %>% dplyr::filter(Trait == "X21")
+QTL_02 <- QTL_01 %>% dplyr::filter(Trait == "X22")
+QTL_02 <- QTL_01 %>% dplyr::filter(Trait == "X23")
+
+
+QTL_02 <- QTL_02 %>% distinct(Marker, .keep_all = T)

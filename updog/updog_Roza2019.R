@@ -1,4 +1,5 @@
 
+setwd("~/medin297@umn.edu - Google Drive/My Drive/Roza2019/BI_Project_11/")
 setwd("~/Documents/git/big_files/")
 rm(list = ls())
 
@@ -8,8 +9,7 @@ library(updog)
 library(future)
 library(ldsep)
 
-vcf1 <- read.vcfR("Roza2019_04.vcf")
-vcf2 <- readVcf("Roza2019_04.vcf")
+vcf2 <- readVcf("Roza_2019.vcf")
 
 any(elementNROWS(rowRanges(vcf2)$ALT) > 1)
 
@@ -41,7 +41,7 @@ mout <- multidog(refmat = refmat,
 
 setwd("~/Documents/git/big_files/")
 # save(mout, file = "mout_Roza2019.RData")
-# load("mout_Roza2019.RData")
+load("mout_Roza2019.RData")
 
 # ldsep -------------------------------------------------------------------
 
@@ -49,24 +49,23 @@ nrow(mout$snpdf) # 62839
 mout$snpdf[1:5,1:5]
 class(mout)
 hist(mout$snpdf$prop_mis)
-summary(mout[["snpdf"]][["prop_mis"]]) # 0.008906
-summary(mout[["snpdf"]][["od"]]) # 0.010726
+summary(mout[["snpdf"]][["prop_mis"]]) # 0.16575
+summary(mout[["snpdf"]][["od"]]) # 0.008906
 summary(mout[["snpdf"]][["bias"]]) # 1.11057
-msub <- filter_snp(mout, prop_mis < 0.5 & od < 0.010726 & bias < 1.11057) 
+msub <- filter_snp(mout, prop_mis < 0.16575 & od < 0.008906 & bias < 1.11057) 
 
 msub$snpdf[1:5,1:5]
 dim(msub$snpdf) # 39611    20
 
 ploidy <- 4
-gp <- format_multidog(x = msub, varname = paste0("Pr_", 0:ploidy))
-class(gp)
-dim(gp) # 39611   499     5
-
-ldout <- ldfast(gp = gp, type = "r2")
+# gp <- format_multidog(x = msub, varname = paste0("Pr_", 0:ploidy))
+# class(gp)
+# dim(gp) # 39611   499     5
+# ldout <- ldfast(gp = gp, type = "r2")
 
 setwd("~/Documents/git/big_files/")
-save(ldout, file = "ldout_Roza2019.RData")
-# load("ldout_Roza2019.RData")
+# save(ldout, file = "ldout_Roza2019.RData")
+load("ldout_Roza2019.RData")
 
 dim(ldout$ldmat)
 ldout$ldmat[1:5,1:5]
