@@ -106,13 +106,17 @@ New files are saved in Box: `Roza2019_06_GWASPoly.txt` is the file for GWASpoly 
 
 Table 1. Summary of VCF files generated during the process.
 
-| ID | File                     | Ind | Markers |
-|----|--------------------------|-----|---------|
-| 1  | Roza2019_01.vcf          | 499 | 1847214 |
-| 2  | Roza2019_02.vcf          | 499 | 243454  |
-| 3  | Roza2019_03_imputed.vcf  | 499 | 243454  |
-| 4  | Roza2019_04.vcf          | 499 | 62839   |
-| 5  | Roza2019_06_GWASPoly.txt | 424 | 51081   |
+| ID | File                     | Ind | Markers | Imputed | Annotated |
+|----|--------------------------|-----|---------|---------|-----------|
+| 1  | Roza2019_01.vcf          | 499 | 1847214 | F       | F         |
+| 2  | Roza2019_02.vcf          | 499 | 243454  | F       | F         |
+| 3  | Roza2019_03_imputed.vcf  | 499 | 243454  | T       | F         |
+| 4  | Roza2019_04.vcf          | 499 | 62839   | T       | F         |
+| 5  | Roza2019_06_GWASPoly.txt | 424 | 51081   | T       | F         |
+| 6  | Roza2019_07.vcf          | 499 | 396663  | F       | F         |
+| 7  | Dif_02_07 (indels + ssr) | 499 | 153209  | F       | F         |
+| 8  | Roza2019_05.vcf          | 499 | 51081   | T       | F         |
+| 9  | Roza2019_06.vcf          | 499 | 51081   | T       | T         |
 
 ## BLUEs and BLUPs
 
