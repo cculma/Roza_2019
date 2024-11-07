@@ -11,8 +11,9 @@ library(doParallel)
 library(iterators)
 library(foreach)
 library(gbm)
-library(rrBLUP)
+
 library(e1071)
+
 library(caret)
 library(dplyr)
 library(ranger)
@@ -26,40 +27,61 @@ cl <- makePSOCKcluster(40)
 registerDoParallel(cl)
 #################
 
-setwd("~/Documents/Cesar/blup_data/Roza2019/GS1")
-
 setwd("~/Documents/git/big_files/")
-# Y <- read.csv("/home/hawkins/Documents/Cesar/blup_data/Roza2019/GWASPOLY/BLUP_BLUE.1.csv", header = T)
-
 Y <- read.csv("BLUE_Yi_sqrt_SpATS_DArT.csv", header = T)
 
 colnames(Y)
 head(Y)
-Y <- Y[,-c(24:26)]
+Y <- Y[,c(1:19)]
 Y1 <- na.omit(Y) 
 
 G <- read.table("Roza2019_06_GS.txt", header = TRUE, check.names = F)
-
 G[1:5,1:5]
-dim(G)
-
+dim(G) # 424 51081
 common <- intersect(Y1$Roza2019_VCF_ID,rownames(G))
 
 marks <- G[common,]
 marks[1:5,1:5]
-dim(marks)
-Y2 <- Y1[match(common, Y1$Roza2019_VCF_ID),]
-dim(Y2)
-dim(marks)
+dim(marks) # 424 51081
+class(marks)
 
+marks.1 <- marks %>% dplyr::select(contains("chr1.1_"))
+marks.2 <- marks %>% dplyr::select(contains("chr2.1_"))
+marks.3 <- marks %>% dplyr::select(contains("chr3.1_"))
+marks.4 <- marks %>% dplyr::select(contains("chr4.1_"))
+marks.5 <- marks %>% dplyr::select(contains("chr5.1_"))
+marks.6 <- marks %>% dplyr::select(contains("chr6.1_"))
+marks.7 <- marks %>% dplyr::select(contains("chr7.1_"))
+marks.8 <- marks %>% dplyr::select(contains("chr8.1_"))
+
+
+
+Y2 <- Y1[match(common, Y1$Roza2019_VCF_ID),]
+dim(Y2) # 424  19
 Y2 <- Y2 %>% remove_rownames() %>% column_to_rownames(var = "Roza2019_VCF_ID")
 colnames(Y2)
 Y3 <- Y2[,1,drop = F]
-data <- merge(as.data.frame(Y3), as.data.frame(marks), by = 'row.names', all = TRUE)
+data <- merge(as.data.frame(Y3), as.data.frame(marks.1), by = 'row.names', all = TRUE)  %>% column_to_rownames(var = 'Row.names')
 data[1:5,1:5]
-Y4 <- as.matrix(data %>% remove_rownames() %>% column_to_rownames(var = 'Row.names'))
-Y4[1:5,1:5]
-dim(Y4)
+data <- na.omit(data)
+
+# var_imp -----------------------------------------------------------------
+
+ctrl <- trainControl(method = 'cv', number = 10, savePredictions = 'final')
+svm1 <- train(may_20 ~., data = data, method = "svmRadial", trControl = ctrl)
+imp_svm1 <- varImp(svm1, scale = T)$importance
+imp_svm1 <- varImp(svm1, scale = T)
+imp_svm1 <- imp_svm1$importance
+hist(imp_svm1$Overall)
+colnames(imp_svm1)[1] <- "svm"
+
+colnames(pheno1)[1] <- "pheno"
+print(dim(pheno1))
+pheno1 <- na.omit(pheno1)
+
+svm1 <- train(pheno ~., data = pheno1, method = "svmRadial", trControl = ctrl, tuneLength = 4)
+
+
 
 
 #################
