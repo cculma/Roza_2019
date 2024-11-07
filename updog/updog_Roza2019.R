@@ -102,7 +102,7 @@ save(ldout, file = "ldout_Roza2019.RData")
 # load("ldout_Roza2019.RData")
 
 R2 <- ldout$ldmat
-dim(R2)
+dim(R2) # 25609 25609
 length(lev2$lev1)
 colnames(R2) <- rownames(R2) <- lev2$lev1
 
@@ -162,7 +162,8 @@ colnames(R3)[5] <- "rsq"
 R3 <- R3[R3$dist != "NaN",]
 
 setwd("~/Documents/git/big_files/")
-save(R3, file = "R3_Roza2019.RData")
+# save(R3, file = "R3_Roza2019.RData")
+load("R3_Roza2019.RData")
 
 rm(N)
 N = 436

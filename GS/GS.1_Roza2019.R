@@ -1,4 +1,5 @@
 rm(list=ls()) 
+
 library(neuralnet)
 library(superpc)
 library(xgboost)
@@ -39,8 +40,6 @@ t26 <- Roza2019_num_mat
 t26[1:5,1:10]
 ?write.GWASpoly
 write.GWASpoly(data_6, )
-?GWASpoly
-library(GWASpoly)
 
 LD.plot(data_6, max.pair = 10000, dof = 8)
 
