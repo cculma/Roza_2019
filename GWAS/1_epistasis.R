@@ -14,6 +14,10 @@ library(plyranges)
 library(Repitools)
 library(devtools)
 library(GWASpoly)
+library(varhandle)
+
+install.packages("grr")
+
 # run epiMEIF in git 
 
 source("~/Documents/git/epiMEIF/codes/Interaction_Score_RandomForest.R")
@@ -21,6 +25,8 @@ source("~/Documents/git/epiMEIF/codes/Interactions_Score_Age1.R")
 source("~/Documents/git/epiMEIF/codes/Interactions_Score_Ageing.R")
 source("~/Documents/git/epiMEIF/codes/MEIF.R")
 
+ls()
+library(Rcpp)
 
 setwd("~/Documents/git/big_files/")
 load("yield_DS.RData")
