@@ -25,7 +25,7 @@ head(pheno)
 trait1 <- c("X20","X21","X22","X23")
 trait1 <- colnames(pheno)[2:(length(colnames(pheno))-4)]
 trait1
-
+?set.params
 params <- set.params(fixed=c("PC1","PC2","PC3","Stress"),
                      fixed.type= c("numeric","numeric","numeric","factor"), n.PC = 3, P3D = F)
 

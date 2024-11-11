@@ -4,6 +4,11 @@ library(ASRtriala)
 library(tidyverse)
 library(svglite)
 library(ggrepel)
+library(ggpubr)
+library(svglite)
+library(stringr)
+library(ggpmisc)
+
 setwd("~/Documents/git/big_files/")
 C1 <- read.csv("BLUP_Yi_sqrt_SpATS_DArT.csv")
 PCA <- read.csv("PCA_Roza2019.csv")
@@ -162,3 +167,63 @@ ggplot() +
   geom_line(data = Means, mapping = aes(x = X, y = Avg))
 
 
+setwd("~/Documents/git/Roza_2019/Stability/")
+
+S1 <- read.csv("stab3.csv", row.names = 1)
+head(S1)
+cor(S1)
+
+
+formula <- y ~ x
+formula1 <- y ~ x + I(x^2)
+formula2 <- y ~ x + I(x^2) + I(x^3)
+
+
+P1 <- ggscatter(S1, x = "g_ST1", y = "static_ST1", add = "reg.line",fullrange = T,rug = F, alpha = 0.4) + stat_cor(aes(label = after_stat(rr.label)), label.x = 200)
+P1
+
+setwd("~/medin297@umn.edu - Google Drive/My Drive/Roza2019/figs/")
+svglite(filename = "Stability_ST1.1.svg", width = 4, height = 3, fix_text_size = F)
+plot(P1)
+invisible(dev.off())
+
+P2 <- ggscatter(S1, x = "g_ST2", y = "static_ST2", add = "reg.line",fullrange = T,rug = F, alpha = 0.4) + stat_cor(aes(label = after_stat(rr.label)), label.x = 200)
+P2
+setwd("~/medin297@umn.edu - Google Drive/My Drive/Roza2019/figs/")
+svglite(filename = "Stability_ST2.1.svg", width = 4, height = 3, fix_text_size = F)
+plot(P2)
+invisible(dev.off())
+
+
+ggplot(data = S1, aes(x = g_ST2, y = static_ST2, 1)) +
+  stat_poly_line(formula = formula, color = "black", se = F, geom = "smooth") + theme_classic(base_family = "Arial", base_size = 14) + stat_poly_eq(use_label(c("R2", "p.value.label", "eq")), formula = formula)
+
+p3 <- ggplot(data = S1, aes(x = g_ST1, y = static_ST1, 1)) +
+  stat_poly_line(formula = formula1, color = "black", se = F, geom = "smooth") + theme_classic(base_family = "Arial", base_size = 14) + stat_poly_eq(use_label(c("adj.R2", "p.value.label", "eq")), formula = formula1)
+p3
+
+
+S2 <- S1
+
+S2$static_ST1 <- scale(S2$static_ST1) * (-1)
+S2$g_ST1 <- scale(S2$g_ST1)
+
+hist(S2$static_ST1)
+hist(S2$g_ST1)
+
+ggscatter(S2, x = "g_ST1", y = "static_ST1", add = "reg.line",fullrange = T,rug = F, alpha = 0.4) 
+
+setwd("~/Documents/git/big_files/")
+PCA <- read.csv("PCA_Roza2019.csv")
+head(S2)
+S2 <- S2 %>% rownames_to_column("Plant_ID") %>% dplyr::select(Plant_ID, g_ST1, static_ST1)
+head(PCA)
+PCA <- PCA %>% dplyr::select(Plant_ID, Roza2019_VCF_ID, PC1, PC2, PC3)
+PCA$Plant_ID <- as.character(PCA$Plant_ID)
+
+S2 <- inner_join(S2, PCA, by = "Plant_ID")
+S2 <- S2 %>% dplyr::select(-Plant_ID) %>% relocate(Roza2019_VCF_ID, .before = g_ST1)
+head(S2)
+
+setwd("~/Documents/git/big_files/")
+write.csv(S2, "yield_shulka.csv", quote = F, row.names = F)
