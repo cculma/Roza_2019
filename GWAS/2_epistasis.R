@@ -21,13 +21,13 @@ library(sommer)
 library(GWASpoly)
 # run epiMEIF in git 
 
-source("~/Documents/git/epiMEIF/codes/Interaction_Score_RandomForest.R")
+
 source("~/Documents/git/epiMEIF/codes/Interactions_Score_Age1.R")
-source("~/Documents/git/epiMEIF/codes/Interactions_Score_Ageing.R")
-source("~/Documents/git/epiMEIF/codes/MEIF.R")
+# source("~/Documents/git/epiMEIF/codes/Interactions_Score_Ageing.R")
+# source("~/Documents/git/epiMEIF/codes/MEIF.R")
+# source("~/Documents/git/epiMEIF/codes/Interaction_Score_RandomForest.R")
 
 setwd("~/Documents/git/big_files/")
-# load("data_Yi_DS_20.RData")
 load("Yi_st1_51081_sqrt.RData")
 data_3 <- set.threshold(Yi_data_3, method= "Bonferroni", level=0.05)
 QTL_03 <- get.QTL(data_3)
@@ -55,7 +55,8 @@ dim(marks) # 424 51081
 class(marks)
 
 marks.1 <- marks %>% dplyr::select(sep21$marker1)
-dim(marks.1)
+dim(marks.1) # 424  48
+marks.1[1:5,1:5]
 
 Y2 <- Y1[match(common, Y1$Roza2019_VCF_ID),]
 dim(Y2) # 424  19
@@ -68,6 +69,7 @@ data[1:5,1:5]
 colnames(data)[1] <- "PHENOTYPE"
 data <- na.omit(data)
 dim(data) # 424  49 markers
+data[1:5,1:5]
 
 plot(density(data$PHENOTYPE))
 
@@ -129,14 +131,18 @@ ggplot(Single_Marker_Significance, aes(x=Rank_Markers)) +
 
 
 # cforests ----------------------------------------------------------------
+# restart session
+
+names(weight_variable)<- rownames(Single_Marker_Significance)
+weight_variable <- weight_variable[match(colnames(data)[-1], names(weight_variable))]
 
 set.seed(100)
 Seeds=sample(1:1000000, 10)
 Importance_Score <- list()
 
 ## Parameters we use for the random forest. This can be trained prior to the forest application.
-ntree = 48
-q=round(ntree/3,0)
+#ntree=50
+#q=round(ntree/3,0)
 #mincriterion=0.95, minsplit = 30, minbucket = 30
 
 addq <- function(x) paste0("`", x, "`")
@@ -144,45 +150,38 @@ fit.rf.formula <-  as.formula( paste(" PHENOTYPE ~(", paste( addq(setdiff(colnam
 
 for(seed in Seeds)
 {
+  Importance_Score[[match(seed,Seeds)]] <- list()
   set.seed(seed)
-  fit.rf <- cforest_gen(formula = fit.rf.formula,
-                        data = data, 
-                        control = ctree_control(
-                          teststat = "quad", testtype = "Univ", mincriterion = 0),
-                        weight_variable=c(0, weight_variable), 
-                        mtry = q, cores = 10,
-                        ntree = ntree
-  ) 
+  fit.rf <-cforest_gen( fit.rf.formula, data = data, weight_variable=c(0,weight_variable), mtry = round(ntree/3,0), ntree = ntree, control = ctree_control(teststat="quad", testtype="Univ", mincriterion=0.95, minsplit = 30, minbucket = 30)) 
+  
   
   ##computing the SNP interaction metric for each forest run using the getInteractionMatrix function.
-  Importance_Score_RF[[match(seed,Seeds)]] <- getInteractionMatrix_RF(fit.rf)
-  
+  Importance_Score[[match(seed,Seeds)]] <-getInteractionMatrix(fit.rf)
 }
 
-
-# Called from: ctree_new(formula = fit.rf.formula, data = data, weight_variable = c(0, weight_variable), control = new("TreeControl", varctrl = new("VariableControl", teststat = 2L, pvalue = TRUE, tol = 1e-10, maxpts = 25000L, abseps = 1e-04, releps = 0), splitctrl = new("SplitControl", minprob = 0.01, minsplit = 30, minbucket = 30, tol = 1e-10, maxsurrogate = 0L), gtctrl = new("GlobalTestControl", testtype = 4L,  nresample = 9999L, randomsplits = FALSE, mtry = 0L, mincriterion = 0.95), tgctrl = new("TreeGrowControl", stump = FALSE, maxdepth = 0L, savesplitstats = TRUE, remove_weights = FALSE)), doFit = FALSE)
-
-
 NiterChild=10
+Importance_Score_SRF <- Interaction_List_SRF <- list()
 Interaction_List_RF <- list()
 
+##Recording the binary interaction score 
+for(i in 1:NiterChild)
+  Importance_Score_SRF[[i]] <- Importance_Score[[i]][[1]]
 
 ##Recording the interaction sets and their corresponding score
 for(i in 1:NiterChild)
-{if(nrow(Importance_Score_RF[[i]])!=0)
-  Interaction_List_RF[[i]] <- Importance_Score_RF[[i]][,-match("Forest_Score", colnames(Importance_Score_RF[[i]]))]
+{if(nrow(Importance_Score[[i]][[2]])!=0)
+  Interaction_List_SRF[[i]] <- Importance_Score[[i]][[2]][,-match("Forest_Score", colnames(Importance_Score[[i]][[2]]))]
 }
 
-All_Interactions_Stats_RF <- GenerateInteractions_RF(Interaction_List_RF, Importance_Score_RF, "SRF")
+##Summarizing over the SNP Interaction Metrix across the 10 forest using the GenerateInteractionList.
+All_Interactions_Stats_SRF <- GenerateInteractionList(Interaction_List_SRF, Importance_Score)
 
 
-?plotSNPInteraction
+library(viridis)
+library(gridExtra)
+
 plotSNPInteraction(data, c("chr5.1_42131042", "chr6.1_49779667"))
-c("chr5.1_42131042", "chr6.1_67638734")
-str(data)
 
-
-str(marks.1)
 data4 <- data %>% mutate_if(is.integer, as.factor)
 plotSNPInteraction(data4, c("chr5.1_42131042", "chr6.1_49779667"))
 plotSNPInteraction(data2, c("chr5.1_42131042", "chr6.1_67638734"))
