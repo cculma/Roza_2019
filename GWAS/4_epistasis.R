@@ -4,6 +4,8 @@ rm(list = ls())
 setwd("~/Documents/git/big_files/")
 # data <- read.csv("epistasis01.csv", row.names = 1)
 data <- read.csv("epistasis_model2f.csv", row.names = 1)
+# epistasis_model2f.csv is a file generated using a single step MLM using ASReml
+
 
 plot(density(data$PHENOTYPE))
 
@@ -72,6 +74,8 @@ set.seed(100)
 Seeds=sample(1:1000000, 10)
 Importance_Score <- list()
 
+dim(data) # 424  21
+
 ## Parameters we use for the random forest. This can be trained prior to the forest application.
 ntree=400
 q=round(ntree/3,0)
@@ -108,10 +112,17 @@ for(i in 1:NiterChild)
 
 ##Summarizing over the SNP Interaction Metrix across the 10 forest using the GenerateInteractionList.
 All_Interactions_Stats_SRF <- GenerateInteractionList(Interaction_List_SRF, Importance_Score)
-dim(All_Interactions_Stats_SRF) # 14385    18
+dim(All_Interactions_Stats_SRF) # 185  16
+
+
+# All1 <- All_Interactions_Stats_SRF[order(All_Interactions_Stats_SRF$Sum_Forest_Score, decreasing = T), ]
+# All2 <- All_Interactions_Stats_SRF %>% dplyr::filter(Sum_Forest_Score >= 17)
+All2 <- All_Interactions_Stats_SRF %>% dplyr::filter(Median_Forest_Score > 1)
+All2 <- All2[order(All2$Sum_Forest_Score, decreasing = T), ]
 
 setwd("~/Documents/git/Roza_2019/epiMEIF/")
 write.csv(All_Interactions_Stats_SRF, "logitudinal_model2f.csv", quote = F, row.names = T)
+write.csv(All2, "logitudinal_model2f.1.csv", quote = F, row.names = T)
 
 
 library(viridis)
@@ -120,24 +131,21 @@ library(ggpubr)
 library(svglite)
 
 data4 <- data %>% mutate_if(is.integer, as.factor)
-plot1 <- plotSNPInteraction(data4, c("chr5.1_1429434", "chr6.1_27950240"))
-plot2 <- plotSNPInteraction(data4, c("chr2.1_41048095", "chr5.1_1429434"))
-plot3 <- plotSNPInteraction(data4, c("chr2.1_41048095", "chr6.1_27950240"))
-plot4 <- plotSNPInteraction(data4, c("chr2.1_41048095", "chr5.1_1429434","chr6.1_27950240"))
-plot5 <- plotSNPInteraction(data4, c("chr5.1_1429434", "chr7.1_11234756"))
-plot6 <- plotSNPInteraction(data4, c("chr6.1_27950240", "chr7.1_11234756"))
-plot7 <- plotSNPInteraction(data4, c("chr5.1_1429434", "chr6.1_27950240","chr7.1_11234756"))
-plot8 <- plotSNPInteraction(data4, c("chr1.1_18947323", "chr5.1_1429434"))
-plot9 <- plotSNPInteraction(data4, c("chr1.1_18947323", "chr6.1_27950240"))
-plot10 <- plotSNPInteraction(data4, c("chr1.1_18947323", "chr5.1_1429434","chr6.1_27950240"))
-plot11 <- plotSNPInteraction(data4, c("chr2.1_41048095", "chr7.1_11234756"))
-plot12 <- plotSNPInteraction(data4, c("chr7.1_11234756", "chr5.1_1429434","chr7.1_11234756"))
-plot13 <- plotSNPInteraction(data4, c("chr5.1_1429434", "chr5.1_54813818"))
-plot14 <- plotSNPInteraction(data4, c("chr4.1_20948923", "chr6.1_27950240"))
+plot1 <- plotSNPInteraction(data4, c("chr5.1_1429434", "chr6.1_27950240")) # 6
+plot2 <- plotSNPInteraction(data4, c("chr2.1_41048095", "chr5.1_1429434")) # 3
+plot3 <- plotSNPInteraction(data4, c("chr2.1_41048095", "chr6.1_27950240")) # 5
+plot4 <- plotSNPInteraction(data4, c("chr2.1_41048095", "chr5.1_1429434","chr6.1_27950240")) # 7
+plot5 <- plotSNPInteraction(data4, c("chr5.1_1429434", "chr7.1_11234756")) # 9
+plot6 <- plotSNPInteraction(data4, c("chr6.1_27950240", "chr7.1_11234756")) # 27
+plot7 <- plotSNPInteraction(data4, c("chr5.1_1429434", "chr6.1_27950240","chr7.1_11234756")) # 60
+plot8 <- plotSNPInteraction(data4, c("chr1.1_18947323", "chr6.1_27950240")) # 18
+plot9 <- plotSNPInteraction(data4, c("chr1.1_18947323", "chr6.1_27950240")) # 17
+plot10 <- plotSNPInteraction(data4, c("chr1.1_18947323", "chr5.1_1429434","chr6.1_27950240")) # 19
+plot12 <- plotSNPInteraction(data4, c("chr2.1_41048095", "chr7.1_11234756")) # 10
+plot11 <- plotSNPInteraction(data4, c("chr2.1_41048095", "chr5.1_1429434","chr7.1_11234756")) # 11
+plot13 <- plotSNPInteraction(data4, c("chr5.1_1429434", "chr5.1_54813818")) # 22
+plot14 <- plotSNPInteraction(data4, c("chr4.1_20948923", "chr6.1_27950240")) # 24
 
-plot15 <- plotSNPInteraction(data4, c("chr2.1_41048095", "chr3.1_17212602","chr5.1_1429434"))
-
-plot4 <- plotSNPInteraction(data4, c("chr2.1_41048095", "chr5.1_1429434","chr6.1_27950240"))
 
 ggboxplot(data4, x = "chr2.1_41048095", y = "PHENOTYPE", width = 0.8, add = "jitter", color = "chr2.1_41048095")
 ggboxplot(data4, x = "chr5.1_1429434", y = "PHENOTYPE", width = 0.8, add = "jitter", color = "chr5.1_1429434")
@@ -158,14 +166,71 @@ ggline(data4, x = "chr5.1_1429434", y = "PHENOTYPE", add = "mean")
 ggline(data4, x = "chr6.1_27950240", y = "PHENOTYPE", add = "mean")
 ggline(data4, x = "chr7.1_11234756", y = "PHENOTYPE", add = "mean", linetype = "chr6.1_27950240", shape = "chr6.1_27950240", color = "chr6.1_27950240")
 
-data5 <- data %>% dplyr::select(-PHENOTYPE)
-cor1 <- cor(data5)
-diag(cor1) <- NA
-max(cor1, na.rm = TRUE)
-min(cor1, na.rm = TRUE)
+data[1:5,1:5]
+data5 <- data %>% dplyr::select(PHENOTYPE, cc05$node)
+data5 <- data5 %>% gather(key = "marker", value = "AlleleDos", 2:8)
+head(data5)
 
-head(All_Interactions_Stats_SRF)
-cc01 <- dplyr::count(All_Interactions_Stats_SRF, Node1)
-cc02 <- dplyr::count(All_Interactions_Stats_SRF, Node2)
-cc03 <- dplyr::count(All_Interactions_Stats_SRF, Node3)
-cc04 <- dplyr::count(All_Interactions_Stats_SRF, Node4)
+ggline(data4, x = "AlleleDos", y = "PHENOTYPE", add = "mean")
+ggline(data5, x = "AlleleDos", y = "PHENOTYPE",  add = c("mean_se", "jitter"), linetype = "marker", shape = "marker", color = "marker", alpha = 0.5) + facet_wrap(vars(marker))
+
+ggline(data5, x = "AlleleDos", y = "PHENOTYPE",  add = c("mean_se"), linetype = "marker", color = "marker", alpha = 0.5) + facet_grid(, vars(marker))
+
+ggline(data5, x = "AlleleDos", y = "PHENOTYPE",  add = c("mean_se"), linetype = "marker") + facet_grid(, vars(marker)) # this
+
+ggboxplot(data5, x = "AlleleDos", y = "PHENOTYPE", width = 0.8, color = "marker")
+
+plot06 <- ggline(data4, x = "chr5.1_1429434", y = "PHENOTYPE", add = "mean_se", color = "chr6.1_27950240", palette = cols1) + ylab("g x plant-1")
+
+plot03 <- ggline(data4, x = "chr2.1_41048095", y = "PHENOTYPE", add = "mean_se", color = "chr5.1_1429434", palette = cols1) + ylab("g x plant-1")
+
+plot03 <- ggline(data4, x = "chr5.1_1429434", y = "PHENOTYPE", add = "mean_se", color = "chr2.1_41048095", palette = cols1) + ylab("g x plant-1")
+
+levels(data4$chr5.1_1429434)
+
+library(RColorBrewer)
+myColors <- brewer.pal(5, "Set1")
+cols1 <- c("0" = "#E41A1C", "1" = "#377EB8", "2" = "#4DAF4A", "3" = "#984EA3", "4" = "#FF7F00" )
+cols1 <- c("1" = "#377EB8", "2" = "#4DAF4A", "3" = "#984EA3", "4" = "#FF7F00" )
+
+
+
+str_stack <- function(x) {
+  x %>% str_split("") %>% map(~ .x %>% paste(collapse = "\n"))
+}
+
+
+# Interaction_6 <- data %>% dplyr::select(PHENOTYPE, chr5.1_1429434, chr6.1_27950240)
+# Interaction_6$all <- paste0(Interaction_6$chr5.1_1429434, Interaction_6$chr6.1_27950240)
+# Interaction_6$all <- as.factor(Interaction_6$all)
+# ggboxplot(Interaction_6, x = "all", y = "PHENOTYPE", width = 0.8, add = "jitter", color = "all") + scale_x_discrete(label = str_stack) + theme(legend.position="none")
+
+Interaction_7 <- data %>% dplyr::select(PHENOTYPE, chr2.1_41048095, chr5.1_1429434, chr6.1_27950240)
+Interaction_7$all <- paste0(Interaction_7$chr2.1_41048095, Interaction_7$chr5.1_1429434, Interaction_7$chr6.1_27950240)
+Interaction_7$all <- as.factor(Interaction_7$all)
+summary(Interaction_7$all)
+plot07 <- ggboxplot(Interaction_7, x = "all", y = "PHENOTYPE", width = 0.8, color = "all") + scale_x_discrete(label = str_stack) + theme(legend.position="none") + ylab("g x plant-1")
+
+# Interaction_60 <- data %>% dplyr::select(PHENOTYPE, chr5.1_1429434, chr6.1_27950240, chr7.1_11234756)
+# Interaction_60$all <- paste0(Interaction_60$chr5.1_1429434, Interaction_60$chr6.1_27950240, Interaction_60$chr7.1_11234756)
+# Interaction_60$all <- as.factor(Interaction_60$all)
+# ggboxplot(Interaction_60, x = "all", y = "PHENOTYPE", width = 0.8, add = "jitter", color = "all") + scale_x_discrete(label = str_stack) + theme(legend.position="none")
+
+library(svglite)
+
+g1 <- ggplotGrob(lev5[[1]])
+g2 <- ggplotGrob(lev5[[2]])
+
+setwd("~/Documents/git/Roza_2019/Figures/")
+svglite(filename = "Interaction_6.svg", width = 3, height = 2.5, fix_text_size = F)
+plot(plot06)
+invisible(dev.off())
+
+svglite(filename = "Interaction_3.svg", width = 3, height = 2.5, fix_text_size = F)
+plot(plot03)
+invisible(dev.off())
+
+svglite(filename = "Interaction_7.svg", width = 5, height = 2.5, fix_text_size = F)
+plot(plot07)
+invisible(dev.off())
+
