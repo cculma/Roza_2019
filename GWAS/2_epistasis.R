@@ -4,25 +4,11 @@ rm(list = ls())
 
 library(GWASpoly)
 library(tidyverse)
-library(vcfR)
-library(tidyr)
-library(ggplot2)
-library(ggpubr)
-library(data.table)
-library(ggthemes)
-library(hrbrthemes)
-library(plotly)
-library(GenomicRanges)
-library(genomation)
-library(plyranges)
-library(Repitools)
-library(devtools)
-library(sommer)
-library(GWASpoly)
+
 # run epiMEIF in git 
 
 
-source("~/Documents/git/epiMEIF/codes/Interactions_Score_Age1.R")
+# source("~/Documents/git/epiMEIF/codes/Interactions_Score_Age1.R")
 # source("~/Documents/git/epiMEIF/codes/Interactions_Score_Ageing.R")
 # source("~/Documents/git/epiMEIF/codes/MEIF.R")
 # source("~/Documents/git/epiMEIF/codes/Interaction_Score_RandomForest.R")
@@ -33,6 +19,7 @@ data_3 <- set.threshold(Yi_data_3, method= "Bonferroni", level=0.05)
 QTL_03 <- get.QTL(data_3)
 
 cc <- dplyr::count(QTL_03, Trait)
+
 sep21 <- QTL_03 %>% dplyr::filter(Trait == "sep_21")
 sep21 <- sep21 %>% distinct(Marker, .keep_all = T)
 sep21 <- sep21 %>% unite(col = "marker1", c("Chrom", "Position"), sep = "_", remove = F)
@@ -43,6 +30,7 @@ colnames(Y)
 head(Y)
 Y <- Y %>% dplyr::select(Roza2019_VCF_ID, sep_21)
 Y1 <- na.omit(Y) 
+Y1$sep_21 <- (Y1$sep_21 * 453.592)
 
 G <- read.table("Roza2019_06_GS.txt", header = TRUE, check.names = F)
 G[1:5,1:5]
@@ -59,17 +47,21 @@ dim(marks.1) # 424  48
 marks.1[1:5,1:5]
 
 Y2 <- Y1[match(common, Y1$Roza2019_VCF_ID),]
-dim(Y2) # 424  19
+dim(Y2) # 424  2
 Y2 <- Y2 %>% remove_rownames() %>% column_to_rownames(var = "Roza2019_VCF_ID")
 colnames(Y2)
 Y3 <- Y2
-# Y3 <- Y2 %>% dplyr::select(sep_21)
 data <- merge(as.data.frame(Y3), as.data.frame(marks.1), by = 'row.names', all = TRUE) %>% column_to_rownames(var = 'Row.names')
 data[1:5,1:5]
 colnames(data)[1] <- "PHENOTYPE"
 data <- na.omit(data)
 dim(data) # 424  49 markers
 data[1:5,1:5]
+
+setwd("~/Documents/git/big_files/")
+write.csv(data, "epistasis_sep_21.csv", quote = F, row.names = T)
+# data <- read.csv("epistasis_sep_21.csv", row.names = 1)
+
 
 plot(density(data$PHENOTYPE))
 

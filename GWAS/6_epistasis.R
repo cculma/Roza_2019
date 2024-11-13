@@ -1,9 +1,9 @@
 rm(list = ls())
-# MAEIF1 epistasis 137 markers
+# MAEIF1 epistasis sep_21 markers
 
 setwd("~/Documents/git/big_files/")
-# data <- read.csv("epistasis01.csv", row.names = 1)
-data <- read.csv("epistasis_model2f.csv", row.names = 1)
+data <- read.csv("epistasis_sep_21.csv", row.names = 1)
+
 
 plot(density(data$PHENOTYPE))
 
@@ -15,11 +15,16 @@ Single_Marker_Significance <- sapply( setdiff( colnames(data), c("PHENOTYPE")),
 
 Single_Marker_Significance <- unlist(Single_Marker_Significance)
 
-ntree = 20
+# ntree = 300
+# n = length(Single_Marker_Significance)
+# q = round(ntree/3,0)
+
+ntree = 48
 n = length(Single_Marker_Significance)
 q = round(ntree/3,0)
 
 Single_Marker_Significance <- data.frame( pvalue=Single_Marker_Significance, Rank_Markers=rank(Single_Marker_Significance))
+
 
 Single_Marker_Significance <- Single_Marker_Significance[ order( Single_Marker_Significance$Rank_Markers),]
 
@@ -73,7 +78,7 @@ Seeds=sample(1:1000000, 10)
 Importance_Score <- list()
 
 ## Parameters we use for the random forest. This can be trained prior to the forest application.
-ntree=400
+ntree=300
 q=round(ntree/3,0)
 #mincriterion=0.95, minsplit = 30, minbucket = 30
 
@@ -108,10 +113,10 @@ for(i in 1:NiterChild)
 
 ##Summarizing over the SNP Interaction Metrix across the 10 forest using the GenerateInteractionList.
 All_Interactions_Stats_SRF <- GenerateInteractionList(Interaction_List_SRF, Importance_Score)
-dim(All_Interactions_Stats_SRF) # 14385    18
+dim(All_Interactions_Stats_SRF) # 2873   18
 
-setwd("~/Documents/git/Roza_2019/epiMEIF/")
-write.csv(All_Interactions_Stats_SRF, "logitudinal_model2f.csv", quote = F, row.names = T)
+# setwd("~/Documents/git/Roza_2019/epiMEIF/")
+# write.csv(All_Interactions_Stats_SRF, "logitudinal_sep_21.csv", quote = F, row.names = T)
 
 
 library(viridis)
@@ -120,52 +125,41 @@ library(ggpubr)
 library(svglite)
 
 data4 <- data %>% mutate_if(is.integer, as.factor)
-plot1 <- plotSNPInteraction(data4, c("chr5.1_1429434", "chr6.1_27950240"))
-plot2 <- plotSNPInteraction(data4, c("chr2.1_41048095", "chr5.1_1429434"))
-plot3 <- plotSNPInteraction(data4, c("chr2.1_41048095", "chr6.1_27950240"))
-plot4 <- plotSNPInteraction(data4, c("chr2.1_41048095", "chr5.1_1429434","chr6.1_27950240"))
-plot5 <- plotSNPInteraction(data4, c("chr5.1_1429434", "chr7.1_11234756"))
-plot6 <- plotSNPInteraction(data4, c("chr6.1_27950240", "chr7.1_11234756"))
-plot7 <- plotSNPInteraction(data4, c("chr5.1_1429434", "chr6.1_27950240","chr7.1_11234756"))
-plot8 <- plotSNPInteraction(data4, c("chr1.1_18947323", "chr5.1_1429434"))
-plot9 <- plotSNPInteraction(data4, c("chr1.1_18947323", "chr6.1_27950240"))
-plot10 <- plotSNPInteraction(data4, c("chr1.1_18947323", "chr5.1_1429434","chr6.1_27950240"))
-plot11 <- plotSNPInteraction(data4, c("chr2.1_41048095", "chr7.1_11234756"))
-plot12 <- plotSNPInteraction(data4, c("chr7.1_11234756", "chr5.1_1429434","chr7.1_11234756"))
-plot13 <- plotSNPInteraction(data4, c("chr5.1_1429434", "chr5.1_54813818"))
-plot14 <- plotSNPInteraction(data4, c("chr4.1_20948923", "chr6.1_27950240"))
+plot01_sep21 <- plotSNPInteraction(data4, c("chr3.1_85101832", "chr6.1_39491281"))
+# PDF 7 X 4
 
-plot15 <- plotSNPInteraction(data4, c("chr2.1_41048095", "chr3.1_17212602","chr5.1_1429434"))
-
-plot4 <- plotSNPInteraction(data4, c("chr2.1_41048095", "chr5.1_1429434","chr6.1_27950240"))
-
-ggboxplot(data4, x = "chr2.1_41048095", y = "PHENOTYPE", width = 0.8, add = "jitter", color = "chr2.1_41048095")
-ggboxplot(data4, x = "chr5.1_1429434", y = "PHENOTYPE", width = 0.8, add = "jitter", color = "chr5.1_1429434")
-ggboxplot(data4, x = "chr6.1_27950240", y = "PHENOTYPE", width = 0.8, add = "jitter", color = "chr6.1_27950240")
+plot1_sep21.1 <- ggline(data4, x = "chr6.1_49779667", y = "PHENOTYPE", add = "mean", linetype = "chr5.1_42131042", shape = "chr5.1_42131042", color = "chr5.1_42131042")
+plot1_sep21.1
 
 
-lm1 <- lm(PHENOTYPE ~ chr2.1_41048095 + chr5.1_1429434 + chr6.1_27950240, data = data4)
-anova(lm1)
+plot02_sep21 <- plotSNPInteraction(data4, c("chr6.1_27950240", "chr7.1_11234756"))
+plot02_sep21.1 <- ggline(data4, x = "chr5.1_42131042", y = "PHENOTYPE", add = "mean", linetype = "chr6.1_67638734", shape = "chr6.1_67638734", color = "chr6.1_67638734")
 
-lm2 <- lm(PHENOTYPE ~ chr2.1_41048095:chr5.1_1429434:chr6.1_27950240, data = data4)
-anova(lm2)
+library(svglite)
+setwd("~/Documents/git/Roza_2019/Figures/")
+svglite(filename = "plot02_sep21.1.svg", width = 4, height = 3, fix_text_size = F)
+plot(plot02_sep21.1)
+invisible(dev.off())
 
-anova(lm1, lm2)
-
-
-ggline(data4, x = "chr2.1_41048095", y = "PHENOTYPE", add = "mean")
-ggline(data4, x = "chr5.1_1429434", y = "PHENOTYPE", add = "mean")
+ggline(data4, x = "chr7.1_11234756", y = "PHENOTYPE", add = "mean")
 ggline(data4, x = "chr6.1_27950240", y = "PHENOTYPE", add = "mean")
 ggline(data4, x = "chr7.1_11234756", y = "PHENOTYPE", add = "mean", linetype = "chr6.1_27950240", shape = "chr6.1_27950240", color = "chr6.1_27950240")
 
-data5 <- data %>% dplyr::select(-PHENOTYPE)
-cor1 <- cor(data5)
-diag(cor1) <- NA
-max(cor1, na.rm = TRUE)
-min(cor1, na.rm = TRUE)
 
-head(All_Interactions_Stats_SRF)
-cc01 <- dplyr::count(All_Interactions_Stats_SRF, Node1)
-cc02 <- dplyr::count(All_Interactions_Stats_SRF, Node2)
-cc03 <- dplyr::count(All_Interactions_Stats_SRF, Node3)
-cc04 <- dplyr::count(All_Interactions_Stats_SRF, Node4)
+"chr3.1_85101832"
+"chr6.1_39491281"
+
+
+ggline(data4, x = "chr3.1_85101832", y = "PHENOTYPE", add = "mean")
+ggline(data4, x = "chr6.1_39491281", y = "PHENOTYPE", add = "mean")
+ggline(data4, x = "chr3.1_85101832", y = "PHENOTYPE", add = "mean", linetype = "chr6.1_39491281", shape = "chr6.1_39491281", color = "chr6.1_39491281")
+
+ggscatter(data, x = "chr7.1_11234756", y = "PHENOTYPE",
+          color = "black", shape = 21, size = 3, # Points color, shape and size
+          add = "loess",
+          conf.int = TRUE, # Add confidence interval
+          cor.coef = TRUE, # Add correlation coefficient. see ?stat_cor
+          cor.coeff.args = list(method = "pearson", label.x = 3, label.sep = "\n"))
+
+
+plot3 <- plotSNPInteraction(data4, c("chr5.1_1429434", "chr7.1_24014763"))
